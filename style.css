@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 * {
+=======
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  font-family: "Cal Sans", sans-serif;
+>>>>>>> 58c04ee (product cards)
   margin: 0;
   padding: 0;
 }
@@ -115,6 +122,7 @@ main {
 }
 
 .productsCards img{
+<<<<<<< HEAD
   width: 300px;
   height: 300px;
 }
@@ -124,4 +132,80 @@ main {
 }
 .products{
   display: flex;
+=======
+  width: 15vw;
+  height: 12vw;
+  border-radius: 8px;
+  display: block;
+  justify-content: center;
+}
+
+.productsCards {
+  width: 15vw;
+  height: auto;
+}
+
+
+
+.products{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 3 colunas */
+  width: 70%;
+  margin: auto;
+
+}
+
+.products .productsCards {
+  margin: 3vh 0.5vw;
+  margin-bottom: 0px;
+  border-radius: 8px;
+  width: fit-content;
+
+}
+
+@media (max-width: 768px) {
+  .products {
+    grid-template-columns: repeat(3, 1fr); /* 2 colunas no tablet */
+    gap: 15px;
+  }
+
+  .productsCards img {
+      width: 23vw;
+      height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr); /* 1 por linha no celular */
+  }
+  .productsCards {
+    width: 33vw;
+    height: auto;
+  }
+  
+}
+
+.productDescription{
+  margin-top: 15px;
+}
+
+.productDescription p{
+  margin-top: 2px;
+}
+
+
+.productName{
+  font-size: 15px;
+  font-weight: 400px;
+}
+
+.productPrice{
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.lowFont{
+  font-size: 12px;
+>>>>>>> 58c04ee (product cards)
 }
