@@ -28,10 +28,33 @@ class MobileNavbar {
     this.mobileMenu.addEventListener("click", this.handleClick);
   }
 
+  // Dropdown functionality
+  initDropdown() {
+    const dropdownBtn = document.getElementById("categoria-btn");
+    const dropdownMenu = document.getElementById("categoria-menu");
+
+    if (dropdownBtn && dropdownMenu) {
+      dropdownBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        dropdownMenu.classList.toggle("show");
+      });
+
+      document.addEventListener("click", function (e) {
+        if (
+          !dropdownBtn.contains(e.target) &&
+          !dropdownMenu.contains(e.target)
+        ) {
+          dropdownMenu.classList.remove("show");
+        }
+      });
+    }
+  }
+
   init() {
     if (this.mobileMenu) {
       this.addClickEvent();
     }
+    this.initDropdown(); // Initialize dropdown functionality
     return this;
   }
 }
@@ -39,6 +62,6 @@ class MobileNavbar {
 const mobileNavbar = new MobileNavbar(
   ".mobile-menu",
   ".nav-list",
-  ".nav-list li",
+  ".nav-list li"
 );
 mobileNavbar.init();
