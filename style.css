@@ -1,4 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --darkBlue: #023047;
+  --mediumBlue: #219ebc;
+  --ligthBlue:#8ecae6;
+  --yellow: #ffb703;
+}
+
 * {
+  font-family: "Cal Sans", sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -14,26 +24,28 @@ a:hover {
 }
 
 .logo {
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-left: 0; 
+  justify-content: end;
   align-items: center;
-
 }
 
 nav {
   display: flex;
   justify-content: space-between;
-  padding: 0 20px;
   align-items: center;
+  padding: 0 20px;
   font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
-  background: hsl(219, 63%, 25%);
-  height: 10vh;
+  background: #23232e;
+  height: 8vh;
 }
-
 
 .nav-list {
   list-style: none;
   display: flex;
   margin-top: 10px;
-
 }
 
 .nav-list li {
@@ -41,7 +53,7 @@ nav {
   margin-left: 32px;
 }
 
-/*inicio do dropdown*/
+/* Dropdown styles */
 .dropdown {
   position: relative;
 }
@@ -60,10 +72,9 @@ nav {
   min-width: 160px
 }
 
-
 .dropdown-menu li {
   padding: 15px 15px;
-  border-bottom: 1px solid rgb(69, 68, 68) ;
+  border-bottom: 1px solid rgb(69, 68, 68);
 }
 
 .dropdown-menu li a {
@@ -71,10 +82,54 @@ nav {
   color: black;
   display: block;
 }
+
 .dropdown-menu.show {
   display: block;
 }
-/*fim do dropdown*/
+
+/* Search bar styles */
+.barra-de-pesquisa :active {
+  border: none;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  width: 400px;
+  margin: 20px auto;
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  border-radius: 10px 0px 0px 10px;
+  height: auto;
+}
+
+.search-button {
+  background-color: #ebc25a;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 0px 10px 10px 0px;
+  height: 40px;
+}
+
+.search-button:hover {
+  background-color: #FFB703;
+}
+
+.search-button i {
+  font-size: 18px;
+}
+
+/* Mobile menu styles */
 .mobile-menu {
   display: none;
   cursor: pointer;
@@ -141,43 +196,92 @@ nav {
   transform: rotate(45deg) translate(-5px, -7px);
 }
 
-.barra-de-pesquisa :active{
-  border: none;
+/* Product styles */
+.productsCards img {
+  width: 15vw;
+  height: 12vw;
+  border-radius: 8px;
+  display: block;
+  justify-content: center;
 }
 
-.search-form {
-  display: flex;
-  align-items: center;
-  width: 400px; /* Largura da barra */
-  margin: 20px auto; /* Centraliza e adiciona espaço */
-}
-
-.search-input {
-  flex-grow: 1; /* O campo de texto ocupa o espaço disponível */
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  border-radius: 10px 0px 0px 10px;
+.productsCards {
+  width: 15vw;
   height: auto;
 }
 
-.search-button {
-  background-color: #ebc25a; /* Cor do botão */
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 0px 10px 10px 0px;
-  height: 40px;
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 70%;
+  margin: auto;
 }
 
-.search-button:hover {
-  background-color: #FFB703; /* Cor do botão ao passar o mouse */
+.products .productsCards {
+  margin: 3vh 0.5vw;
+  margin-bottom: 0px;
+  border-radius: 8px;
+  width: fit-content;
 }
 
-.search-button i { /* Estilo do ícone (se você usar um ícone) */
-  font-size: 18px;
+.productDescription {
+  margin-top: 15px;
+}
+
+.productDescription p {
+  margin-top: 2px;
+}
+
+.productName {
+  font-size: 15px;
+  font-weight: 400px;
+}
+
+.productPrice {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.lowFont {
+  font-size: 12px;
+}
+
+.banner {
+  background-color: var(--mediumBlue);
+  width: calc(100vw - 153px);
+  height: 40vh;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+}
+
+.banner p {
+  color: var(--yellow);
+  font-size: 60px;
+}
+
+.filters {
+  padding: 30px 70px 0px 0px;
+}
+
+@media (max-width: 768px) {
+  .products {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+
+  .productsCards img {
+    width: 23vw;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .productsCards {
+    width: 33vw;
+    height: auto;
+  }
 }

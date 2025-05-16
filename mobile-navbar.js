@@ -28,15 +28,7 @@ class MobileNavbar {
     this.mobileMenu.addEventListener("click", this.handleClick);
   }
 
-  init() {
-    if (this.mobileMenu) {
-      this.addClickEvent();
-    }
-    this.initDropdown(); // Ativa dropdown também
-    return this;
-  }
-
-  // NOVO MÉTODO: lógica do dropdown
+  // Dropdown functionality
   initDropdown() {
     const dropdownBtn = document.getElementById("categoria-btn");
     const dropdownMenu = document.getElementById("categoria-menu");
@@ -57,6 +49,14 @@ class MobileNavbar {
       });
     }
   }
+
+  init() {
+    if (this.mobileMenu) {
+      this.addClickEvent();
+    }
+    this.initDropdown(); // Initialize dropdown functionality
+    return this;
+  }
 }
 
 const mobileNavbar = new MobileNavbar(
@@ -65,6 +65,3 @@ const mobileNavbar = new MobileNavbar(
   ".nav-list li"
 );
 mobileNavbar.init();
-
-
-
