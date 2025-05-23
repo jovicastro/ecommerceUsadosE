@@ -1,0 +1,130 @@
+# version: '3.8'
+
+# services:
+#   web:
+#     build: ./www
+#     image: php:8.1-apache
+#     container_name: apache_php
+#     volumes:
+#       - ./www:/var/www/html
+#     ports:
+#       - "8080:80"
+#     depends_on:
+#       - db
+
+#   db:
+#     image: mysql:5.7
+#     container_name: mysql_db
+#     restart: always
+#     environment:
+#       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+#       MYSQL_ROOT_PASSWORD:
+#       MYSQL_DATABASE: ecommerceusados
+#       MYSQL_USER: user
+#       MYSQL_PASSWORD: "jovic"
+#     volumes:
+#         - db_data:/var/lib/mysql
+#         - ./mysql-init:/docker-entrypoint-initdb.d
+
+#   phpmyadmin:
+#     image: phpmyadmin/phpmyadmin
+#     container_name: phpmyadmin
+#     ports:
+#       - "8081:80"
+#     environment:
+#       PMA_HOST: db
+#       MYSQL_ROOT_PASSWORD: "jovic"
+#     depends_on:
+#       - db
+#   node:
+#     image: node:16
+#     container_name: node_app
+#     working_dir: /app
+#     volumes:
+#       - ./backEnd:/app  # Ajuste para o caminho correto do código Node.js
+#     command: node conexao.js  # Rodar o código Node.js
+#     depends_on:
+#       - db  # Espera o banco de dados antes de iniciar o container
+
+
+# volumes:
+#   db_data:
+
+version: '3.8'
+
+services:
+  # Serviço para o seu Backend Node.js
+  # Antigo "node", agora renomeado para "backend" para ser mais descritivo
+  backend:
+    build:
+      context: . # Constrói a imagem Docker a partir do Dockerfile na raiz do projeto
+      dockerfile: Dockerfile # O nome do seu Dockerfile (que será do Node.js)
+    container_name: node_backend_app # Nome mais específico para o container
+    ports:
+      - "3000:3000" # Mapeia a porta 3000 do host para a porta 3000 do container Node.js
+    volumes:
+      - ./src:/app/src # Monta a pasta src do host para o container para hot-reload do backend
+      - ./www:/app/www # Monta a pasta www do host para o container para servir os arquivos estáticos do frontend
+      - ./package.json:/app/package.json # Garante que o package.json funcione
+      - ./node_modules:/app/node_modules # Garante que node_modules seja persistente (opcional, pode ser cacheado pelo Dockerfile)
+    environment: # Variáveis de ambiente que o Node.js usará para conectar ao DB
+      DB_HOST: db # O nome do serviço do banco de dados no Docker Compose
+      DB_USER: ${MYSQL_USER}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      DB_NAME: ${MYSQL_DATABASE}
+      PORT: 3000 # Porta que seu servidor Node.js vai escutar
+    depends_on: # Garante que o serviço 'db' inicie antes do 'backend'
+      - db
+    networks:
+      - app_network # Conecta ao app_network
+
+  # db:
+  db:
+    image: mysql:5.7
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD} # Será lida do .env
+      MYSQL_DATABASE: ${MYSQL_DATABASE} # Será lida do .env
+      MYSQL_USER: ${MYSQL_USER} # Será lida do .env
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD} # Será lida do .env
+    volumes:
+        - db_data:/var/lib/mysql
+        # Ajuste este caminho se a pasta mysql-init estiver em outro lugar (ex: ./database/mysql-init)
+        - ./mysql-init:/docker-entrypoint-initdb.d # Onde seus scripts SQL iniciais (se houver) irão
+    networks:
+      - app_network # Conecta à rede da aplicação para comunicação com o backend e phpmyadmin
+
+  # phpmyadmin:
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      # PMA_PORT: 3306 # Opcional: Se a porta do MySQL não for a padrão (3306)
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD} # Use a mesma senha root do MySQL definida no .env
+    depends_on:
+      - db
+    networks:
+      - app_network
+
+  # node: # O seu serviço 'node' original foi incorporado ao novo 'backend'
+  #   image: node:16
+  #   container_name: node_app
+  #   working_dir: /app
+  #   volumes:
+  #     - ./backEnd:/app  # Ajuste para o caminho correto do código Node.js
+  #   command: node conexao.js  # Rodar o código Node.js
+  #   depends_on:
+  #     - db  # Espera o banco de dados antes de iniciar o container
+
+
+volumes:
+  db_data: # Volume para persistência de dados do MySQL
+
+networks:
+  app_network: # Rede para comunicação interna entre os serviços
+    driver: bridge # Tipo de rede

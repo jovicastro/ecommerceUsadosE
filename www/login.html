@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desapego</title>
+    <link rel="stylesheet" href="../www/css/login.css" />
+    <link rel="stylesheet" href="../www/css/navbar.css">
+
+    <link rel="shortcut icon" href="./img/logo.nav.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  </head>
+
+  <header>
+    <nav>
+      <!-- Logo -->
+      <a class="logo" href="index.html">
+        <img src="../www/img/logo.nav.png" width="60px" />
+      </a>
+
+      <a href="index.html" id="voltar"><p>Voltar</p></a>
+  
+    </nav>
+  </header>
+
+  <body>
+   
+    <main>
+      <div class="container">
+        <div class="login">
+          <h1>Login</h1>
+          <input type="text" placeholder="Usuário">
+          <div class="senha-container">
+            <input type="password" id="senha" placeholder="Senha">
+            <i class="fa-solid fa-eye" id="toggleSenha" onclick="mostrarSenha()"></i>
+          </div>
+          <button type="button">Fazer login</button>
+          <a href="cadastro.html" id="cadastro"><p>Primeira vez por aqui? Crie sua conta!</p></a>
+        </div>
+        
+      </div>
+    </main>
+    <script src="login.js"></script>
+  </body>
+</html>
