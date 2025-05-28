@@ -27,15 +27,15 @@ SET time_zone = "+00:00";
 -- Table structure for table `produtos`
 --
 
-CREATE TABLE `produtos` (
+CREATE TABLE `products` (
   `id` int(11) NOT NULL,
-  `nome` varchar(30) NOT NULL,
-  `descricao` varchar(100) NOT NULL,
-  `preco` float NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `description` varchar(100) NOT NULL,
+  `price` float NOT NULL,
   `img` varchar(224) NOT NULL,
   `data` date NOT NULL,
-  `estado` varchar(50) NOT NULL,
-  `categoria` varchar(50) NOT NULL
+  `status` varchar(50) NOT NULL,
+  `category` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

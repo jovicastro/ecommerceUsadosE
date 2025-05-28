@@ -4,7 +4,9 @@
   "description": "Como Fazer um Menu Navbar Responsivo - Tutorial HTML, CSS e JavaScript para Iniciantes. [Veja mais](https://www.youtube.com/watch?v=bHRXRYTppHM&).",
   "main": "index.js",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.5.0",
+    "express": "^5.1.0",
     "mysql": "^2.18.1",
     "mysql2": "^3.14.1"
   },
