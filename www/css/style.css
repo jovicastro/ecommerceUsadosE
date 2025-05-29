@@ -12,6 +12,7 @@
   --ligthBlue:#8ecae6;
   --yellow: #ffb703;
   --iconday: #ebc25a;
+  --Input: #dad2d2;
 }
 
 a { /*colocar este fade em uma class propia para a "categoria"*/
@@ -35,6 +36,7 @@ a:hover {
   margin-right: 35px;
 }
 
+/*Barra de navegação*/
 nav {
   display: flex;
   justify-content: space-between;
@@ -68,47 +70,125 @@ ul.nav-list {
   padding-bottom: 1vh;
 }
 
-/*inicio do dropdown*/
-button.btn.btn-danger.dropdown-toggle{
-  position: relative;
+
+/* BARRA DE PESQUISA INÍCIO */
+
+/* Container principal da barra de pesquisa (dropdown + formulário de busca) */
+.barra-de-pesquisa {
+  display: flex;
+  align-items: stretch;
+  /* Centraliza e define a largura para desktops */
+  margin-left: 30%;
+  margin-right: auto;
+  width: 30%; /* Ocupa % da largura do container nav */
+  max-width: 600px; /* Largura máxima */
+  min-width: 320px; /* Largura mínima para evitar que fique muito espremida */
+}
+
+/* Div que envolve o botão de categoria e o menu dropdown */
+.barra-de-pesquisa .dropdown {
+  position: relative; /* Necessário para o posicionamento absoluto do dropdown-menu */
+  display: flex; /* Garante que o botão ocupe o espaço corretamente */
+}
+
+/* Botão de Categoria */
+.barra-de-pesquisa .dropdown .btn.btn-danger.dropdown-toggle {
   background-color: #ebc25a;
-  border:none;
-  align-items: center;
+  border: none; 
+  border-radius: 10px 0 0 10px; /* Cantos arredondados à esquerda, retos à direita */
+  height: 44px; /* Altura consistente com o campo de busca e botão */
+  display: flex;
+  align-items: center; /* Centraliza o texto verticalmente */
+  color: black;
 }
 
-button.btn.btn-danger.dropdown-toggle:hover {
-  background-color: #FFB703; /* Cor do botão ao passar o mouse */
+.barra-de-pesquisa .dropdown .btn.btn-danger.dropdown-toggle:hover {
+  background-color: #FFB703; /* Cor do botão ao passar o mouse - Mantido */
 }
 
-.dropdown-menu {
-  display: none;
+/* Menu dropdown de Categorias */
+.barra-de-pesquisa .dropdown .dropdown-menu {
+  /* display: none; (Bootstrap controla) */
   position: absolute;
-  top: 6vh;
-  left: -5vh;
-  background-color: var(--darkBlue);
-  border: 0px solid #ccc;
-  list-style: none;
-  padding: 5px;
-  margin: 0px;
-  z-index: 1000;
-  min-width: 160px
+  top: 100%; /* Posiciona abaixo do botão de categoria */
+  left: 0; /* Alinha com a borda esquerda do botão de categoria */
+  background-color: white;
+  border: 0px solid #ccc; 
+  list-style: none; 
+  padding: 5px; 
+  z-index: 1000; 
+  min-width: 160px; 
 }
 
-.dropdown-menu.show li {
-  padding: 10px 15px;
-  border-bottom: 1px solid rgb(156, 154, 154) ;
-  margin-right: 2vw;
+.barra-de-pesquisa .dropdown .dropdown-menu.show li { /* Estilo quando visível */
+  padding: 15px 15px;
+  border-bottom: 1px solid rgb(156, 154, 154); 
 }
 
-.dropdown-menu li a {
-  text-decoration: none;
-  color: gray;
-  display: block;
+.barra-de-pesquisa .dropdown .dropdown-menu li a {
+  text-decoration: none; 
+  color: gray; 
+  display: block; 
 }
-.dropdown-menu.show {
-  display: block;
+.barra-de-pesquisa .dropdown .dropdown-menu.show {
+  display: block; /* Mantido (Bootstrap controla, mas bom ter) */
 }
-/*fim do dropdown*/
+
+
+/* Formulário de busca (input + botão de lupa) */
+.barra-de-pesquisa .search-form {
+  display: flex; /* Mantido - para alinhar input e botão */
+  align-items: center; /* Mantido */
+  flex-grow: 1; /* Faz o formulário ocupar o espaço restante na Barra-de-pesquisa */
+  /* Removido: width: 400px; */
+  /* Removido: margin: 20px auto; */
+  margin: 0; /* Remove margens que possam interferir */
+}
+
+/* Campo de input da busca */
+.barra-de-pesquisa .search-input {
+  flex-grow: 1; /* Mantido - input ocupa espaço no formulário */
+  padding: 10px; /* Mantido */
+  border: none; /* Mantido */
+  border-radius: 0; /* Sem cantos arredondados (fica no meio) */
+  font-size: 16px; /* Mantido */
+  height: 44px; /* Altura consistente */
+  outline: none; /* Mantido */
+}
+
+.barra-de-pesquisa .search-input::placeholder{
+  color: var(--Input)
+}
+/* Botão de busca (lupa) */
+.barra-de-pesquisa .search-button { /* Seletor mais específico */
+  background-color: #ebc25a; /* Cor mantida */
+  color: white; /* Mantido */
+  padding: 10px 15px; /* Mantido */
+  border: none; /* Mantido */
+  border-radius: 0 10px 10px 0; /* Cantos retos à esquerda, arredondados à direita */
+  cursor: pointer; /* Mantido */
+  height: 44px; /* Mantido */
+  display: flex; /* Para melhor alinhamento do ícone/imagem */
+  align-items: center; /* Centraliza ícone/imagem verticalmente */
+  justify-content: center; /* Centraliza ícone/imagem horizontalmente */
+}
+
+.barra-de-pesquisa .search-button img {
+  width: 20px; /* Ajuste o tamanho da imagem conforme necessário */
+  height: 20px; /* Ajuste o tamanho da imagem conforme necessário */
+  /* Removido: padding-bottom: 7px; (o flex align-items deve cuidar disso) */
+}
+
+.barra-de-pesquisa .search-button:hover {
+  background-color: #FFB703; /* Cor do botão ao passar o mouse - Mantido */
+}
+
+.barra-de-pesquisa .search-button i { /* Estilo do ícone (se você usar um ícone) */
+  font-size: 18px; /* Mantido */
+}
+/* FIM DAS MODIFICAÇÕES DA BARRA DE PESQUISA */
+
+
 /*
 .mobile-menu {
   display: none;
@@ -181,68 +261,15 @@ ul li .nav-list.nav-list.active {
 }
 */
 
-/*BARRA DE PESQUISA*/
-.barra-de-pesquisa :active{
-  border: none;
-}
-
-.barra-de-pesquisa{
-  justify-content: center;
-  width: auto;
-}
-
-.search-form {
-  display: flex;
-  align-items: center;
-  width: 400px; /* Largura da barra */
-  margin: 20px auto; /* Centraliza e adiciona espaço */
-}
-
-.search-input {
-  flex-grow: 1; /* O campo de texto ocupa o espaço disponível */
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  border-radius: 10px 0px 0px 10px;
-  height: auto;
-  outline: none;
-}
-
-/*BOTÃO BARRA DE PESQUISA*/
-button.search-button {
-  background-color: #ebc25a; /* Cor do botão */
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  border-radius: 0px 10px 10px 0px;
-  height: 44px;
-}
-
-button.search-button img {
-  width: 3.5vh;
-  padding-bottom: 7px;
-}
-
-.search-button:hover {
-  background-color: #FFB703; /* Cor do botão ao passar o mouse */
-}
-
-.search-button i { /* Estilo do ícone (se você usar um ícone) */
-  font-size: 18px;
-}
-
 /*CONTEÚDO INTEIRO*/
 .container {
   display: flex;
 }
 
 main {
-/*  background: url("bg.jpg") no-repeat center center;*/
+/* background: url("bg.jpg") no-repeat center center;*/
   background-size: cover;
-  height: 92vh;
+  height: 92vh; /* Cuidado: se o header tem 10vh, isso pode causar scroll se houver padding/margin no body */
 }
 
 .productsCards img{
@@ -250,7 +277,9 @@ main {
   height: 12vw;
   border-radius: 8px;
   display: block;
-  justify-content: center;
+  /* justify-content: center; /* Não aplicável a img diretamente */
+  margin-left: auto; /* Para centralizar se o container for maior */
+  margin-right: auto;
 }
 
 .productsCards {
@@ -258,15 +287,12 @@ main {
   height: auto;
 }
 
-
-
 .products{
   gap: 1vw;
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 3 colunas */
+  grid-template-columns: repeat(4, 1fr); /* 4 colunas */
   width: 70%;
   margin: auto;
-
 }
 
 .products .productsCards {
@@ -274,12 +300,11 @@ main {
   margin-bottom: 0px;
   border-radius: 8px;
   width: fit-content;
-
 }
 
 @media (max-width: 768px) {
   .products {
-    grid-template-columns: repeat(3, 1fr); /* 2 colunas no tablet */
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas no tablet */
     gap: 15px;
   }
 
@@ -291,13 +316,16 @@ main {
 
 @media (max-width: 480px) {
   .products {
-    grid-template-columns: repeat(2, 1fr); /* 1 por linha no celular */
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas no celular */
   }
   .productsCards {
-    width: 33vw;
+    width: 33vw; /* Ajuste para consistência com as imagens se necessário */
     height: auto;
   }
-  
+  .productsCards img { /* Garante que a imagem se ajuste ao card no mobile */
+      width: 100%;
+      height: auto;
+  }
 }
 
 .productDescription{
@@ -308,10 +336,9 @@ main {
   margin-top: 1px;
 }
 
-
 .productName{
   font-size: 15px;
-  font-weight: 400px;
+  font-weight: 400px; /* Provavelmente 400, não 400px */
 }
 
 .productPrice{
@@ -321,7 +348,7 @@ main {
 
 .lowFont{
   font-size: 12px;
-}
+}                                                                                                                
 
 .banner{
   background-color: var(--darkBlue);
@@ -329,7 +356,6 @@ main {
   display: flex;
   justify-content: center; 
   align-items: center; 
-  
 }
 
 .banner p{
@@ -342,7 +368,7 @@ main {
 }
 
 #prodRegis {
-background-color: var(--mediumBlue);
+  background-color: var(--mediumBlue);
 }
 
 .prodReg{
@@ -354,61 +380,3 @@ background-color: var(--mediumBlue);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
 }
-
-
-.inputProd,
-select {
-  box-sizing: border-box;
-  padding-left: 12px;
-  width: 100%;
-  height: 50px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 14px;
-}
-
-.inputProd:focus,
-select:focus {
-  border-color: #4a90e2;
-  outline: none;
-  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
-}
-
-.inputProd input{
-  padding-left: 20px;
-}
-
-select option[disabled][selected] {
-  background-color: #999;
-}
-
-
-.grey {
-  color: #999;
-}
-
-::placeholder {
-  padding-left: 20px;
-  color: #999;
-}
-
-/* Opcional: para adicionar um botão depois */
-form input[type="submit"] {
-  background-color: var(--yellow);
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-form input[type="submit"]:hover {
-  background-color: var(--yellow);
-}
-
-/*DARK MODE*/
-/*
-button.btn.btn-theme.dropdown-toggle.show {
-  border: none;
-}
-*/

@@ -39,10 +39,10 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `produtos`
+-- Dumping data for table `products`
 --
 
-INSERT INTO `produtos` (`id`, `name`, `description`, `price`, `img`, `date`, `status`, `category`) VALUES
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `img`, `date`, `status`, `category`) VALUES
 (1, 'S21', 'Celular', 999, 'img', '2025-05-25', 'uso', 'comutador'),
 (2, 'notebook samsung', 'i3 14100F', 3200, 'img', '2025-05-25', 'novo', 'comutador'),
 (3, 'S21', 'Celular', 1200, 'img', '2025-05-08', 'uso', 'comutador');
@@ -54,7 +54,7 @@ INSERT INTO `produtos` (`id`, `name`, `description`, `price`, `img`, `date`, `st
 --
 -- Indexes for table `produtos`
 --
-ALTER TABLE `produtos`
+ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -64,7 +64,7 @@ ALTER TABLE `produtos`
 --
 -- AUTO_INCREMENT for table `produtos`
 --
-ALTER TABLE `produtos`
+ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 

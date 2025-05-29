@@ -2,10 +2,11 @@
 
 // Importa a biblioteca mysql2
 const mysql = require('mysql2');
+const path = require('path'); // Mantenha esta linha
 
 // Importa a biblioteca dotenv para carregar variáveis de ambiente do arquivo .env
 // Isso garante que process.env tenha os valores definidos no seu .env
-require('dotenv').config({ path: '../../.env' }); // Ajuste o caminho se o .env não estiver duas pastas acima
+const dotenvResult = require('dotenv').config({ path: path.resolve(__dirname, '../../.env') }); // Ajuste o caminho se o .env não estiver duas pastas acima
 
 // Cria o objeto de conexão com o banco de dados
 const connection = mysql.createConnection({
@@ -14,6 +15,14 @@ const connection = mysql.createConnection({
   password: process.env.DB_PASSWORD, // Sua senha do MySQL
   database: process.env.DB_NAME      // Ex: ecommerceusados
 });
+
+// Linhas de debug para verificar se as variáveis foram carregadas:
+console.log('--- Variáveis de Ambiente Carregadas ---');
+console.log('DB_HOST:', process.env.DB_HOST);
+console.log('DB_USER:', process.env.DB_USER);
+// console.log('DB_PASSWORD:', process.env.DB_PASSWORD);
+console.log('DB_NAME:', process.env.DB_NAME);
+console.log('---------------------------------------');
 
 // Tenta estabelecer a conexão com o MySQL
 connection.connect((error) => {
