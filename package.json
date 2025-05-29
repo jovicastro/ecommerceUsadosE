@@ -1,7 +1,7 @@
 {
   "name": "Usadosmktp",
   "version": "1.0.0",
-  "description": "Como Fazer um Menu Navbar Responsivo - Tutorial HTML, CSS e JavaScript para Iniciantes. [Veja mais](https://www.youtube.com/watch?v=bHRXRYTppHM&).",
+  "description": "ecommerceUsados",
   "main": "index.js",
   "dependencies": {
     "cors": "^2.8.5",
@@ -13,9 +13,17 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/server.js"
+    "start": "node src/config/db.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jovicastro/ecommerceUsados.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jovicastro/ecommerceUsados/issues"
+  },
+  "homepage": "https://github.com/jovicastro/ecommerceUsados#readme"
 }

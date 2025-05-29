@@ -26,7 +26,6 @@ a:hover {
 
 .logo {
   align-items: center;
-
 }
 
 .icone {
@@ -45,7 +44,6 @@ nav {
   background: var(--mediumBlue);
   height: 10vh;
 }
-
 
 .nav-list {
   list-style: none;
@@ -96,10 +94,6 @@ button.btn.btn-danger.dropdown-toggle:hover {
   min-width: 160px
 }
 
-ul.dropdown-menu.show {
-  background-color: white;
-}
-
 .dropdown-menu.show li {
   padding: 10px 15px;
   border-bottom: 1px solid rgb(156, 154, 154) ;
@@ -115,6 +109,7 @@ ul.dropdown-menu.show {
   display: block;
 }
 /*fim do dropdown*/
+/*
 .mobile-menu {
   display: none;
   cursor: pointer;
@@ -184,6 +179,7 @@ ul li .nav-list.nav-list.active {
 .mobile-menu.active .line3 {
   transform: rotate(45deg) translate(-5px, -7px);
 }
+*/
 
 /*BARRA DE PESQUISA*/
 .barra-de-pesquisa :active{

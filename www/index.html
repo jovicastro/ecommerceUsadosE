@@ -8,7 +8,7 @@
   <title>Desapego</title>
   <link rel="stylesheet" href="filters.css"/>
   <link rel="stylesheet" href="./css/style.css"/>
-  <link rel="shortcut icon" href="../www/img/logo.nav.png"image/x-icon" />
+  <link rel="shortcut icon" href="../www/img/logo.nav.png"image/x-icon"/>
   <link rel="stylesheet" href="../bootstrap-5.3.6-dist/css/bootstrap.min.css">
 </head>
 
@@ -20,6 +20,17 @@
     </a>
     <!-- barra de pesquisa -->
     <div class="Barra-de-pesquisa">
+      <div class="dropdown">
+        <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Categoria
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Eletrônicos</a></li>
+          <li><a class="dropdown-item" href="#">Periféricos</a></li>
+          <li><a class="dropdown-item" href="#">Mesas</a></li>
+          <li><a class="dropdown-item" href="#">Cadeiras</a></li>
+        </ul>
+      </div>
       <form class="search-form">
         <input
           type="text"
@@ -44,23 +55,8 @@
     
     <!-- Menu de navegação -->
     <ul class="nav-list">
-
-      <!-- Menu dropdown clicável -->
-      <div class="dropdown">
-        <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Categoria
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Eletrônicos</a></li>
-          <li><a class="dropdown-item" href="#">Periféricos</a></li>
-          <li><a class="dropdown-item" href="#">Mesas</a></li>
-          <li><a class="dropdown-item" href="#">Cadeiras</a></li>
-        </ul>
-      </div>
-      
+  
       <!-- Example single danger button -->
-
-
       <li><a href="login.html">Login</a></li>
       <li><a class="navIcons" href="#"><svg width="30px" height="30px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1.24264 8.24264L8 15L14.7574 8.24264C15.553 7.44699 16 6.36786 16 5.24264V5.05234C16 2.8143 14.1857 1 11.9477 1C10.7166 1 9.55233 1.55959 8.78331 2.52086L8 3.5L7.21669 2.52086C6.44767 1.55959 5.28338 1 4.05234 1C1.8143 1 0 2.8143 0 5.05234V5.24264C0 6.36786 0.44699 7.44699 1.24264 8.24264Z" fill="#ebc25a"/>

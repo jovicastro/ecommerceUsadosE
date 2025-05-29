@@ -1,23 +1,33 @@
-// A PRIMEIRA LINHA do seu arquivo principal (ex: server.js ou app.js)
-require('dotenv').config();
+// src/config/db.js
 
+// Importa a biblioteca mysql2
 const mysql = require('mysql2');
 
-const conexao = mysql.createConnection({
-  host: process.env.DB_HOST || 'localhost', // O fallback pode ser 'localhost' para desenvolvimento local
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '', // Senha vazia para fallback
-  database: process.env.DB_NAME || 'ecommerceusados'
+// Importa a biblioteca dotenv para carregar variáveis de ambiente do arquivo .env
+// Isso garante que process.env tenha os valores definidos no seu .env
+require('dotenv').config({ path: '../../.env' }); // Ajuste o caminho se o .env não estiver duas pastas acima
+
+// Cria o objeto de conexão com o banco de dados
+const connection = mysql.createConnection({
+  host: process.env.DB_HOST,         // Ex: localhost ou o nome do serviço Docker
+  user: process.env.DB_USER,         // Ex: root
+  password: process.env.DB_PASSWORD, // Sua senha do MySQL
+  database: process.env.DB_NAME      // Ex: ecommerceusados
 });
 
-conexao.connect((erro) => {
-  if (erro) {
-    console.error('Erro ao conectar ao MySQL:', erro);
-    // Em um aplicativo real, você pode querer interromper a execução aqui
-    // process.exit(1);
-    return;
+// Tenta estabelecer a conexão com o MySQL
+connection.connect((error) => {
+  if (error) {
+      // Se houver um erro ao conectar, exibe o erro no console
+      console.error('Erro ao conectar ao banco de dados MySQL:', error.stack);
+      // Em uma aplicação real, você pode querer tratar este erro de forma mais robusta,
+      // como tentar reconectar algumas vezes ou encerrar a aplicação se a conexão for vital.
+      return;
   }
-  console.log('Conectado ao banco de dados MySQL!');
+  // Se a conexão for bem-sucedida, exibe uma mensagem no console
+  console.log(`Conectado com sucesso ao banco de dados MySQL! (ID da Conexão: ${connection.threadId})`);
 });
 
-module.exports = conexao;
+// Exporta o objeto de conexão para que ele possa ser usado em outras partes do seu backend
+// (principalmente nos seus Models para fazer queries no banco)
+module.exports = connection;

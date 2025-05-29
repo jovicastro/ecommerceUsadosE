@@ -33,7 +33,7 @@ CREATE TABLE `products` (
   `description` varchar(100) NOT NULL,
   `price` float NOT NULL,
   `img` varchar(224) NOT NULL,
-  `data` date NOT NULL,
+  `date` date NOT NULL,
   `status` varchar(50) NOT NULL,
   `category` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -42,7 +42,7 @@ CREATE TABLE `products` (
 -- Dumping data for table `produtos`
 --
 
-INSERT INTO `produtos` (`id`, `nome`, `descricao`, `preco`, `img`, `data`, `estado`, `categoria`) VALUES
+INSERT INTO `produtos` (`id`, `name`, `description`, `price`, `img`, `date`, `status`, `category`) VALUES
 (1, 'S21', 'Celular', 999, 'img', '2025-05-25', 'uso', 'comutador'),
 (2, 'notebook samsung', 'i3 14100F', 3200, 'img', '2025-05-25', 'novo', 'comutador'),
 (3, 'S21', 'Celular', 1200, 'img', '2025-05-08', 'uso', 'comutador');
