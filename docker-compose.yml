@@ -1,130 +1,81 @@
-# version: '3.8'
-
-# services:
-#   web:
-#     build: ./www
-#     image: php:8.1-apache
-#     container_name: apache_php
-#     volumes:
-#       - ./www:/var/www/html
-#     ports:
-#       - "8080:80"
-#     depends_on:
-#       - db
-
-#   db:
-#     image: mysql:5.7
-#     container_name: mysql_db
-#     restart: always
-#     environment:
-#       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-#       MYSQL_ROOT_PASSWORD:
-#       MYSQL_DATABASE: ecommerceusados
-#       MYSQL_USER: user
-#       MYSQL_PASSWORD: "jovic"
-#     volumes:
-#         - db_data:/var/lib/mysql
-#         - ./mysql-init:/docker-entrypoint-initdb.d
-
-#   phpmyadmin:
-#     image: phpmyadmin/phpmyadmin
-#     container_name: phpmyadmin
-#     ports:
-#       - "8081:80"
-#     environment:
-#       PMA_HOST: db
-#       MYSQL_ROOT_PASSWORD: "jovic"
-#     depends_on:
-#       - db
-#   node:
-#     image: node:16
-#     container_name: node_app
-#     working_dir: /app
-#     volumes:
-#       - ./backEnd:/app  # Ajuste para o caminho correto do código Node.js
-#     command: node conexao.js  # Rodar o código Node.js
-#     depends_on:
-#       - db  # Espera o banco de dados antes de iniciar o container
-
-
-# volumes:
-#   db_data:
-
-version: '3.8'
+# docker-compose.yml
 
 services:
-  # Serviço para o seu Backend Node.js
-  # Antigo "node", agora renomeado para "backend" para ser mais descritivo
-  backend:
+  # Serviço da sua aplicação Node.js
+  app:
     build:
-      context: . # Constrói a imagem Docker a partir do Dockerfile na raiz do projeto
-      dockerfile: Dockerfile # O nome do seu Dockerfile (que será do Node.js)
-    container_name: node_backend_app # Nome mais específico para o container
+      context: . # Usa o Dockerfile na pasta atual (raiz do projeto)
+      dockerfile: Dockerfile
     ports:
-      - "3000:3000" # Mapeia a porta 3000 do host para a porta 3000 do container Node.js
-    volumes:
-      - ./src:/app/src # Monta a pasta src do host para o container para hot-reload do backend
-      - ./www:/app/www # Monta a pasta www do host para o container para servir os arquivos estáticos do frontend
-      - ./package.json:/app/package.json # Garante que o package.json funcione
-      - ./node_modules:/app/node_modules # Garante que node_modules seja persistente (opcional, pode ser cacheado pelo Dockerfile)
-    environment: # Variáveis de ambiente que o Node.js usará para conectar ao DB
-      DB_HOST: db # O nome do serviço do banco de dados no Docker Compose
-      DB_USER: ${MYSQL_USER}
-      DB_PASSWORD: ${MYSQL_PASSWORD}
-      DB_NAME: ${MYSQL_DATABASE}
-      PORT: 3000 # Porta que seu servidor Node.js vai escutar
-    depends_on: # Garante que o serviço 'db' inicie antes do 'backend'
-      - db
-    networks:
-      - app_network # Conecta ao app_network
-
-  # db:
-  db:
-    image: mysql:5.7
-    container_name: mysql_db
-    restart: always
-    environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD} # Será lida do .env
-      MYSQL_DATABASE: ${MYSQL_DATABASE} # Será lida do .env
-      MYSQL_USER: ${MYSQL_USER} # Será lida do .env
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD} # Será lida do .env
-    volumes:
-        - db_data:/var/lib/mysql
-        # Ajuste este caminho se a pasta mysql-init estiver em outro lugar (ex: ./database/mysql-init)
-        - ./mysql-init:/docker-entrypoint-initdb.d # Onde seus scripts SQL iniciais (se houver) irão
-    networks:
-      - app_network # Conecta à rede da aplicação para comunicação com o backend e phpmyadmin
-
-  # phpmyadmin:
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
-    ports:
-      - "8081:80"
-    environment:
-      PMA_HOST: db
-      # PMA_PORT: 3306 # Opcional: Se a porta do MySQL não for a padrão (3306)
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD} # Use a mesma senha root do MySQL definida no .env
+      # Mapeia a porta do seu computador (host) para a porta DENTRO do container.
+      # Ex: Acessar localhost:3000 no seu navegador/Postman irá para a porta 3000 do container.
+      # Se o PORT no seu .env for diferente de 3000, ajuste aqui também.
+      - "${PORT:-3000}:${PORT:-3000}"
+    env_file:
+      # Carrega variáveis de ambiente do arquivo .env na raiz do projeto para DENTRO do container app.
+      # Isso é uma forma melhor de gerenciar o .env do que copiá-lo na imagem.
+      - ./.env
     depends_on:
+      # Garante que o serviço 'db' (MySQL) seja iniciado ANTES do serviço 'app'.
+      # Nota: 'depends_on' não espera o MySQL estar pronto para aceitar conexões,
+      # apenas que o container tenha iniciado. Sua aplicação Node.js pode precisar
+      # de lógica de retentativa de conexão se o MySQL demorar para inicializar.
       - db
     networks:
-      - app_network
+      # Conecta este serviço à rede 'ecommerce-network' definida abaixo.
+      - ecommerce-network
 
-  # node: # O seu serviço 'node' original foi incorporado ao novo 'backend'
-  #   image: node:16
-  #   container_name: node_app
-  #   working_dir: /app
-  #   volumes:
-  #     - ./backEnd:/app  # Ajuste para o caminho correto do código Node.js
-  #   command: node conexao.js  # Rodar o código Node.js
-  #   depends_on:
-  #     - db  # Espera o banco de dados antes de iniciar o container
+  # Serviço do Banco de Dados MySQL
+  db:
+    image: mysql:5.7 # Usa a imagem oficial do MySQL versão 5.7
+    # Você pode usar mysql:8.0 se preferir e se seu schema for compatível.
+    # O MySQL 5.7 é o que estava no header do seu script SQL anterior.
+    restart: always # Reinicia o container se ele parar
+    environment:
+      # Estas variáveis são usadas pela imagem do MySQL para inicializar o banco.
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes" # Pode ser "yes", "true", ou "1"
+      # MYSQL_ROOT_PASSWORD:  # Você pode omitir ou deixar vazio se MYSQL_ALLOW_EMPTY_PASSWORD="yes"
+      MYSQL_DATABASE: ${DB_NAME:-ecommerceusados} # Cria este banco de dados na inicialização
+      # MYSQL_USER: ${DB_USER} # Opcional: criar um usuário específico
+      # MYSQL_PASSWORD: ${DB_PASSWORD} # Opcional: senha para o usuário específico
+    ports:
+      # Mapeia a porta do seu computador para a porta do MySQL no container.
+      # Ex: localhost:33066 no seu host irá para a porta 3306 do container MySQL.
+      # Usar uma porta diferente no host (ex: 33066) evita conflito se você tiver outro MySQL local.
+      - "${DB_EXT_PORT:-33066}:3306"
+    volumes:
+      # Persiste os dados do MySQL em uma pasta no seu computador host.
+      # Se o container for removido, os dados não serão perdidos.
+      - mysql_data:/var/lib/mysql
+      # Opcional: Script de inicialização do banco
+      # Se você tiver um arquivo .sql para criar tabelas (como o seu ecommerceusados.sql),
+      # você pode montá-lo aqui para ser executado na primeira vez que o container db é criado.
+      # - ./database/mysql-init:/docker-entrypoint-initdb.d
+    networks:
+      - ecommerce-network
+
+  phpmyadmin: # Novo serviço para o phpMyAdmin
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "8081:80" # Acesse o phpMyAdmin em http://localhost:8081 no seu Firefox
+    environment:
+      PMA_HOST: db     # Nome do seu serviço MySQL no Docker Compose
+      PMA_PORT: 3306   # Porta INTERNA do MySQL no container db
+      # PMA_USER: root # Opcional, geralmente o padrão é root
+      # PMA_PASSWORD:    # Opcional, se a senha do root for vazia
+      UPLOAD_LIMIT: 1G # Opcional: aumenta o limite de upload para importar bancos grandes
+    depends_on:
+      - db            # Inicia depois do serviço db
+    networks:
+      - ecommerce-network
 
 
+# Define volumes nomeados (para persistência de dados)
 volumes:
-  db_data: # Volume para persistência de dados do MySQL
+  mysql_data: # O Docker gerencia este volume
 
+# Define redes customizadas
 networks:
-  app_network: # Rede para comunicação interna entre os serviços
-    driver: bridge # Tipo de rede
+  ecommerce-network: # Uma rede para os containers se comunicarem
+    driver: bridge

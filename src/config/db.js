@@ -16,6 +16,7 @@ const connection = mysql.createConnection({
   database: process.env.DB_NAME      // Ex: ecommerceusados
 });
 
+
 // Linhas de debug para verificar se as variáveis foram carregadas:
 console.log('--- Variáveis de Ambiente Carregadas ---');
 console.log('DB_HOST:', process.env.DB_HOST);
