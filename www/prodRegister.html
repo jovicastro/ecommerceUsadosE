@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/prodRegister.css">
     <title>Registro de Produto</title>
 </head>
 <body id="prodRegis">
     <div>
-        <form id="productRegistrationForm" class="prodReg" method="post">
+        <form id="productRegistrationForm" class="prodReg">
             <input name="name" class="inputProd" type="text" placeholder="nome">
             <input name="description" class="inputProd" type="text"placeholder="descricao">
-            <select id="categoria" name="category" required>
+            <select id="category" name="category"  class="inputProd" required>
                 <option value="" class="inputProd" selected hidden disabled>Selecione o tipo do produto...</option>
                 <option value="computador" class="inputProd">Computador</option>
                 <option value="projetor" class="inputProd">Projetor</option>
                 </select>
 
-            <select id="estado" name="status" required>
+            <select id="status" name="status"  class="inputProd" required>
                 <option value="" selected hidden disabled>Selecione o estado do produto...</option>
-                <option value="novo" >Novo</option>
-                <option value="uso">Marcas de uso</option>
-                <option value="quebrado">Quebrado</option>
+                <option value="new" >Novo</option>
+                <option value="used">Marcas de uso</option>
+                <option value="broken">Quebrado</option>
             </select>
             <input name="price" class="inputProd" type="number" step="0.01" placeholder="preco">
             <input name="img" type="text" class="inputProd" placeholder="URL da Imagem">
@@ -31,6 +32,6 @@
             <input class="inputProd" type="submit" value="Cadastrar Produto">
         </form>
         <div id="message"></div> </div>
-    <script src="../src/models/Product.js"></script>
+    <script src="./js/prodRegister.js"></script>
 </body>
 </html>

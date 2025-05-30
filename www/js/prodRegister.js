@@ -27,14 +27,16 @@ document.addEventListener('DOMContentLoaded', () => {
         // Renomear campos para o padrão da API Node.js (se necessário)
         // Se no frontend usar 'nome' e no backend 'name', faça o mapeamento
         const dataToSend = {
-            name: productData.nome,
-            description: productData.descricao,
-            price: parseFloat(productData.preco), // Garante que o preço é um número
-            img: productData.img, // Assumindo URL da imagem por enquanto
-            data: productData.data,
-            estado: productData.estado,
-            categoria: productData.categoria
+            name: formData.get('name'),                 // HTML name="name"
+            description: formData.get('description'),     // HTML name="description"
+            price: parseFloat(formData.get('price')),   // HTML name="price"
+            img: formData.get('img'),                   // HTML name="img"
+            date: formData.get('date'),                 // HTML name="date"
+            status: formData.get('status'),               // HTML name="status"
+            category: formData.get('category')            // HTML name="category"
         };
+
+        console.log('Dados do produto formatados para envio:', dataToSend);
 
         try {
             // =========================================================

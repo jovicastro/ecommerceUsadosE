@@ -153,7 +153,8 @@ ul.nav-list {
   border-radius: 0; /* Sem cantos arredondados (fica no meio) */
   font-size: 16px; /* Mantido */
   height: 44px; /* Altura consistente */
-  outline: none; /* Mantido */
+  outline: none; 
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .barra-de-pesquisa .search-input::placeholder{
@@ -186,6 +187,18 @@ ul.nav-list {
 .barra-de-pesquisa .search-button i { /* Estilo do ícone (se você usar um ícone) */
   font-size: 18px; /* Mantido */
 }
+
+/*MODO CLARO MODO ESCURO MODO AUTOMATICO*/
+
+.dropdown-menu {
+  padding-left: 0 !important;
+}
+
+.dropdown-menu .dropdown-item {
+  padding-left: 0 !important;
+}
+
+
 /* FIM DAS MODIFICAÇÕES DA BARRA DE PESQUISA */
 
 

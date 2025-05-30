@@ -1,0 +1,231 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4; /* Fundo claro para a página */
+    color: #333;
+}
+
+/* Cores aproximadas da imagem:
+   Teal (barra superior): #35A9C0
+   Azul Escuro (banner): #19465D
+   Amarelo (texto banner, ícones): #FFCC00
+   Branco: #FFFFFF
+*/
+
+/* Cabeçalho inspirado na imagem */
+.site-header {
+    background-color: #35A9C0; /* Teal da imagem */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    width: 40px; /* Para garantir que seja redondo com border-radius 50% */
+    margin-right: 10px;
+    background-color: white; /* Logo na imagem tem fundo branco */
+    border-radius: 50%;     /* Logo na imagem parece circular */
+    padding: 5px; /* Pequeno preenchimento se a imagem do logo não tiver margem interna */
+    box-sizing: border-box; /* Para padding não aumentar o tamanho total */
+    object-fit: contain; /* Para a imagem do logo se ajustar bem */
+}
+
+.main-nav .nav-link {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 1.2em; /* Para ícones de coração/carrinho */
+}
+
+.main-nav .login-link {
+    font-size: 1em; /* Tamanho normal para o texto "Login" */
+}
+
+.main-nav .nav-link:hover {
+    color: #FFCC00; /* Amarelo para hover, como nos ícones da imagem */
+}
+
+/* Banner principal inspirado na imagem */
+.main-banner {
+    background-color: #19465D; /* Azul escuro da imagem */
+    color: #FFCC00;           /* Texto amarelo da imagem */
+    text-align: center;
+    padding: 30px 20px;
+    margin-bottom: 30px; /* Espaçamento antes do conteúdo principal */
+}
+
+.main-banner h1 {
+    margin: 0;
+    font-size: 2.5em;
+    text-transform: uppercase;
+}
+
+.container {
+    max-width: 900px; /* Largura máxima para o conteúdo principal */
+    margin: 0 auto;   /* Centralizar o container */
+    padding: 20px;
+}
+
+.product-card {
+    background-color: #FFFFFF; /* Fundo branco para o card do produto */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row; /* Imagem ao lado das informações em telas maiores */
+    overflow: hidden;
+    gap: 25px; /* Espaço entre a imagem e as informações */
+    padding: 25px;
+}
+
+.product-image {
+    max-width: 300px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #eee; /* Borda sutil para a imagem */
+}
+
+.product-info {
+    flex: 1; /* Permite que esta div ocupe o espaço restante */
+    display: flex;
+    flex-direction: column;
+}
+
+.product-title {
+    font-size: 1.8em;
+    color: #19465D; /* Azul escuro, como o banner */
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.product-description {
+    font-size: 0.95em;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Faz a descrição ocupar espaço, empurrando preço/botão para baixo */
+}
+
+.product-price {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #35A9C0; /* Teal, como a barra superior */
+    margin-bottom: 20px;
+}
+
+.quantity-selector {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.quantity-selector label {
+    margin-right: 10px;
+    font-size: 1em;
+    color: #333;
+}
+
+.quantity-selector input[type="number"] {
+    width: 60px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1em;
+}
+
+.add-to-cart-btn {
+    background-color: #FFCC00; /* Amarelo, como o texto do banner e ícones */
+    color: #19465D;           /* Texto em azul escuro para contraste */
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: flex-start; /* Alinha o botão à esquerda no container flex */
+}
+
+.add-to-cart-btn:hover {
+    background-color: #e6b800; /* Amarelo um pouco mais escuro para hover */
+    transform: translateY(-2px); /* Leve elevação no hover */
+}
+
+.add-to-cart-btn:active {
+    transform: translateY(0); /* Remove elevação ao clicar */
+}
+
+.feedback-message {
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: green; /* Cor padrão para sucesso */
+    font-weight: bold;
+    min-height: 1.2em; /* Reserva espaço para a mensagem não "pular" o layout */
+}
+
+/* Ajustes Responsivos */
+@media (max-width: 768px) {
+    .product-card {
+        flex-direction: column; /* Empilha imagem e informações */
+        align-items: center;   /* Centraliza itens quando empilhados */
+    }
+
+    .product-image {
+        max-width: 80%; /* Imagem ocupa mais da largura do card */
+        margin-bottom: 20px;
+    }
+
+    .product-info {
+        align-items: center; /* Centraliza texto e botão */
+        text-align: center;
+    }
+    
+    .add-to-cart-btn {
+        width: 100%; /* Botão de largura total em telas menores */
+        padding: 15px;
+    }
+
+    .quantity-selector {
+        justify-content: center; /* Centraliza o seletor de quantidade */
+    }
+}
+
+@media (max-width: 480px) {
+    .site-header {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .logo-container {
+        margin-bottom: 10px;
+    }
+    .main-nav {
+        margin-top: 5px;
+    }
+    .main-nav .nav-link {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .main-banner h1 {
+        font-size: 1.8em;
+    }
+    .product-title {
+        font-size: 1.5em;
+    }
+    .product-price {
+        font-size: 1.3em;
+    }
+    .add-to-cart-btn {
+        font-size: 1em;
+    }
+}

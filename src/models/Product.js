@@ -53,13 +53,19 @@ class Product {
                     // Rejeita a Promise com o objeto de erro.
                     return reject(error);
                 }
+                
                 // Se a inserção for bem-sucedida:
                 // 'result.insertId' contém o ID auto-incrementado do novo produto inserido.
                 this.id = result.insertId; // Atribuímos o ID gerado de volta ao objeto produto
                 // Resolve a Promise, retornando o objeto produto atual (agora com o ID).
                 resolve(this);
+                
             });
         });
+        
     }
 }
+
+module.exports = Product; //
+
 

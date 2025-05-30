@@ -1,0 +1,10 @@
+.inputProd {
+    display: flex;
+    /* width: 100%; */
+}
+
+.prodReg input{
+    width: auto;
+    
+}
+
