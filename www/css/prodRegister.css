@@ -1,10 +1,186 @@
-.inputProd {
+/* ./css/prodRegister.css ou ./css/style.css */
+
+:root {
+    --darkBlue: #023047;
+    --mediumBlue: #219ebc;
+    --ligthBlue: #8ecae6; /* Mantendo a grafia original da sua paleta */
+    --yellow: #ffb703;
+    --iconday: #ebc25a; /* Pode ser usado para ícones, se houver */
+    --Input-bg: #dad2d2; /* Cor de fundo para alguns elementos, vinda do seu --Input */
+  
+    /* Variáveis específicas do Neobrutalismo */
+    --border-thickness: 3px;
+    --shadow-offset: 5px;
+    /* Alternativa: uma sans-serif "blocky" como 'Arial Black', 'Impact', ou system-ui */
+    --main-background: #ffffff; /* Fundo principal para formulários e contêineres */
+    --text-color-on-main-bg: var(--darkBlue);
+  }
+  
+  body#prodRegis {
+    font-family: var(--main-font);
+    background-color: var(--ligthBlue); /* Fundo geral da página */
+    color: var(--darkBlue);
     display: flex;
-    /* width: 100%; */
-}
-
-.prodReg input{
-    width: auto;
-    
-}
-
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 0;
+  }
+  
+  /* Contêiner principal que envolve o formulário e a mensagem */
+  body#prodRegis > div {
+    background-color: var(--main-background);
+    border: var(--border-thickness) solid var(--darkBlue);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--darkBlue);
+    padding: 25px 30px;
+    max-width: 550px;
+    width: 100%;
+  }
+  
+  form#productRegistrationForm.prodReg {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaçamento entre os inputs */
+  }
+  
+  .inputProd {
+    font-family: var(--main-font);
+    padding: 12px 15px;
+    border: var(--border-thickness) solid var(--darkBlue);
+    background-color: var(--main-background);
+    color: var(--text-color-on-main-bg);
+    font-size: 1rem;
+    box-shadow: none;
+    border-radius: 0; /* Sem cantos arredondados */
+    appearance: none; /* Remove estilos padrão do navegador */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%; /* Garante que o input ocupe o espaço */
+    box-sizing: border-box; /* Garante que padding e border não aumentem o tamanho total */
+  }
+  
+  .inputProd::placeholder {
+    color: var(--mediumBlue);
+    opacity: 0.7;
+  }
+  
+  .inputProd:focus {
+    outline: none;
+    border-color: var(--yellow);
+    /* Adiciona uma sombra interna ou externa no foco para destaque */
+    box-shadow: 0 0 0 var(--border-thickness) var(--yellow);
+    /* Alternativa de sombra interna:
+    box-shadow: inset var(--border-thickness) var(--border-thickness) 0px var(--mediumBlue);
+    */
+  }
+  
+  /* Estilização para elementos <select> */
+  select.inputProd {
+    /* Seta customizada para o select */
+    background-image: linear-gradient(45deg, transparent 50%, var(--darkBlue) 50%),
+                      linear-gradient(135deg, var(--darkBlue) 50%, transparent 50%);
+    background-position: calc(100% - 20px) calc(1em + 2px), /* Posição da seta */
+                         calc(100% - 15px) calc(1em + 2px);
+    background-size: 5px 5px, 5px 5px; /* Tamanho da seta */
+    background-repeat: no-repeat;
+    padding-right: 40px; /* Espaço para a seta customizada */
+  }
+  
+  /* Cor das options no select (pode não funcionar em todos os navegadores para a lista suspensa) */
+  select.inputProd option {
+    background-color: var(--main-background);
+    color: var(--darkBlue);
+    font-family: var(--main-font);
+  }
+  
+  /* Botão de Submit */
+  .inputProd[type="submit"] {
+    background-color: var(--yellow);
+    color: var(--darkBlue);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--darkBlue);
+    transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+    margin-top: 10px; /* Espaço antes do botão */
+  }
+  
+  .inputProd[type="submit"]:hover {
+    transform: translate(calc(var(--shadow-offset) * -0.3), calc(var(--shadow-offset) * -0.3));
+    box-shadow: calc(var(--shadow-offset) * 1.3) calc(var(--shadow-offset) * 1.3) 0px var(--darkBlue);
+  }
+  
+  .inputProd[type="submit"]:active {
+    transform: translate(var(--shadow-offset), var(--shadow-offset));
+    box-shadow: none;
+  }
+  
+  /* Pré-visualização da Imagem */
+  #image-preview {
+    min-height: 120px;
+    border: var(--border-thickness) dashed var(--mediumBlue);
+    background-color: var(--Input-bg); /* Cor de fundo para a pré-visualização */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--darkBlue);
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  #image-preview:empty::before {
+      content: "Prévia da Imagem Aqui";
+      color: var(--darkBlue);
+      opacity: 0.7;
+  }
+  
+  #image-preview img {
+      max-width: 100%;
+      max-height: 150px; /* Ajuste conforme necessário */
+      object-fit: contain;
+      border: var(--border-thickness) solid var(--darkBlue); /* Borda na imagem também */
+  }
+  
+  
+  /* Área de Mensagem */
+  #message {
+    margin-top: 25px;
+    padding: 15px;
+    border: var(--border-thickness) solid var(--darkBlue);
+    background-color: var(--main-background);
+    color: var(--darkBlue);
+    font-weight: bold;
+    text-align: center;
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--darkBlue);
+    min-height: 20px;
+    line-height: 1.5; /* Para melhor legibilidade da mensagem */
+  }
+  
+  #message:empty {
+      display: none; /* Oculta se não houver mensagem */
+  }
+  
+  /* Estilização para input[type="date"] (pode variar entre navegadores) */
+  input[type="date"].inputProd {
+      position: relative; /* Necessário para alguns truques de posicionamento de ícones */
+      min-height: calc(2.5em + var(--border-thickness) * 2); /* Altura consistente com padding */
+  }
+  
+  input[type="date"].inputProd::-webkit-calendar-picker-indicator {
+      /* Tenta estilizar o ícone do calendário no WebKit (Chrome, Safari) */
+      opacity: 1;
+      cursor: pointer;
+      background-color: var(--yellow); /* Cor de fundo para o ícone */
+      padding: 5px;
+      border-left: var(--border-thickness) solid var(--darkBlue);
+      filter: invert(15%) sepia(30%) saturate(1500%) hue-rotate(170deg) brightness(0.7) contrast(1.2); /* Para tentar dar um tom escuro */
+      margin-right: 5px; /* Ajuste fino da posição */
+  }
+  
+  /* Remove o botão de limpar (x) no WebKit, se desejado */
+  input[type="date"].inputProd::-webkit-clear-button {
+      display: none;
+  }

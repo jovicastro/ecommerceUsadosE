@@ -11,12 +11,12 @@
 <body id="prodRegis">
     <div>
         <form id="productRegistrationForm" class="prodReg">
-            <input name="name" class="inputProd" type="text" placeholder="nome">
-            <input name="description" class="inputProd" type="text"placeholder="descricao">
+            <input name="name" class="inputProd" type="text" placeholder="Nome">
+            <input name="description" class="inputProd" type="text"placeholder="Descricao">
             <select id="category" name="category"  class="inputProd" required>
                 <option value="" class="inputProd" selected hidden disabled>Selecione o tipo do produto...</option>
-                <option value="computador" class="inputProd">Computador</option>
-                <option value="projetor" class="inputProd">Projetor</option>
+                <option value="Computador" class="inputProd">Computador</option>
+                <option value="Projetor" class="inputProd">Projetor</option>
                 </select>
 
             <select id="status" name="status"  class="inputProd" required>
@@ -25,10 +25,10 @@
                 <option value="used">Marcas de uso</option>
                 <option value="broken">Quebrado</option>
             </select>
-            <input name="price" class="inputProd" type="number" step="0.01" placeholder="preco">
+            <input name="price" class="inputProd" type="number" step="0.01" placeholder="Preco">
             <input name="img" type="text" class="inputProd" placeholder="URL da Imagem">
-            <div id="image-preview"></div>
-            <input name="date" class="inputProd" type="date" placeholder="data">
+            <div id="image-preview">Prévia da Imagem Aqui</div>
+            <input name="date" class="inputProd" type="date" placeholder="Data">
             <input class="inputProd" type="submit" value="Cadastrar Produto">
         </form>
         <div id="message"></div> </div>
