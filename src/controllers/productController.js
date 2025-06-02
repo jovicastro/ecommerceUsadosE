@@ -79,8 +79,35 @@ const productController = {
                 message: 'Erro interno do servidor ao tentar cadastrar o produto.',
                 errorDetails: error.message // Opcional: pode enviar detalhes do erro em desenvolvimento
             });
+            
+        }
+        
+    },
+        // --- NOVA FUNÇÃO PARA LISTAR TODOS OS PRODUTOS ---
+    /**
+     * @description Lida com a requisição GET para buscar e retornar todos os produtos.
+     * @param {object} req - Objeto da requisição Express.
+     * @param {object} res - Objeto da resposta Express.
+     */
+     getAllProducts: async (req, res) => {
+        try {
+            // Chama o método estático findAll() do modelo Product para buscar os produtos.
+            const products = await Product.findAll();
+
+            // Envia uma resposta HTTP 200 (OK) com a lista de produtos em formato JSON.
+            // Se 'products' for um array vazio (nenhum produto encontrado), ele enviará '[]'.
+            res.status(200).json(products);
+        } catch (error) {
+            // Se ocorrer um erro durante a busca no banco de dados:
+            console.error('Erro no controller ao buscar todos os produtos:', error);
+            // Envia uma resposta HTTP 500 (Internal Server Error) com uma mensagem de erro.
+            res.status(500).json({
+                message: 'Erro interno do servidor ao tentar buscar os produtos.',
+                errorDetails: error.message // Opcional: mais detalhes do erro em desenvolvimento
+            });
         }
     }
+    // --- FIM DA NOVA FUNÇÃO ---
 
     // --- Futuros Métodos do Controlador ---
     // Aqui você poderá adicionar outras funções para:

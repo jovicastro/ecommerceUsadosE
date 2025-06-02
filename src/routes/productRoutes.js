@@ -24,11 +24,12 @@ router.post('/', productController.createProduct);
 // --- Futuras Rotas para Produtos ---
 // Aqui você poderá adicionar outras rotas para diferentes funcionalidades com produtos:
 
-// Exemplo: Rota para LISTAR todos os produtos
-// - Método HTTP: GET
-// - Caminho: '/' (Ou seja, GET /api/products/)
-// - Ação: Chamaria uma função como productController.getAllProducts (que precisaríamos criar)
-// router.get('/', productController.getAllProducts);
+// --- NOVA ROTA PARA LISTAR TODOS OS PRODUTOS ---
+// Define que uma requisição HTTP GET para o caminho base '/' DESTE ROUTER
+// (que será /api/products/ quando montado no server.js)
+// deverá ser tratada pela função 'getAllProducts' do 'productController'.
+router.get('/', productController.getAllProducts);
+// --- FIM DA NOVA ROTA ---
 
 // Exemplo: Rota para BUSCAR um produto específico pelo ID
 // - Método HTTP: GET

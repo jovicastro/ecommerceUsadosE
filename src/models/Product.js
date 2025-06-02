@@ -64,6 +64,37 @@ class Product {
         });
         
     }
+        // --- NOVO MÉTODO PARA BUSCAR TODOS OS PRODUTOS ---
+    /**
+     * @description Busca todos os produtos cadastrados no banco de dados.
+     * @static
+     * @async
+     * @returns {Promise<Array<object>>} Uma Promessa que resolve com um array de objetos de produto.
+     * Retorna um array vazio se nenhum produto for encontrado.
+     * @memberof Product
+     */
+     static async findAll() {
+        // Query SQL para selecionar todos os campos de todos os produtos.
+        // 'ORDER BY date DESC, id DESC' ordena pelos mais recentes primeiro (data mais nova, depois ID mais novo).
+        // Você pode ajustar a ordenação como preferir.
+        const sql = "SELECT * FROM products ORDER BY date DESC, id DESC";
+
+        // Retorna uma Promessa, pois a consulta ao banco é assíncrona.
+        return new Promise((resolve, reject) => {
+            // Executa a query no banco.
+            db.query(sql, (error, results) => {
+                if (error) {
+                    // Se houver erro na query, loga o erro e rejeita a Promessa.
+                    console.error('Erro ao buscar todos os produtos do DB:', error);
+                    return reject(error);
+                }
+                // Se a query for bem-sucedida, 'results' será um array com os produtos.
+                // Resolve a Promessa com o array de produtos.
+                resolve(results);
+            });
+        });
+    }
+    // --- FIM DO NOVO MÉTODO ---
 }
 
 module.exports = Product; //

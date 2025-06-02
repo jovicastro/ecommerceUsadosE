@@ -132,7 +132,7 @@
   }
   
   #image-preview:empty::before {
-      content: "Prévia da Imagem Aqui";
+      content: "";
       color: var(--darkBlue);
       opacity: 0.7;
   }

@@ -285,84 +285,6 @@ main {
   height: 92vh; /* Cuidado: se o header tem 10vh, isso pode causar scroll se houver padding/margin no body */
 }
 
-.productsCards img{
-  width: 15vw;
-  height: 12vw;
-  border-radius: 8px;
-  display: block;
-  /* justify-content: center; /* Não aplicável a img diretamente */
-  margin-left: auto; /* Para centralizar se o container for maior */
-  margin-right: auto;
-}
-
-.productsCards {
-  width: 15vw;
-  height: auto;
-}
-
-.products{
-  gap: 1vw;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 colunas */
-  width: 70%;
-  margin: auto;
-}
-
-.products .productsCards {
-  margin: 3vh 0.5vw;
-  margin-bottom: 0px;
-  border-radius: 8px;
-  width: fit-content;
-}
-
-@media (max-width: 768px) {
-  .products {
-    grid-template-columns: repeat(3, 1fr); /* 3 colunas no tablet */
-    gap: 15px;
-  }
-
-  .productsCards img {
-      width: 23vw;
-      height: auto;
-  }
-}
-
-@media (max-width: 480px) {
-  .products {
-    grid-template-columns: repeat(2, 1fr); /* 2 colunas no celular */
-  }
-  .productsCards {
-    width: 33vw; /* Ajuste para consistência com as imagens se necessário */
-    height: auto;
-  }
-  .productsCards img { /* Garante que a imagem se ajuste ao card no mobile */
-      width: 100%;
-      height: auto;
-  }
-}
-
-.productDescription{
-  margin-top: 15px;
-}
-
-.productDescription p{
-  margin-top: 1px;
-}
-
-.productName{
-  font-size: 15px;
-  font-weight: 400px; /* Provavelmente 400, não 400px */
-}
-
-.productPrice{
-  font-size: 20px;
-  font-weight: 400;
-}
-
-.lowFont{
-  font-size: 12px;
-}                                                                                                                
-
 .banner{
   background-color: var(--darkBlue);
   height: 30vh;
@@ -385,21 +307,8 @@ main {
 }
 
 /* 🌙 Dark mode */
-[data-bs-theme="dark"] .dropdown-menu.show,  .dropdown-item  {
+[data-bs-theme="dark"] .dropdown-menu.show, .dropdown-item  {
   background-color: #121212;
   color: #fff !important;
 }
 
-[data-bs-theme="dark"] .dropdown-menu {
-  background-color: #121212;
-}
-
-[data-bs-theme="dark"] .dropdown-menu .dropdown-item {
-  color: #fff;
-}
-
-[data-bs-theme="dark"] .dropdown-menu .dropdown-item:hover,
-[data-bs-theme="dark"] .dropdown-menu .dropdown-item:focus {
-  background-color: #2c2c2c;
-  color: #fff;
-}

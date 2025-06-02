@@ -1,0 +1,231 @@
+/* Em www/css/products.css ou www/css/style.css */
+
+/* --- Container da Grade de Produtos --- */
+.product-grid { /* Seu <div id="product-list-container" class="product-grid"> */
+  display: grid;
+  flex-direction: row;
+  /* Cria colunas responsivas: cada coluna terá no mínimo 230px, 
+     e o navegador tentará encaixar o máximo de colunas que couberem. 
+     '1fr' significa que elas dividirão o espaço restante igualmente. */
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 20px; /* Espaçamento entre os cards */
+  padding: 20px 0; /* Adiciona um pouco de preenchimento vertical */
+}
+
+/* --- Estilo Individual do Card de Produto --- */
+.productsCards { /* Sua classe do template <div class="productsCards" id="product-template"> */
+  background-color: #fff;
+  border: 1px solid #dee0e2; /* Borda sutil, similar à Amazon */
+  border-radius: 4px;       /* Cantos levemente arredondados */
+  padding: 15px;
+  display: flex;
+  flex-direction: column; /* Itens dentro do card empilhados verticalmente */
+  text-align: left;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Sombra muito sutil */
+  transition: box-shadow 0.2s ease-in-out;
+  height: 100%; /* Para que todos os cards na mesma linha tenham a mesma altura se o grid permitir */
+}
+
+.productsCards:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra um pouco mais pronunciada no hover */
+}
+
+/* Imagem do Produto dentro do Card */
+.productsCards img {
+  width: 100%;
+  max-height: 200px;    /* Altura máxima para a imagem, ajuste conforme sua preferência */
+  object-fit: contain;  /* 'contain' mostra a imagem inteira, 'cover' preenche o espaço */
+  margin-bottom: 12px;
+  border-radius: 3px;   /* Pequeno arredondamento na imagem */
+}
+
+/* Div que agrupa as descrições/texto do produto */
+.productsCards .productDescription {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Faz esta div ocupar o espaço vertical restante no card */
+}
+
+/* Nome do Produto */
+.productsCards .productName { /* Sua <p class="productName"> */
+  font-size: 14px;  /* Amazon usa fontes relativamente pequenas para títulos de produto na grade */
+  line-height: 1.4;
+  color: #0F1111;   /* Cor de texto principal da Amazon (preto/cinza bem escuro) */
+  font-weight: 400; /* Normal, não muito negrito */
+  margin-top: 0;
+  margin-bottom: 6px;
+  /* Para truncar texto em 2 linhas (opcional, requer algum ajuste fino) */
+  /*
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 2.8em; */ /* (line-height * número de linhas) */
+}
+
+/* Preço do Produto */
+.productsCards .productPrice { /* Sua <p class="productPrice"> */
+  font-size: 17px;  /* Preço é mais destacado */
+  font-weight: 700; /* Negrito */
+  color: #B12704;   /* Vermelho/Laranja escuro, cor comum para preços na Amazon */
+  margin-top: auto; /* Empurra o preço para baixo se houver espaço */
+  margin-bottom: 8px;
+}
+
+/* Informações menores (local, data) */
+.productsCards .lowFont { /* Suas classes .local.lowFont e .data.lowFont */
+  font-size: 12px;
+  color: #565959;   /* Cinza para informações secundárias */
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+/* Se você adicionar outros campos ao template (como sugerido antes), pode estilizá-los: */
+.productsCards .product-details-description { /* Para a descrição completa se adicionada */
+  font-size: 13px;
+  color: #0F1111;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.productsCards .product-category-class,
+.productsCards .product-status-class {
+  font-size: 12px;
+  color: #565959;
+  margin-bottom: 4px;
+}
+.productsCards .product-category-class strong,
+.productsCards .product-status-class strong {
+  color: #0F1111;
+}
+
+/* Estilo para o link "Ver Detalhes" (se você adicionar ao template) */
+.product-card-details-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 10px;
+  font-size: 13px;
+  background-color: #FFD814; /* Amarelo da Amazon para botões */
+  border: 1px solid;
+  border-color: #FCD200 #F8B33B #F8B33B #FCD200;
+  border-radius: 8px; /* Botões mais arredondados */
+  color: #0F1111;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 2px 5px 0 rgba(213,217,217,.5);
+}
+
+.product-card-details-link:hover {
+  background-color: #F7CA00;
+  border-color: #F2C200 #E4A52E #E4A52E #F2C200;
+}
+
+/* Mensagem de "Carregando" ou "Nenhum produto" */
+#product-list-container > p {
+  text-align: center;
+  width: 100%; /* Para ocupar toda a largura da grade se for a única mensagem */
+  grid-column: 1 / -1; /* Faz o parágrafo ocupar todas as colunas da grade */
+  padding: 30px;
+  font-size: 1.1em;
+  color: #555;
+}
+
+.error-message {
+  color: #B12704;
+  font-weight: bold;
+}
+
+/* --- Estilo para Filtros (Exemplo Básico de Barra Lateral) --- */
+/* Supondo que você adicionou <aside id="filters-sidebar" class="filters-container"> */
+/* E que o container principal dos produtos e filtros é <div class="products"> com display:flex */
+
+.products { /* Container que envolve filtros e a grade de produtos */
+  display: flex;
+  flex-wrap: wrap; /* Permite quebrar em telas menores */
+  gap: 20px;
+  padding: 20px;
+  background-color: #EAEDED; /* Fundo geral da página de produtos da Amazon */
+}
+
+.filters-container {
+  flex: 0 0 280px; /* Largura da barra de filtros, não cresce nem encolhe */
+  background-color: transparent; /* Ou #fff se quiser um card de filtro */
+  padding: 0px; /* Ou 15px se quiser um card */
+  /* border-radius: 4px; */
+  /* box-shadow: 0 1px 2px rgba(0,0,0,0.05); */
+  height: fit-content; /* Ajusta altura ao conteúdo */
+}
+
+.filters-container h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #0F1111;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.filter-group {
+  margin-bottom: 20px;
+}
+
+.filter-group h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0F1111;
+  margin-bottom: 8px;
+}
+
+.filter-group label {
+  display: flex; /* Para alinhar checkbox e texto */
+  align-items: center; /* Alinha verticalmente */
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #0F1111;
+  cursor: pointer;
+}
+
+.filter-group input[type="checkbox"],
+.filter-group input[type="radio"] {
+  margin-right: 8px;
+  height: 16px; /* Ajustes para parecer com os da Amazon */
+  width: 16px;
+}
+
+#apply-filters-btn {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0F1111;
+  background-color: #FFD814;
+  border-color: #FCD200;
+  border-radius: 8px;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px 0 rgba(213,217,217,.5);
+}
+
+#apply-filters-btn:hover {
+  background-color: #F7CA00;
+  border-color: #F2C200;
+}
+
+/* Adicionando um pouco de responsividade básica para a grade de filtros e produtos */
+@media (max-width: 768px) {
+  .products {
+      flex-direction: column; /* Empilha filtros e produtos em telas menores */
+  }
+  .filters-container {
+      flex: 0 0 auto; /* Permite que a largura seja automática */
+      width: 100%;    /* Ocupa toda a largura */
+      margin-bottom: 20px;
+  }
+  .product-grid {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Cards um pouco menores */
+  }
+}
