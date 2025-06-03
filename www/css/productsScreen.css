@@ -1,0 +1,467 @@
+/* css/style_tela_produto.css */
+
+/* --- 1. Reset Básico e Variáveis --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --darkBlue: #023047;
+    --mediumBlue: #219ebc;
+    --lightBlue: #8ecae6;
+    --yellow: #ffb703;
+
+    /* Cores neobrutalistas para destaque e sombras */
+    --neo-shadow-color: var(--darkBlue); /* Sombra em azul escuro */
+    --neo-border-thickness: 4px; /* Espessura da borda */
+}
+
+/* --- Fontes --- */
+body {
+    font-family: 'Amazon Ember', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--darkBlue);
+    background-color: var(--lightBlue);
+}
+
+/* --- Botões e Links Base (reutilizáveis) --- */
+button, .button {
+    background-color: var(--yellow);
+    color: var(--darkBlue);
+    padding: 12px 25px;
+    border: var(--neo-border-thickness) solid var(--neo-shadow-color);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: var(--neo-border-thickness) var(--neo-border-thickness) 0px var(--neo-shadow-color);
+    transition: all 0.1s ease-in-out;
+    border-radius: 0; /* Sem bordas arredondadas */
+}
+
+button:hover, .button:hover {
+    box-shadow: 0px 0px 0px var(--neo-shadow-color);
+    transform: translate(var(--neo-border-thickness), var(--neo-border-thickness));
+    background-color: #e6a702; /* Amarelo ligeiramente mais escuro no hover */
+}
+
+a {
+    color: var(--mediumBlue);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: var(--yellow);
+}
+
+/* --- 2. Layout Geral --- */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* --- 3. Header (Navbar) --- */
+
+/* Mobile Menu (ícones) */
+.mobile-menu {
+    display: none; /* Escondido por padrão, para telas maiores */
+    cursor: pointer;
+}
+
+.mobile-menu div {
+    width: 32px;
+    height: 2px;
+    background: white;
+    margin: 8px;
+    transition: 0.3s;
+}
+
+/* --- 4. Seção da Tela de Compra (`.tela_compra`) --- */
+.tela_compra .container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem a linha */
+    gap: 30px; /* Espaçamento entre as colunas */
+    align-items: flex-start; /* Alinha o topo dos elementos */
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* Galeria de Imagens */
+.carrossel {
+    flex: 1; /* Ocupa 1 parte do espaço flex */
+    min-width: 300px; /* Largura mínima para o carrossel */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border: var(--neo-border-thickness) solid var(--neo-shadow-color);
+    box-shadow: var(--neo-border-thickness) var(--neo-border-thickness) 0px var(--neo-shadow-color);
+}
+
+.imagem-principal img {
+    width: 100%;
+    max-width: 450px; /* Limita o tamanho máximo da imagem principal */
+    height: auto;
+    border: 2px solid var(--lightBlue); /* Borda sutil para a imagem principal */
+    display: block;
+}
+
+.miniaturas {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; /* Para miniaturas quebrarem a linha em telas pequenas */
+    justify-content: center;
+}
+
+.miniaturas img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover; /* Garante que a imagem preencha o espaço */
+    border: 2px solid var(--neo-shadow-color); /* Borda das miniaturas */
+    cursor: pointer;
+    transition: border-color 0.2s ease, transform 0.1s ease-in-out;
+}
+
+.miniaturas img.selecionada,
+.miniaturas img:hover {
+    border-color: var(--mediumBlue); /* Borda azul médio para a imagem selecionada ou no hover */
+    transform: translateY(-2px); /* Pequeno efeito de "levantar" */
+    box-shadow: 1px 1px 0px var(--neo-shadow-color); /* Sombra sutil no hover/seleção */
+}
+
+
+/* Detalhes do Produto */
+.detalhes_produto {
+    flex: 1.5; /* Ocupa 1.5 partes do espaço flex */
+    min-width: 300px;
+    background-color: white;
+    padding: 20px;
+    border: var(--neo-border-thickness) solid var(--neo-shadow-color);
+    box-shadow: var(--neo-border-thickness) var(--neo-border-thickness) 0px var(--neo-shadow-color);
+}
+
+.detalhes_produto h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: var(--darkBlue);
+    border-bottom: 2px solid var(--neo-shadow-color);
+    padding-bottom: 5px;
+    display: inline-block; /* Para a borda inferior se ajustar ao texto */
+}
+
+.estrelas {
+    color: var(--yellow); /* Estrelas em amarelo */
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.preco_antigo {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.preco {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: var(--darkBlue);
+    margin-bottom: 5px;
+}
+
+.detalhes_produto p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.info {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--lightBlue); /* Linha divisória */
+}
+
+.info p strong {
+    color: var(--darkBlue);
+}
+
+.info ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.info ul li {
+    background-color: var(--lightBlue);
+    margin-bottom: 5px;
+    padding: 8px 10px;
+    border: 1px solid var(--mediumBlue);
+    font-size: 0.95rem;
+    color: var(--darkBlue);
+    border-radius: 0;
+}
+
+/* Seção de Compra */
+.secao_produto {
+    flex: 0.8; /* Ocupa menos espaço, é a barra lateral de compra */
+    min-width: 280px; /* Largura mínima para a caixa de compra */
+    background-color: white;
+    padding: 20px;
+    border: var(--neo-border-thickness) solid var(--neo-shadow-color);
+    box-shadow: var(--neo-border-thickness) var(--neo-border-thickness) 0px var(--neo-shadow-color);
+}
+
+.caixa_de_compra h3 {
+    font-size: 1.2rem;
+    color: var(--darkBlue);
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--lightBlue); /* Linha sutil no título */
+    padding-bottom: 5px;
+}
+
+.caixa_de_compra p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.caixa_de_compra button {
+    width: 100%;
+    margin-bottom: 10px;
+    /* Ajustes específicos para botões dentro da caixa de compra */
+    padding: 15px 25px; /* Um pouco maiores */
+    font-size: 1.1rem;
+}
+
+.caixa_de_compra .btn_adicionar_carrinho {
+    background-color: var(--mediumBlue); /* Botão de carrinho em azul */
+    color: white;
+}
+
+.caixa_de_compra .btn_adicionar_carrinho:hover {
+    background-color: #1a7ea1; /* Azul ligeiramente mais escuro */
+}
+
+.loja {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--lightBlue);
+    font-size: 0.9rem;
+    color: var(--darkBlue);
+    line-height: 1.8;
+}
+
+.loja a {
+    display: block;
+    margin-top: 5px;
+}
+
+
+/* --- 5. Características do Produto (`.caracteristicas_produto`) --- */
+.caracteristicas_produto {
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+    border: var(--neo-border-thickness) solid var(--neo-shadow-color);
+    box-shadow: var(--neo-border-thickness) var(--neo-border-thickness) 0px var(--neo-shadow-color);
+}
+
+.caracteristicas_produto h1 {
+    font-size: 1.5rem;
+    color: var(--darkBlue);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--neo-shadow-color);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.caracteristicas_produto ul {
+    list-style: none; /* Remove marcadores padrão */
+}
+
+.caracteristicas_produto ul li {
+    padding: 8px 0;
+    font-size: 1rem;
+    color: var(--darkBlue);
+    border-bottom: 1px dotted var(--lightBlue); /* Linha pontilhada sutil */
+}
+
+.caracteristicas_produto ul li:last-child {
+    border-bottom: none; /* Remove a borda do último item */
+}
+
+
+/* --- 6. Avaliações (`.avaliacoes`) --- */
+.avaliacoes {
+    background-color: var(--lightBlue); /* Fundo sutilmente azul para a seção de avaliações */
+    padding: 20px 0;
+    margin-top: 30px;
+    border-top: var(--neo-border-thickness) solid var(--neo-shadow-color);
+    border-bottom: var(--neo-border-thickness) solid var(--neo-shadow-color);
+    box-shadow: 0px var(--neo-border-thickness) 0px var(--neo-shadow-color), 0px calc(var(--neo-border-thickness) * -1) 0px var(--neo-shadow-color); /* Sombra no topo e na base */
+}
+
+.avaliacoes h1 {
+    font-size: 1.8rem;
+    color: var(--darkBlue);
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px solid var(--neo-shadow-color);
+    padding-bottom: 10px;
+    display: block; /* Para a borda pegar a largura total do container */
+    width: fit-content; /* A borda se ajusta ao texto */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.reviews-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid; /* Layout em grade para as avaliações */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Colunas responsivas */
+    gap: 25px; /* Espaçamento entre os reviews */
+}
+
+.review {
+    background-color: white;
+    padding: 20px;
+    border: var(--neo-border-thickness) solid var(--neo-shadow-color);
+    box-shadow: var(--neo-border-thickness) var(--neo-border-thickness) 0px var(--neo-shadow-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--lightBlue);
+    padding-bottom: 5px;
+}
+
+.reviewer-name {
+    font-weight: bold;
+    color: var(--mediumBlue);
+}
+
+.review-date {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.review-content p {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: var(--darkBlue);
+}
+
+.review-content .read-more {
+    font-size: 0.9rem;
+    color: var(--mediumBlue);
+    text-decoration: underline;
+}
+
+.review-content .read-more:hover {
+    color: var(--yellow);
+}
+
+.review .util {
+    margin-top: auto; /* Empurra o "util" para o final do card */
+    text-align: right;
+    font-size: 0.8rem;
+    color: #888;
+    padding-top: 10px;
+    border-top: 1px dashed var(--lightBlue);
+}
+
+/* --- Media Queries para Responsividade --- */
+@media (max-width: 768px) {
+    header nav {
+        flex-wrap: wrap; /* Permite que os itens da nav quebrem a linha */
+        justify-content: center;
+    }
+
+    .logo {
+        width: 100%; /* Logo ocupa a largura total no topo */
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .Barra-de-pesquisa {
+        order: 3; /* Move a barra de pesquisa para baixo */
+        width: 100%;
+        margin: 15px 0;
+    }
+
+    .nav-list {
+        order: 2; /* Move o menu para o meio */
+        width: 100%;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .mobile-menu {
+        display: block; /* Mostra o ícone do menu hambúrguer */
+        order: 1; /* Coloca o hambúrguer no início */
+        position: absolute;
+        right: 20px;
+        top: 25px;
+    }
+
+    .nav-list {
+        display: none; /* Esconde o menu por padrão no mobile */
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: var(--darkBlue);
+        padding: 20px 0;
+        border-top: 1px solid var(--neo-shadow-color);
+    }
+
+    .nav-list.active {
+        display: flex; /* Mostra o menu quando ativo (controlado pelo JS) */
+    }
+
+    .nav-list li {
+        margin: 10px 0;
+    }
+
+    .dropdown-menu {
+        position: static; /* O dropdown não flutua mais */
+        box-shadow: none;
+        border: none;
+        background-color: var(--darkBlue);
+        width: 100%;
+        padding: 0;
+    }
+
+    .dropdown-menu li a {
+        padding-left: 30px; /* Indenta os itens do dropdown */
+    }
+
+    .tela_compra .container {
+        flex-direction: column; /* Pilha os elementos em telas pequenas */
+        gap: 20px;
+    }
+
+    .carrossel,
+    .detalhes_produto,
+    .secao_produto {
+        min-width: unset; /* Remove o min-width para flexibilidade total */
+        width: 100%;
+    }
+
+    .reviews-container {
+        grid-template-columns: 1fr; /* Uma coluna para reviews */
+    }
+}

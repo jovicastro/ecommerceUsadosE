@@ -9,7 +9,7 @@
 :root {
   --darkBlue: #023047;
   --mediumBlue: #219ebc;
-  --ligthBlue:#8ecae6;
+  --lightBlue:#8ecae6;
   --yellow: #ffb703;
   --iconday: #ebc25a;
   --Input: #dad2d2;
@@ -304,6 +304,14 @@ main {
 
 #prodRegis {
   background-color: var(--mediumBlue);
+}
+
+.productsCards img{
+  width: auto;
+  height: auto;
+  max-width: 270px;
+  max-height: 200px;
+  vertical-align: middle;
 }
 
 /* 🌙 Dark mode */
