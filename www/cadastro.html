@@ -30,23 +30,24 @@
       <div class="container">
         <div class="cadastro">
           <strong><p>Cadastro</p></strong>
-          <input type="text" placeholder="Digite seu nome completo">
-          <input type="text" placeholder="seuemail@exemplo.com">
-          <input type="text" placeholder="(99) 99999-9999">
-          <input type="password" placeholder="Sua senha">
+          <input type="text" name="fullname" placeholder="Digite seu nome completo">
+          <input type="text" name="email" placeholder="seuemail@exemplo.com">
+          <input type="text" name="telephoneN" placeholder="(99) 99999-9999">
+          <input type="password" name="password" placeholder="Sua senha">
           <strong><p>Endereço</p></strong>
+          <input type="text" name="cep" placeholder="CEP">
           <input type="text" placeholder="Rua / Avenida">
           <input type="text" placeholder="Número">
           <input type="text" placeholder="Complemento (opcional)">
           <input type="text" placeholder="Bairro">
           <input type="text" placeholder="Cidade">
           <input type="text" placeholder="Estado">
-          <input type="text" placeholder="CEP">
 
-          <button type="button">Fazer Cadastro</button>
+          <button type="button" id="btnCadastrar">Fazer Cadastro</button>
           </div>
       </div>
     </main>
     <script src="mobile-navbar.js"></script>
+    <script src="./js/UserRegister.js"></script>
   </body>
 </html>

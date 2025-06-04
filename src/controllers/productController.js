@@ -30,7 +30,7 @@ const productController = {
 
             if (price > 999999) {
                 return res.status(400).json({message: 'O preco deve ser menor que 100.000,00'})
-            }
+            }//Cadastro apenas abaixo de 100k reais
 
             // Você pode (e deve) adicionar mais validações aqui, por exemplo:
             // - Verificar se 'price' é um número válido.
