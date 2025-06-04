@@ -1,6 +1,7 @@
 // src/controllers/productController.js
 
 // 1. Importa o modelo Product que criamos anteriormente
+const { json } = require('express');
 const Product = require('../models/Product.js');
 
 // 2. Cria um objeto para agrupar todas as funções do nosso controlador de produtos
@@ -25,6 +26,10 @@ const productController = {
                 return res.status(400).json({
                     message: 'Campos obrigatórios estão faltando: name, price, date, status, category.'
                 });
+            }
+
+            if (price > 999999) {
+                return res.status(400).json({message: 'O preco deve ser menor que 100.000,00'})
             }
 
             // Você pode (e deve) adicionar mais validações aqui, por exemplo:
