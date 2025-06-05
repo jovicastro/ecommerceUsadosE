@@ -2,7 +2,7 @@
 
 /* --- Container da Grade de Produtos --- */
 .product-grid { /* Seu <div id="product-list-container" class="product-grid"> */
-  display: grid;
+  display: flex;
   flex-direction: row;
   /* Cria colunas responsivas: cada coluna terá no mínimo 230px, 
      e o navegador tentará encaixar o máximo de colunas que couberem. 
@@ -12,17 +12,21 @@
   padding: 20px 0; /* Adiciona um pouco de preenchimento vertical */
 }
 
+.bgSquare {
+  width: 21vw;
+  height: 21vw;
+  background-color: grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* --- Estilo Individual do Card de Produto --- */
 .productsCards { /* Sua classe do template <div class="productsCards" id="product-template"> */
-  background-color: #fff;
-  border: 1px solid #dee0e2; /* Borda sutil, similar à Amazon */
-  border-radius: 4px;       /* Cantos levemente arredondados */
-  padding: 15px;
   display: flex;
   flex-direction: column; /* Itens dentro do card empilhados verticalmente */
   text-align: left;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Sombra muito sutil */
-  transition: box-shadow 0.2s ease-in-out;
   height: 100%; /* Para que todos os cards na mesma linha tenham a mesma altura se o grid permitir */
 }
 
@@ -33,7 +37,7 @@
 /* Imagem do Produto dentro do Card */
 .productsCards img {
   width: 100%;
-  max-height: 200px;    /* Altura máxima para a imagem, ajuste conforme sua preferência */
+  max-height: auto;    /* Altura máxima para a imagem, ajuste conforme sua preferência */
   object-fit: contain;  /* 'contain' mostra a imagem inteira, 'cover' preenche o espaço */
   margin-bottom: 12px;
   border-radius: 3px;   /* Pequeno arredondamento na imagem */

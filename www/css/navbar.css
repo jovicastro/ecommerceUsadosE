@@ -1,227 +1,250 @@
-@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-* {
-  font-family: "Cal Sans", sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --darkBlue: #023047;
-  --mediumBlue: #219ebc;
-  --ligthBlue:#8ecae6;
-  --yellow: #ffb703;
-}
-
-a { /*colocar este fade em uma class propia para a "categoria"*/
-  color: white;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-a:hover {
-  opacity: 0.7;
-}
-
-.logo {
-  align-items: center;
-
-}
-
+/*Barra de navegação*/
 nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 20px;
-  align-items: center;
-  font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
-  background: var(--mediumBlue);
-  height: 10vh;
-}
-
-
-.nav-list {
-  list-style: none;
-  display: flex;
-  margin-top: 10px;
-  margin-bottom: 0;
-  align-items: center;
-
-}
-
-.nav-list li {
-  letter-spacing: 3px;
-  margin-left: 32px;
-}
-
-ul li a {
-  text-decoration: none;
-  color: white;
-}
-
-ul.nav-list {
-  padding-bottom: 1vh;
-}
-
-/*inicio do dropdown*/
-button.btn.btn-danger.dropdown-toggle{
-  position: relative;
-  background-color: #ebc25a;
-  border:none;
-  align-items: center;
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 6vh;
-  left: -5vh;
-  background-color: var(--darkBlue);
-  border: 0px solid #ccc;
-  list-style: none;
-  padding: 5px;
-  margin: 0px;
-  z-index: 1000;
-  min-width: 160px
-}
-
-ul.dropdown-menu.show {
-  background-color: white;
-}
-
-.dropdown-menu.show li {
-  padding: 10px 15px;
-  border-bottom: 1px solid rgb(156, 154, 154) ;
-  margin-right: 2vw;
-}
-
-.dropdown-menu li a {
-  text-decoration: none;
-  color: gray;
-  display: block;
-}
-.dropdown-menu.show {
-  display: block;
-}
-/*fim do dropdown*/
-.mobile-menu {
-  display: none;
-  cursor: pointer;
-}
-
-.mobile-menu div {
-  width: 32px;
-  height: 2px;
-  background: #fff;
-  margin: 8px;
-  transition: 0.3s;
-}
-
-@media (max-width: 999px) {
-  body {
-    overflow-x: hidden;
-  }
-  .nav-list {
-    position: absolute;
-    top: 8vh;
-    right: -10vh;
-    width: 50vw;
-    height: 92vh;
-    background: hsl(219, 63%, 25%);
-    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
     align-items: center;
-    justify-content: space-around;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in;
+    font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
+    background: var(--mediumBlue);
+    height: 10vh;
   }
+  
+  .nav-list {
+    list-style: none;
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 0;
+    align-items: center;
+  
+  }
+  
   .nav-list li {
-    margin-left: 0;
-    opacity: 0;
+    margin-left: 32px;
   }
-  .mobile-menu {
+  
+  ul li a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  ul.nav-list {
+    padding-bottom: 1vh;
+  }
+  
+  
+  /* BARRA DE PESQUISA INÍCIO */
+  
+  /* Container principal da barra de pesquisa (dropdown + formulário de busca) */
+  .barra-de-pesquisa {
+    display: flex;
+    align-items: stretch;
+    /* Centraliza e define a largura para desktops */
+    margin-left: 30%;
+    margin-right: auto;
+    width: 30%; /* Ocupa % da largura do container nav */
+    max-width: 600px; /* Largura máxima */
+    min-width: 320px; /* Largura mínima para evitar que fique muito espremida */
+  }
+  
+  /* Div que envolve o botão de categoria e o menu dropdown */
+  .barra-de-pesquisa .dropdown {
+    position: relative; /* Necessário para o posicionamento absoluto do dropdown-menu */
+    display: flex; /* Garante que o botão ocupe o espaço corretamente */
+  }
+  
+  /* Botão de Categoria */
+  .barra-de-pesquisa .dropdown .btn.btn-danger.dropdown-toggle {
+    background-color: #ebc25a;
+    border: none; 
+    border-radius: 10px 0 0 10px; /* Cantos arredondados à esquerda, retos à direita */
+    height: 44px; /* Altura consistente com o campo de busca e botão */
+    display: flex;
+    align-items: center; /* Centraliza o texto verticalmente */
+    color: black;
+  }
+  
+  .barra-de-pesquisa .dropdown .btn.btn-danger.dropdown-toggle:hover {
+    background-color: #FFB703; /* Cor do botão ao passar o mouse - Mantido */
+  }
+  
+  /* 🔽 MENU DROPDOWN - BASE */
+  /* Estilo base para o menu de categorias e temas */
+  .barra-de-pesquisa .dropdown .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: none;
+    list-style: none;
+    padding: 0;              /* Remove espaço interno do menu */
+    z-index: 1000;
+    min-width: 160px;
+  }
+  
+  /* Garante que o menu seja exibido corretamente quando aberto */
+  .barra-de-pesquisa .dropdown .dropdown-menu.show {
     display: block;
   }
-}
-
-ul li .nav-list.nav-list.active {
-  padding: -40px;
-}
-
-.nav-list.active {
-  transform: translateX(0);
-}
-
-@keyframes navLinkFade {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
+  
+  /* Estilo para os itens (li) do dropdown */
+  .barra-de-pesquisa .dropdown .dropdown-menu li {
+    padding: 0;              /* Remove padding externo */
+    margin: 0;
+    border-bottom: 1px solid #ccc;
   }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+  
+  /* Estilo dos links dentro do dropdown */
+  .barra-de-pesquisa .dropdown .dropdown-menu li a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    background-color: transparent;
   }
-}
+  
+  
+  /* ✅ AJUSTES COMPACTOS PARA TODOS OS DROPDOWN ITEMS */
+  /* Aplica para o menu de temas e outros */
+  .dropdown-menu .dropdown-item {
+    background-color: #fff !important;  /* Fundo branco no modo claro */
+    color: #000 !important;             /* Texto preto no modo claro */
+    padding: 6px 12px !important;       /* Padding menor */
+    font-size: 0.95rem;                 /* Tamanho de fonte padrão */
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    gap: 8px;                           /* Espaço entre ícone e texto */
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 !important;
+  }
+  
+  /* Hover no modo claro */
+  .dropdown-menu .dropdown-item:hover,
+  .dropdown-menu .dropdown-item:focus {
+    background-color: #f2f2f2 !important;
+    color: #000 !important;
+  }
+  
+  /* Remove espaçamento em listas internas */
+  .dropdown-menu li {
+    margin: 0 !important;
+  }
+  
+  /* Correção de <hr> se estiver usando separador */
+  .dropdown-menu hr {
+    margin: 4px 0;
+    border-color: #444;
+  }
+  
+  /* 🔘 BOTÃO DROPDOWN (caso esteja grande demais) */
+  .dropdown-toggle {
+    padding: 6px 10px;
+    font-size: 1rem;
+  }
+  
+  
+  /* 🌙 DARK MODE */
+  /* Fundo do menu e bordas */
+  [data-bs-theme="dark"] .dropdown-menu {
+    background-color: #121212 !important;
+    border: 1px solid #333;
+  }
+  
+  /* Texto e fundo dos itens no modo escuro */
+  [data-bs-theme="dark"] .dropdown-menu .dropdown-item {
+    background-color: transparent !important;
+    color: #fff !important;
+  }
+  
+  /* Hover/focus no modo escuro */
+  [data-bs-theme="dark"] .dropdown-menu .dropdown-item:hover,
+  [data-bs-theme="dark"] .dropdown-menu .dropdown-item:focus {
+    background-color: #1e1e1e !important;
+    color: #fff !important;
+  }
+  
+  /* Corrige ícones em SVG e FontAwesome */
+  [data-bs-theme="dark"] .dropdown-menu .dropdown-item svg,
+  [data-bs-theme="dark"] .dropdown-menu .dropdown-item i {
+    color: #fff !important;
+  }
+  
+  [data-bs-theme="dark"] .products,
+  [data-bs-theme="dark"] .productsCards,
+  [data-bs-theme="dark"] .product-grid,
+  [data-bs-theme="dark"] #product-list-container,
+  [data-bs-theme="dark"] .productDescription,
+  [data-bs-theme="dark"] .productName,
+  [data-bs-theme="dark"] .productPrice,
+  [data-bs-theme="dark"] .lowFont {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+  }
+  
+  
+  
+  
+  
+  
+  /* Formulário de busca (input + botão de lupa) */
+  .barra-de-pesquisa .search-form {
+    display: flex; /* Mantido - para alinhar input e botão */
+    align-items: center; /* Mantido */
+    flex-grow: 1; /* Faz o formulário ocupar o espaço restante na Barra-de-pesquisa */
+    /* Removido: width: 400px; */
+    /* Removido: margin: 20px auto; */
+    margin: 0; /* Remove margens que possam interferir */
+  }
+  
+  /* Campo de input da busca */
+  .barra-de-pesquisa .search-input {
+    flex-grow: 1; /* Mantido - input ocupa espaço no formulário */
+    padding: 10px; /* Mantido */
+    border: none; /* Mantido */
+    border-radius: 0; /* Sem cantos arredondados (fica no meio) */
+    font-size: 16px; /* Mantido */
+    height: 44px; /* Altura consistente */
+    outline: none; 
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .barra-de-pesquisa .search-input::placeholder{
+    color: var(--Input)
+  }
+  /* Botão de busca (lupa) */
+  .barra-de-pesquisa .search-button { /* Seletor mais específico */
+    background-color: #ebc25a; /* Cor mantida */
+    color: white; /* Mantido */
+    padding: 10px 15px; /* Mantido */
+    border: none; /* Mantido */
+    border-radius: 0 10px 10px 0; /* Cantos retos à esquerda, arredondados à direita */
+    cursor: pointer; /* Mantido */
+    height: 44px; /* Mantido */
+    display: flex; /* Para melhor alinhamento do ícone/imagem */
+    align-items: center; /* Centraliza ícone/imagem verticalmente */
+    justify-content: center; /* Centraliza ícone/imagem horizontalmente */
+  }
+  
+  .barra-de-pesquisa .search-button img {
+    width: 20px; /* Ajuste o tamanho da imagem conforme necessário */
+    height: 20px; /* Ajuste o tamanho da imagem conforme necessário */
+    /* Removido: padding-bottom: 7px; (o flex align-items deve cuidar disso) */
+  }
+  
+  .barra-de-pesquisa .search-button:hover {
+    background-color: #FFB703; /* Cor do botão ao passar o mouse - Mantido */
+  }
+  
+  .barra-de-pesquisa .search-button i { /* Estilo do ícone (se você usar um ícone) */
+    font-size: 18px; /* Mantido */
+  }
 
-.mobile-menu.active .line1 {
-  transform: rotate(-45deg) translate(-8px, 8px);
-}
-
-.mobile-menu.active .line2 {
-  opacity: 0;
-}
-
-.mobile-menu.active .line3 {
-  transform: rotate(45deg) translate(-5px, -7px);
-}
-
-/*BARRA DE PESQUISA*/
-.barra-de-pesquisa :active{
-  border: none;
-}
-
-.barra-de-pesquisa{
-  justify-content: center;
-  width: auto;
-}
-
-.search-form {
-  display: flex;
-  align-items: center;
-  width: 400px; /* Largura da barra */
-  margin: 20px auto; /* Centraliza e adiciona espaço */
-}
-
-.search-input {
-  flex-grow: 1; /* O campo de texto ocupa o espaço disponível */
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  border-radius: 10px 0px 0px 10px;
-  height: auto;
-  outline: none;
-}
-
-/*BOTÃO BARRA DE PESQUISA*/
-button.search-button {
-  background-color: #ebc25a; /* Cor do botão */
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  border-radius: 0px 10px 10px 0px;
-  height: 44px;
-}
-
-button.search-button img {
-  width: 3.5vh;
-  padding-bottom: 7px
-}
-
-.search-button:hover {
-  background-color: #FFB703; /* Cor do botão ao passar o mouse */
-}
-
-.search-button i { /* Estilo do ícone (se você usar um ícone) */
-  font-size: 18px;
-}
+  .loginNav p{
+    margin-bottom: 0px;
+  }
+  
+  
+  
+  
+  /* FIM DAS MODIFICAÇÕES DA BARRA DE PESQUISA */
+  

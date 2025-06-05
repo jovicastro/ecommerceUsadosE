@@ -69,6 +69,11 @@ a:hover {
 
 /* --- 3. Header (Navbar) --- */
 
+.p-4 {
+    justify-content: space-between;
+
+}
+
 /* Mobile Menu (ícones) */
 .mobile-menu {
     display: none; /* Escondido por padrão, para telas maiores */
@@ -397,10 +402,12 @@ a:hover {
         margin-bottom: 15px;
     }
 
-    .Barra-de-pesquisa {
+    .barra-de-pesquisa {
         order: 3; /* Move a barra de pesquisa para baixo */
         width: 100%;
         margin: 15px 0;
+        align-items: center;
+        display: flex;
     }
 
     .nav-list {

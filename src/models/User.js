@@ -14,10 +14,8 @@ class User {
         this.admin = admin;
     }
     async save() {
-        // SE a senha não estiver já hasheada (importante para atualizações onde a senha não muda)
-        // E SE this.password for uma senha nova/modificada
         if (this.password && !this.password.startsWith('$2a$') && !this.password.startsWith('$2b$')) { // Verifica se já não é um hash bcrypt
-            const saltRounds = 3;
+            const saltRounds = 10;
             this.password = await bcrypt.hash(this.password, saltRounds); // Substitui a senha pura pelo hash
         }
 
