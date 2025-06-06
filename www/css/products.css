@@ -21,6 +21,13 @@
   justify-content: center;
 }
 
+@media (max-width: 1361px){
+  .bgSquare {
+    width: 18vw;
+    height: 18vw;
+  }
+}
+
 /* --- Estilo Individual do Card de Produto --- */
 .productsCards { /* Sua classe do template <div class="productsCards" id="product-template"> */
   display: flex;
@@ -37,10 +44,8 @@
 /* Imagem do Produto dentro do Card */
 .productsCards img {
   width: 100%;
-  max-height: auto;    /* Altura máxima para a imagem, ajuste conforme sua preferência */
+  max-height: 100%;    /* Altura máxima para a imagem, ajuste conforme sua preferência */
   object-fit: contain;  /* 'contain' mostra a imagem inteira, 'cover' preenche o espaço */
-  margin-bottom: 12px;
-  border-radius: 3px;   /* Pequeno arredondamento na imagem */
 }
 
 /* Div que agrupa as descrições/texto do produto */
@@ -154,7 +159,7 @@
 }
 
 .filters-container {
-  flex: 0 0 280px; /* Largura da barra de filtros, não cresce nem encolhe */
+  flex: 0 0 230px; /* Largura da barra de filtros, não cresce nem encolhe */
   background-color: transparent; /* Ou #fff se quiser um card de filtro */
   padding: 0px; /* Ou 15px se quiser um card */
   /* border-radius: 4px; */
@@ -174,6 +179,7 @@
 
 .filter-group {
   margin-bottom: 20px;
+  height: auto;
 }
 
 .filter-group h4 {
@@ -194,7 +200,7 @@
 
 .filter-group input[type="checkbox"],
 .filter-group input[type="radio"] {
-  margin-right: 8px;
+  margin-right: 2px;
   height: 16px; /* Ajustes para parecer com os da Amazon */
   width: 16px;
 }

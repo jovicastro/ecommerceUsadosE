@@ -138,17 +138,6 @@ main {
   padding: 30px 70px 0px 0px;
 }
 
-#prodRegis {
-  background-color: var(--mediumBlue);
-}
-
-.productsCards img{
-  width: auto;
-  height: auto;
-  max-width: 270px;
-  max-height: 200px;
-  vertical-align: middle;
-}
 
 
 
