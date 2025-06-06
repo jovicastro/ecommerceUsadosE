@@ -20,14 +20,9 @@
     const imgElement = cardClone.querySelector('img');
     const nameElement = cardClone.querySelector('.productName');
     const priceElement = cardClone.querySelector('.productPrice');
-    // Nota: Seu template tem '.local.lowFont' e '.data.lowFont'.
-    // Se você quiser selecionar ambos, pode usar '.lowFont' e depois diferenciar,
-    // ou ser mais específico se as classes forem únicas para cada elemento.
-    // Vamos assumir que '.data.lowFont' é para a data do produto.
-    // O campo 'local' parece estático no seu template ("São Paulo"). Se precisar ser dinâmico,
-    // o backend precisaria fornecer essa informação, ou você o deixaria como está.
+    const descriptionElement = cardClone.querySelector('.description');
     const dateElement = cardClone.querySelector('.data.lowFont');
-    // const localElement = cardClone.querySelector('.local.lowFont'); // Se precisar modificar
+
 
     // 5. Preenche os elementos com os dados do produto.
     if (imgElement) {

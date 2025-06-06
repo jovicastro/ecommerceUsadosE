@@ -2,14 +2,10 @@
 
 /* --- Container da Grade de Produtos --- */
 .product-grid { /* Seu <div id="product-list-container" class="product-grid"> */
-  display: flex;
-  flex-direction: row;
-  /* Cria colunas responsivas: cada coluna terá no mínimo 230px, 
-     e o navegador tentará encaixar o máximo de colunas que couberem. 
-     '1fr' significa que elas dividirão o espaço restante igualmente. */
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  display: grid;
+  /* A linha mágica: cria 4 colunas de largura igual */
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px; /* Espaçamento entre os cards */
-  padding: 20px 0; /* Adiciona um pouco de preenchimento vertical */
 }
 
 .bgSquare {
@@ -25,6 +21,7 @@
   .bgSquare {
     width: 18vw;
     height: 18vw;
+    
   }
 }
 
@@ -236,6 +233,9 @@
       margin-bottom: 20px;
   }
   .product-grid {
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Cards um pouco menores */
+    display: grid;
+    /* A linha mágica: cria 4 colunas de largura igual */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px; /* Espaçamento entre os cards */
   }
 }
