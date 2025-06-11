@@ -1,37 +1,45 @@
-//src/models/User.js
+// Arquivo: src/models/User.js
+
 const bcrypt = require('bcryptjs');
-const db = require('../config/db.js');
+const db = require('../config/db.js'); // Agora importa a conexão com promise
 
 class User {
-    constructor(id, fullname, password, email, telephoneN, cep, addressN, admin){
+    constructor(id, fullname, password, email, telephoneN, cep, address, addressN, admin, date) {
         this.id = id;
         this.fullname = fullname;
         this.password = password;
         this.email = email;
         this.telephoneN = telephoneN;
         this.cep = cep;
+        this.address = address;
         this.addressN = addressN;
         this.admin = admin;
+        this.date = date;
     }
+
     async save() {
-        if (this.password && !this.password.startsWith('$2a$') && !this.password.startsWith('$2b$')) { // Verifica se já não é um hash bcrypt
+        if (this.password && !this.password.startsWith('$2b$')) {
             const saltRounds = 10;
-            this.password = await bcrypt.hash(this.password, saltRounds); // Substitui a senha pura pelo hash
+            this.password = await bcrypt.hash(this.password, saltRounds);
         }
 
-        // Lógica para inserir ou atualizar no banco usando this.password (que agora é o hash)
-        // Exemplo para INSERT (você precisará adaptar para sua lógica de INSERT)
-        const sql = `INSERT INTO users (fullname, password, email, telephoneN, cep, addressN, admin) VALUES (?, ?, ?, ?, ?, ?, ?)`;
-        const values = [this.fullname, this.password, this.email, this.telephoneN = telephoneN, this.cep = cep, this.addressN = addressN, this.admin];
+        const sql = `
+            INSERT INTO users 
+                (fullname, password, email, telephoneN, cep, address, addressN, admin, date) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `;
 
-        return new Promise((resolve, reject) => {
-            db.query(sql, values, (error, result) => {
-                if (error) {console.error('Erro ao salvar usuário no DB:', error); // Adicionado log de erro
-                return reject(error);
-                };
-                this.id = result.insertId;
-                resolve(this);
-            });
-        });
+        const values = [
+            this.fullname, this.password, this.email, this.telephoneN, 
+            this.cep, this.address, this.addressN, this.admin, this.date
+        ];
+
+        // Com o db.js correto, esta linha AGORA VAI FUNCIONAR.
+        const [result] = await db.execute(sql, values);
+        
+        this.id = result.insertId;
+        return this;
     }
 }
+
+module.exports = User;
