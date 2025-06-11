@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Pagamento</title>
+    <link rel="stylesheet" href="css/payment.css">
+</head>
+<body>
+
+    <div class="payment-container">
+        <h1>Finalize sua Compra</h1>
+
+        <div class="order-summary">
+            <h2>Resumo do Pedido</h2>
+            <div class="product">
+                <img src="https://via.placeholder.com/100" alt="Imagem do Produto">
+                <div class="product-info">
+                    <p><strong>Produto:</strong> Exemplo de Item à Venda</p>
+                    <p><strong>Vendedor:</strong> João da Silva</p>
+                </div>
+                <div class="product-price">
+                    <p>R$ 150,00</p>
+                </div>
+            </div>
+            <div class="total">
+                <span>Total a pagar:</span>
+                <strong>R$ 150,00</strong>
+            </div>
+        </div>
+
+        <form id="payment-form">
+            <h2>Forma de Pagamento</h2>
+            <div class="payment-methods">
+                <label>
+                    <input type="radio" name="payment-method" value="credit-card" checked>
+                    <img src="https://via.placeholder.com/40x25/333/fff?text=CC" alt="Cartão de Crédito"> Cartão de Crédito
+                </label>
+                <label>
+                    <input type="radio" name="payment-method" value="pix">
+                    <img src="https://via.placeholder.com/25x25/333/fff?text=PX" alt="Pix"> Pix
+                </label>
+                <label>
+                    <input type="radio" name="payment-method" value="boleto">
+                    <img src="https://via.placeholder.com/25x25/333/fff?text=B" alt="Boleto"> Boleto
+                </label>
+            </div>
+
+            <div id="credit-card-details" class="payment-details">
+                <div class="form-group">
+                    <label for="card-number">Número do Cartão</label>
+                    <input type="text" id="card-number" placeholder="0000 0000 0000 0000" required>
+                </div>
+                <div class="form-group">
+                    <label for="card-holder">Nome do Titular</label>
+                    <input type="text" id="card-holder" placeholder="Como impresso no cartão" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="expiry-date">Validade</label>
+                        <input type="text" id="expiry-date" placeholder="MM/AA" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" placeholder="123" required>
+                    </div>
+                </div>
+            </div>
+
+            <div id="pix-details" class="payment-details hidden">
+                <p>Ao finalizar a compra, um QR Code será gerado para o pagamento via Pix. Ele terá validade de 30 minutos.</p>
+            </div>
+
+            <div id="boleto-details" class="payment-details hidden">
+                <p>O boleto será gerado com vencimento em 3 dias úteis e poderá ser pago em qualquer banco ou casa lotérica.</p>
+            </div>
+            
+            <button type="submit" class="cta-button">Finalizar Pagamento</button>
+        </form>
+    </div>
+
+    <script src="js/payment.js"></script>
+</body>
+</html>

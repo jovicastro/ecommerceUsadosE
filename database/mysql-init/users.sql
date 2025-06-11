@@ -6,6 +6,6 @@ CREATE TABLE `users` (
   `telephoneN` varchar(11) NOT NULL,
   `cep` varchar(8) NOT NULL,
   `addressN` varchar(255) NOT NULL,
-  `admin` char(50) NOT, 
+  `admin` char(50) NOT NULL, 
   `date` DATETIME
 ); ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci

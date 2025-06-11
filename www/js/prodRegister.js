@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             displayMessage('Erro de conexão. Tente novamente mais tarde.', 'error');
         }
     });
+    //
 
     // Função para pré-visualizar imagens (se o input file for ativado)
     // function previewImages() {

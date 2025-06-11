@@ -4,7 +4,7 @@ const cors = require('cors');
 
 // Importa suas rotas
 const userRoutes = require('./routes/userRoutes.js');
-// const productRoutes = require('./routes/productRoutes.js'); // Descomente se estiver usando
+const productRoutes = require('./routes/productRoutes.js');
 
 const app = express();
 app.use(cors());
@@ -12,7 +12,7 @@ app.use(express.json());
 
 // Monta as rotas com os prefixos corretos
 app.use('/api/users', userRoutes);
-// app.use('/api/products', productRoutes); // Descomente se estiver usando
+app.use('/api/products', productRoutes); // Descomente se estiver usando
 
 // Middleware para rotas não encontradas (404)
 app.use((req, res, next) => {
