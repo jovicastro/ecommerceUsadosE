@@ -1,4 +1,20 @@
 /*Barra de navegação*/
+
+* {
+  font-family: "Cal Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --darkBlue: #023047;
+  --mediumBlue: #219ebc;
+  --lightBlue:#8ecae6;
+  --yellow: #ffb703;
+  --iconday: #ebc25a;
+  --Input: #dad2d2;
+}
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -141,50 +157,6 @@ nav {
     padding: 6px 10px;
     font-size: 1rem;
   }
-  
-  
-  /* 🌙 DARK MODE */
-  /* Fundo do menu e bordas */
-  [data-bs-theme="dark"] .dropdown-menu {
-    background-color: #121212 !important;
-    border: 1px solid #333;
-  }
-  
-  /* Texto e fundo dos itens no modo escuro */
-  [data-bs-theme="dark"] .dropdown-menu .dropdown-item {
-    background-color: transparent !important;
-    color: #fff !important;
-  }
-  
-  /* Hover/focus no modo escuro */
-  [data-bs-theme="dark"] .dropdown-menu .dropdown-item:hover,
-  [data-bs-theme="dark"] .dropdown-menu .dropdown-item:focus {
-    background-color: #1e1e1e !important;
-    color: #fff !important;
-  }
-  
-  /* Corrige ícones em SVG e FontAwesome */
-  [data-bs-theme="dark"] .dropdown-menu .dropdown-item svg,
-  [data-bs-theme="dark"] .dropdown-menu .dropdown-item i {
-    color: #fff !important;
-  }
-  
-  [data-bs-theme="dark"] .products,
-  [data-bs-theme="dark"] .productsCards,
-  [data-bs-theme="dark"] .product-grid,
-  [data-bs-theme="dark"] #product-list-container,
-  [data-bs-theme="dark"] .productDescription,
-  [data-bs-theme="dark"] .productName,
-  [data-bs-theme="dark"] .productPrice,
-  [data-bs-theme="dark"] .lowFont {
-    background-color: #1e1e1e;
-    color: #f5f5f5;
-  }
-  
-  
-  
-  
-  
   
   /* Formulário de busca (input + botão de lupa) */
   .barra-de-pesquisa .search-form {

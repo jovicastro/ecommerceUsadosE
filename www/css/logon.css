@@ -1,0 +1,111 @@
+/* Importando variáveis de cor do seu style.css */
+@import url('style.css'); 
+
+body {
+    background-color: var(--background-light);
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color-dark);
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    min-height: calc(100vh - 80px); /* Subtrai a altura do header */
+}
+
+.logon-card {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border: 3px solid #000; /* Borda sólida - Neobrutalismo */
+    border-radius: 8px;
+    box-shadow: 8px 8px 0px #000; /* Sombra dura - Neobrutalismo */
+    max-width: 450px;
+    width: 100%;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.logon-card:hover {
+    box-shadow: 10px 10px 0px var(--primary-color);
+}
+
+.logon-card h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-color-dark);
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid var(--text-color-dark);
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: var(--background-light);
+    transition: all 0.2s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(97, 95, 230, 0.3); /* Um brilho sutil no foco */
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 4px 4px 0px #000;
+}
+
+.submit-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000;
+}
+
+.submit-btn:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
+}
+
+.divider {
+    height: 2px;
+    background-color: #e0e0e0;
+    margin: 2rem 0;
+}
+
+.login-redirect {
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.login-redirect a {
+    color: var(--primary-color);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.login-redirect a:hover {
+    text-decoration: underline;
+}

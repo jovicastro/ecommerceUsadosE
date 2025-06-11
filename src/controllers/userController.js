@@ -6,6 +6,8 @@ const userController = {
             // 1. Extrai os dados do corpo da requisição
             const { fullname, password, email, telephoneN, cep, address, addressN, date } = req.body;
 
+            console.log('Dados recebidos no backend:', req.body);
+
             // 2. Cria o objeto User com os argumentos na ORDEM CORRETA
             const newUser = new User(
                 null, fullname, password, email, telephoneN, cep, address, addressN, false, date

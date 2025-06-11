@@ -1,40 +1,52 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <script src="js/theme.js"></script>
-  
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Desapego</title>
-  
-    <link rel="stylesheet" href="../bootstrap-5.3.6-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/style.css"/>
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="shortcut icon" href="../www/img/logo.nav.png" type="image/x-icon"/>
-  </head>
-  
 
 <header>
+  <link rel="stylesheet" href="../css/navbar.css">
   <nav class="p-4">
     <!-- Logo -->
     <a class="logo" href="index.html">
-      <img src="./img/logo.nav.png" width="60px" />
+      <img src="../img/logo.nav.png" width="60px" />
     </a>
- 
+    <!-- barra de pesquisa -->
+    <div class="barra-de-pesquisa">
+      <div class="dropdown">
+        <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Categoria
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Todas as categorias</a></li>
+          <li><a class="dropdown-item" href="#">Eletrônicos</a></li>
+          <li><a class="dropdown-item" href="#">Periféricos</a></li>
+          <li><a class="dropdown-item" href="#">Mesas</a></li>
+          <li><a class="dropdown-item" href="#">Cadeiras</a></li>
+        </ul>
+      </div>
+      <form class="search-form">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Buscar em Desapego..."
+          name="q">
+          <button type="submit" class="search-button"> 
+          <img src="../img/search.png" alt="Buscar" width="15px" />
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+    </div>
+
     <!-- Menu mobile -->
     <div class="mobile-menu">
       <div class="line1"></div>
       <div class="line2"></div>
       <div class="line3"></div>
     </div>
+
+    
     
     <!-- Menu de navegação -->
     <ul class="nav-list">
   
       <!-- Example single danger button -->
-      <li class="loginNav"><a href="login.html"><p>Ola, faça seu login</p><p>Conta</p></a></li>
+      <li class="loginNav"><a href="../login.html"><p>Ola, faca seu login</p><p>Conta</p></a></li>
       <li><a class="navIcons" href="#"><svg width="30px" height="30px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1.24264 8.24264L8 15L14.7574 8.24264C15.553 7.44699 16 6.36786 16 5.24264V5.05234C16 2.8143 14.1857 1 11.9477 1C10.7166 1 9.55233 1.55959 8.78331 2.52086L8 3.5L7.21669 2.52086C6.44767 1.55959 5.28338 1 4.05234 1C1.8143 1 0 2.8143 0 5.05234V5.24264C0 6.36786 0.44699 7.44699 1.24264 8.24264Z" fill="#ebc25a"/>
         </svg></a></li>
@@ -43,36 +55,6 @@
         <path d="M7.92005 18.5C6.82005 18.5 5.93005 19.4 5.93005 20.5C5.93005 21.6 6.82005 22.5 7.92005 22.5C9.02005 22.5 9.92005 21.6 9.92005 20.5C9.92005 19.4 9.02005 18.5 7.92005 18.5Z" fill="#ebc25a"/>
         <path d="M17.9201 18.5C16.8201 18.5 15.9301 19.4 15.9301 20.5C15.9301 21.6 16.8201 22.5 17.9201 22.5C19.0201 22.5 19.9201 21.6 19.9201 20.5C19.9201 19.4 19.0201 18.5 17.9201 18.5Z" fill="#ebc25a"/>
         </svg></a></li>
-
-        <div class="dropdown">
-          <button class="btn btn-theme dropdown-toggle" type="button" data-bs-toggle="dropdown">
-            ☀️
-          </button>
-
-          <ul class="dropdown-menu">
-            <li><button class="dropdown-item" data-theme-value="light">☀️ Claro</button></li>
-            <li><button class="dropdown-item" data-theme-value="dark">🌙 Escuro</button></li>
-            <li><button class="dropdown-item" data-theme-value="auto">🌓 Automático</button></li>
-          </ul>
-        </div>
     </ul>
   </nav>
 </header>
-
-  <body>  
-    <main>
-      <div class="login">
-        <h1>Login</h1>
-        <form action="./login.html" method="post">
-          <input type="text" placeholder="Usuário">
-          <div class="senha-container">
-            <input type="password" id="senha" placeholder="Senha">
-          </div>
-          <button type="button">Fazer login</button>
-        </form>
-          <a href="logon.html" id="cadastro">Primeira vez por aqui? Crie sua conta!</a>
-        </div>
-    </main>
-  </body>
-  
-</html>
