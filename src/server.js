@@ -52,8 +52,30 @@ app.get('/prodRegister', (req, res) => {
     res.render('prodRegister');
 });
 
+// Exemplo na sua rota do Express
 app.get('/payment', (req, res) => {
-    res.render('payment');
+    const mockUser = {
+        name: 'João da Silva',
+        address: {
+            street: 'Rua das Flores',
+            number: '123',
+            city: 'São Paulo',
+            state: 'SP',
+            zip: '01234-567'
+        }
+    };
+
+    const mockCart = {
+        items: [
+            { name: 'Cadeira Gamer Usada', quantity: 1, price: 350.00, imageUrl: '/img/cadeira.jpg' },
+            { name: 'Projetor BenQ', quantity: 1, price: 800.00, imageUrl: '/img/projetor.jpg' }
+        ],
+        subtotal: 1150.00,
+        shipping: 25.90,
+        total: 1175.90
+    };
+
+    res.render('payment', { user: mockUser, cart: mockCart });
 });
 
 app.get('/viewProduct', (req, res) => {

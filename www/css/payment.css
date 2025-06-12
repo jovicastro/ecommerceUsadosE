@@ -1,0 +1,120 @@
+:root {
+    --darkBlue: #023047;
+    --mediumBlue: #219ebc;
+    --lightBlue: #8ecae6;
+    --yellow: #ffb703;
+    --iconday: #ebc25a;
+    --input: #EFEFEF; /* Um pouco mais claro que o original para contraste */
+    --background: #f1f1f1;
+    --border-color: #023047;
+}
+
+body {
+    background-color: var(--lightBlue);
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: var(--darkBlue);
+}
+
+/* CARD BRUTALISTA - Base para os elementos */
+.brutal-card {
+    background-color: white;
+    border: 3px solid var(--border-color);
+    border-radius: 0;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    box-shadow: 8px 8px 0 var(--border-color);
+    transition: all 0.2s ease-out;
+}
+
+.header-logo {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 1rem 0;
+    background-color: var(--yellow);
+    color: var(--darkBlue);
+    border-bottom: 3px solid var(--darkBlue);
+}
+
+.step-section {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.step-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    min-width: 120px;
+}
+
+.step-content a {
+    color: var(--mediumBlue);
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+/* Estilo dos formulários */
+.form-control, .form-select {
+    border-radius: 0;
+    border: 2px solid var(--border-color);
+    background-color: var(--input);
+    box-shadow: none !important; /* Remove sombra do bootstrap */
+    padding: 0.75rem;
+}
+.form-control:focus {
+    background-color: white;
+    border-color: var(--mediumBlue);
+}
+
+/* BOTÃO BRUTALISTA - Ação Principal */
+.btn-brutal {
+    background-color: var(--yellow);
+    color: var(--darkBlue);
+    border: 3px solid var(--border-color);
+    border-radius: 0;
+    padding: 0.8rem 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 5px 5px 0 var(--border-color);
+    transition: all 0.1s ease-out;
+}
+
+.btn-brutal:hover {
+    background-color: var(--iconday);
+    color: var(--darkBlue);
+    box-shadow: 8px 8px 0 var(--border-color);
+}
+
+.btn-brutal:active {
+    transform: translate(5px, 5px);
+    box-shadow: none;
+}
+
+/* Resumo do Pedido */
+.order-summary-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+.order-summary-total {
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-top: 3px solid var(--border-color);
+    padding-top: 1rem;
+    margin-top: 1rem;
+}
+
+/* Lista de produtos */
+.item-in-cart {
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+.item-in-cart:last-child {
+    border-bottom: none;
+}
+.item-in-cart img {
+    max-width: 80px;
+    border: 2px solid var(--border-color);
+}
