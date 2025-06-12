@@ -16,6 +16,7 @@ body {
 }
 
 .logon-card {
+    margin-top: 600px;
     background-color: #ffffff;
     padding: 2.5rem;
     border: 3px solid #000; /* Borda sólida - Neobrutalismo */

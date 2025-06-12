@@ -8,26 +8,6 @@
   gap: 20px; /* Espaçamento entre os cards */
 }
 
-
-.bgSquare {
-  width: 19vw;
-  height: 19vw;
-  background-color: grey;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-
-@media (max-width: 1361px){
-  .bgSquare {
-    width: 18vw;
-    height: 18vw;
-    
-  }
-}
-
 /* --- Estilo Individual do Card de Produto --- */
 .productsCards { /* Sua classe do template <div class="productsCards" id="product-template"> */
   display: flex;
@@ -35,21 +15,44 @@
   text-align: left;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Sombra muito sutil */
   height: 100%; /* Para que todos os cards na mesma linha tenham a mesma altura se o grid permitir */
+  background-color: #fff; /* Adiciona um fundo branco aos cards */
+  border-radius: 4px; /* Opcional: bordas levemente arredondadas */
+  overflow: hidden; /* Importante para que a imagem cortada não vaze do card */
 }
 
 .productsCards:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra um pouco mais pronunciada no hover */
 }
 
+/* NOVO: Contêiner para a Imagem do Produto */
+.productsCards .image-container {
+  width: 100%;
+  /* Usa padding-bottom para criar uma proporção de aspecto (ex: 1:1 para um quadrado) */
+  /* Ajuste 100% para 75% (4:3) ou 56.25% (16:9) se preferir outras proporções */
+  padding-bottom: 100%; /* Isso faz o contêiner ser um quadrado */
+  position: relative; /* Necessário para posicionar a imagem absoluta dentro */
+  overflow: hidden; /* Garante que qualquer parte da imagem cortada não vaze */
+  background-color: grey; /* Fundo cinza para o espaço da imagem caso ela não carregue ou seja transparente */
+  display: flex; /* Para centralizar o GIF de carregamento ou ícone de erro */
+  align-items: center;
+  justify-content: center;
+}
+
 /* Imagem do Produto dentro do Card */
 .productsCards img {
-  width: 100%;
-  max-height: 100%;    /* Altura máxima para a imagem, ajuste conforme sua preferência */
-  object-fit: contain;  /* 'contain' mostra a imagem inteira, 'cover' preenche o espaço */
+  position: absolute; /* Posiciona a imagem absolutamente dentro do seu contêiner */
+  top: 0;
+  left: 0;
+  width: 100%; /* Ocupa 100% da largura do contêiner */
+  height: 100%; /* Ocupa 100% da altura do contêiner */
+  object-fit: cover; /* ESSENCIAL: Faz a imagem cobrir o contêiner, cortando as bordas se necessário */
+  display: block; /* Remove o espaço extra abaixo da imagem */
 }
+
 
 /* Div que agrupa as descrições/texto do produto */
 .productsCards .productDescription {
+  padding: 10px; /* Adiciona algum espaçamento interno ao texto */
   display: flex;
   flex-direction: column;
   flex-grow: 1; /* Faz esta div ocupar o espaço vertical restante no card */
@@ -57,10 +60,10 @@
 
 /* Nome do Produto */
 .productsCards .productName { /* Sua <p class="productName"> */
-  font-size: 14px;  /* Amazon usa fontes relativamente pequenas para títulos de produto na grade */
+  font-size: 14px;
   line-height: 1.4;
-  color: #0F1111;   /* Cor de texto principal da Amazon (preto/cinza bem escuro) */
-  font-weight: 400; /* Normal, não muito negrito */
+  color: #0F1111;
+  font-weight: 400;
   margin-top: 0;
   margin-bottom: 6px;
   /* Para truncar texto em 2 linhas (opcional, requer algum ajuste fino) */
@@ -70,14 +73,14 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  height: 2.8em; */ /* (line-height * número de linhas) */
+  height: 2.8em; */
 }
 
 /* Preço do Produto */
 .productsCards .productPrice { /* Sua <p class="productPrice"> */
-  font-size: 17px;  /* Preço é mais destacado */
-  font-weight: 700; /* Negrito */
-  color: #B12704;   /* Vermelho/Laranja escuro, cor comum para preços na Amazon */
+  font-size: 17px;
+  font-weight: 700;
+  color: #B12704;
   margin-top: auto; /* Empurra o preço para baixo se houver espaço */
   margin-bottom: 8px;
 }
@@ -85,7 +88,7 @@
 /* Informações menores (local, data) */
 .productsCards .lowFont { /* Suas classes .local.lowFont e .data.lowFont */
   font-size: 12px;
-  color: #565959;   /* Cinza para informações secundárias */
+  color: #565959;
   margin-bottom: 4px;
   line-height: 1.3;
 }
@@ -236,9 +239,13 @@
       margin-bottom: 20px;
   }
   .product-grid {
-    display: grid;
-    /* A linha mágica: cria 4 colunas de largura igual */
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px; /* Espaçamento entre os cards */
+    /* Em telas menores, mude para 2 ou 1 coluna para melhor visualização */
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas para tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: repeat(1, 1fr); /* 1 coluna para celulares */
   }
 }

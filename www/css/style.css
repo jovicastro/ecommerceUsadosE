@@ -13,6 +13,7 @@
   --yellow: #ffb703;
   --iconday: #ebc25a;
   --Input: #dad2d2;
+  --filter: rgb(202, 200, 200);
 }
 
 a { /*colocar este fade em uma class propia para a "categoria"*/
@@ -136,9 +137,11 @@ main {
 
 .filters{
   padding: 30px 70px 0px 0px;
-  background-color: black;
 }
 
+#filters-sidebar {
+  background-color: var(--filter);
+}
 
 
 
