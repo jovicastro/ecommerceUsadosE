@@ -1,0 +1,47 @@
+/* Estilo para a nova seção de navegação por categoria */
+.category-navigation {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0 0px;
+  }
+  
+  /* Container dos itens da categoria */
+  .category-items {
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Espaço entre os itens */
+    flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+  }
+  
+  /* Estilo para cada item de categoria (o link) */
+  .category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    width: 150px; /* Largura de cada item */
+    transition: transform 0.2s ease-in-out, color 0.2s;
+  }
+  
+  .category-item:hover {
+    transform: translateY(-5px); /* Efeito de elevação no hover */
+    color: #007bff;
+  }
+  
+  /* Estilo para a imagem da categoria */
+  .category-item img {
+    width: 100%;
+    height: 100px; /* Altura fixa para consistência */
+    object-fit: cover; /* Evita distorção da imagem */
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  /* Estilo para o texto da categoria */
+  .category-item span {
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: center;
+  }

@@ -40,6 +40,10 @@ app.get('/login', (req, res) => {
     res.render('login');
 });
 
+app.get('/category', (req, res) => {
+    res.render('category');
+});
+
 app.get('/logon', (req, res) => {
     res.render('logon');
 });

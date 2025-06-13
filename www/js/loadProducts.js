@@ -15,6 +15,11 @@
     // 3. Torna o card clonado visível removendo o 'display: none'.
     cardClone.style.display = ''; // Ou 'block', 'flex', dependendo do seu CSS para .productsCards
 
+    const linkByItem = cardClone.querySelector('a');
+            if (linkByItem) {
+                linkByItem.href = `/viewProduct/${product.id}`; 
+                }
+
     // 4. Encontra os elementos dentro do clone para preencher com os dados do produto.
     // Usamos querySelector para encontrar elementos pelas suas classes DENTRO do card clonado.
     const imgElement = cardClone.querySelector('img');
