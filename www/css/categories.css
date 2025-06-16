@@ -11,6 +11,7 @@
     justify-content: center;
     gap: 25px; /* Espaço entre os itens */
     flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+    padding: 20px 0; /* Adiciona um respiro para o container */
   }
   
   /* Estilo para cada item de categoria (o link) */
@@ -21,23 +22,28 @@
     text-decoration: none;
     color: #333;
     width: 150px; /* Largura de cada item */
-    transition: transform 0.2s ease-in-out, color 0.2s;
+    padding: 15px; /* Espaçamento interno para o conteúdo respirar */
+    border-radius: 12px; /* Cantos arredondados no card inteiro */
+    background-color: #ffffff; /* Fundo branco para o card */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08); /* Sombra suave no card */
+    border: 1px solid #eee; /* Borda sutil */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   }
   
   .category-item:hover {
     transform: translateY(-5px); /* Efeito de elevação no hover */
-    color: #007bff;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.12); /* Sombra mais forte no hover */
+    /* color: #007bff; /* Você pode manter ou remover, como preferir */
   }
   
   /* Estilo para a imagem da categoria */
   .category-item img {
-    width: 100%;
-    height: 100px; /* Altura fixa para consistência */
-    object-fit: cover; /* Evita distorção da imagem */
-    border-radius: 12px;
+    width: 80px;  /* Tamanho um pouco menor para caber bem no card */
+    height: 80px; /* Altura igual à largura para um aspecto uniforme */
+    object-fit: contain; /* 'Contain' garante que a imagem apareça inteira sem cortar */
     margin-bottom: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
+    /* Removemos a sombra e borda daqui, pois agora estão no card (.category-item) */
+  } 
   
   /* Estilo para o texto da categoria */
   .category-item span {

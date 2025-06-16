@@ -131,32 +131,3 @@ main {
 #cadastro:hover {
   text-decoration: underline;
 }
-
-/* 🌙 Dark mode */
-[data-bs-theme="dark"] body {
-  background-color: #121212;
-}
-
-[data-bs-theme="dark"] .login {
-  background-color: #1e1e1e;
-  color: #f0f0f0;
-}
-
-[data-bs-theme="dark"] .login input,
-[data-bs-theme="dark"] .senha-container input {
-  background-color: #2a2a2a;
-  color: #fff;
-  border: 1px solid #555;
-}
-
-[data-bs-theme="dark"] .login input::placeholder {
-  color: #bbb;
-}
-
-[data-bs-theme="dark"] #toggleSenha {
-  color: #ccc;
-}
-
-[data-bs-theme="dark"] #cadastro {
-  color: #8ab4f8;
-}

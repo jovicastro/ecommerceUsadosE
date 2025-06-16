@@ -1,0 +1,220 @@
+@font-face {
+    font-family: 'Eurostile'; /* Dê um nome para a família da fonte */
+    src: url('../fonts/Eurostile-Regular.woff2') format('woff2'), /* Caminho para o arquivo .woff2 */
+         url('../fonts/Eurostile-Regular.woff') format('woff');  /* Caminho para o arquivo .woff (fallback) */
+    font-weight: 400; /* 400 é o valor padrão para "normal" ou "regular" */
+    font-style: normal;
+    font-display: swap; /* Melhora a performance de carregamento */
+  }
+  
+  /* Define a versão Bold (Negrito) da Eurostile */
+  @font-face {
+    font-family: 'Eurostile'; /* USA-SE O MESMO NOME DE FAMÍLIA */
+    src: url('../fonts/Eurostile-Bold.woff2') format('woff2'),
+         url('../fonts/Eurostile-Bold.woff') format('woff');
+    font-weight: 700; /* 700 é o valor padrão para "bold" */
+    font-style: normal;
+    font-display: swap;
+  }/* ======================================================= */
+/* ESTILO NEOBRUTALISTA - VERSÃO CORRIGIDA E OTIMIZADA */
+/* ======================================================= */
+
+/* --- FONTES E VARIÁVEIS GLOBAIS --- */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Inter:wght@400;700;900&display=swap');
+
+:root {
+    /* Paleta de cores CORRIGIDA e unificada */
+    --background: #303030;      /* Fundo cinza escuro */
+    --text-light: #f0f0f0;      /* Cor de texto padrão para fundos escuros */
+    --text-dark: #ffdc00;       /* Cor de texto padrão para fundos claros */
+    --text-color: #054161;
+    --primary: #0033ff;         /* Roxo vibrante para acentos e hovers */
+    --secondary: #ffdc00;       /* Verde menta para elementos secundários */
+    --accent: #054161;          /* Amarelo-limão para destaque */
+    --border-color: #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background) !important; /* << ADICIONE APENAS O !important AQUI */
+    font-family: 'Inter', sans-serif;
+    color: var(--text-light);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* --- BANNER --- */
+.banner {
+    background-color: var(--accent); /* Banner com a cor de destaque amarela */
+    color: var(--text-dark);
+    text-align: center;
+    padding: 4rem 1rem;
+    border-bottom: 3px solid var(--border-color);
+}
+
+.banner p {
+    font-family: 'Eurostile', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    -webkit-text-stroke: 2px var(--border-color); /* Contorno na fonte */
+    color: var(--text-dark); /* Cor do preenchimento preta para contraste no amarelo */
+    text-shadow: 4px 4px 0px var(--border-color);
+}
+
+/* --- SEÇÃO DE CATEGORIAS --- */
+.category-navigation {
+    padding: 40px 20px;
+}
+
+.category-items {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* ESTILOS NEOBRUTALISTAS CORRIGIDOS PARA OS ÍCONES DE CATEGORIA */
+.category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+    height: 160px;
+    padding: 15px;
+    text-align: center;
+    background-color: #f4f4f4; /* Fundo branco/claro para o card */
+    border: 3px solid var(--border-color);
+    box-shadow: 6px 6px 0px var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-item:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0px var(--secondary); /* Sombra colorida no hover */
+}
+
+.category-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.category-item span {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-color); /* Texto preto para contraste no fundo claro do card */
+    text-decoration: none;
+}
+
+/* --- GRADE DE PRODUTOS --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px;
+    max-width: 1400px;
+    width: 90%;
+    margin: 40px auto;
+}
+
+/* --- CARD DE PRODUTO --- */
+.productsCards {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 3px solid var(--border-color);
+    box-shadow: 8px 8px 0px var(--border-color);
+    transition: all 0.2s ease;
+    padding: 15px;
+    border-radius: 0;
+}
+
+.productsCards:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0px var(--primary); /* Sombra roxa no hover */
+}
+
+.productsCards img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid var(--border-color);
+}
+
+.productsCards .productDescription {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.productsCards .productName {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--text-color); /* Texto preto */
+    margin-bottom: 10px;
+}
+
+.productsCards .description {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+.productsCards .productPrice {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark); /* Texto preto */
+    background-color: var(--accent);
+    padding: 5px 10px;
+    border: 3px solid var(--border-color);
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+.productsCards .lowFont {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .banner p {
+        font-size: 3rem;
+    }
+    .category-items {
+        /* Para telas menores, as categorias ficam em 2 colunas */
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .category-item {
+        width: auto; /* Permite que o item ocupe o espaço do grid */
+    }
+    .product-grid {
+        gap: 25px;
+    }
+}
+
+@media (max-width: 576px) {
+    .banner p {
+        font-size: 2.2rem;
+    }
+    .product-grid {
+        /* Em telas muito pequenas, uma coluna por produto */
+        grid-template-columns: 1fr;
+    }
+}

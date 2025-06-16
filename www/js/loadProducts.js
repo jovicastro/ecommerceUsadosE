@@ -17,7 +17,7 @@
 
     const linkByItem = cardClone.querySelector('a');
             if (linkByItem) {
-                linkByItem.href = `/viewProduct/${product.id}`; 
+                linkByItem.href = `/api/products/viewProduct/${product.id}`;
                 }
 
     // 4. Encontra os elementos dentro do clone para preencher com os dados do produto.
@@ -41,6 +41,10 @@
         const formattedPrice = parseFloat(product.price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         priceElement.textContent = formattedPrice || 'Preço indisponível';
     }
+    if(descriptionElement){
+        descriptionElement.textContent = product.description || 'Produto Sem Descricao';
+    };
+    
     if (dateElement && product.date) {
         // A data do backend vem como: "2111-12-21T03:00:00.000Z"
         // O template espera: "15/05/2025, 00:00"

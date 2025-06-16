@@ -72,6 +72,8 @@ const productController = {
                 product: savedProduct // Envia o produto salvo (com ID) de volta
             });
 
+            
+
         } catch (error) {
             // 8. Se qualquer erro ocorrer no bloco 'try' (ex: erro na validação,
             // erro ao salvar no banco, etc.), este bloco 'catch' será executado.
@@ -88,6 +90,7 @@ const productController = {
         }
         
     },
+    
         // --- NOVA FUNÇÃO PARA LISTAR TODOS OS PRODUTOS ---
     /**
      * @description Lida com a requisição GET para buscar e retornar todos os produtos.
@@ -110,6 +113,44 @@ const productController = {
                 message: 'Erro interno do servidor ao tentar buscar os produtos.',
                 errorDetails: error.message // Opcional: mais detalhes do erro em desenvolvimento
             });
+        }
+    },
+
+    getProductPage: async (req, res) => {
+        try {
+            // 1. Pega o ID da URL. O Express coloca os parâmetros da rota em req.params
+            
+            const productId = req.params.id;
+            const product = await Product.findById(productId);
+            console.log(`Controller: Buscando dados para a página do produto com ID: ${productId}`);
+
+            if (!product) {
+                // Se o produto for null (não encontrado), não continue!
+                // Envie uma resposta de "Não Encontrado" imediatamente.
+                console.log(`Controller: Produto com ID ${productId} não foi encontrado no banco de dados.`);
+                return res.status(404).send('<h1>Erro 404: Produto não encontrado</h1>');
+                // No futuro, você pode renderizar uma página de erro bonita: 
+                // return res.render('pagina_de_erro_404');
+                res.render('viewProduct', { product: product });
+            }
+
+            // 2. Busca o produto no banco de dados usando o Model
+            // (Vamos criar o método findById a seguir no Product.js)
+
+            // 3. Verifica se o produto foi encontrado
+            if (!product) {
+                // Se nenhum produto for encontrado com esse ID, renderiza uma página de erro 404
+                return res.status(404).render('404-page', { message: 'Produto não encontrado' });
+            }
+
+            // 4. Renderiza o arquivo EJS e passa os dados do produto para ele
+            // O Express vai procurar por 'viewProduct.ejs' na sua pasta de views ('www/')
+            // Ele cria um objeto { product: product } e o torna disponível dentro do arquivo EJS
+            res.render('viewProduct', { product: product });
+
+        } catch (error) {
+            console.error('Erro ao buscar dados para a página do produto:', error);
+            res.status(500).render('404', { message: 'Erro ao carregar a página.' });
         }
     }
     // --- FIM DA NOVA FUNÇÃO ---

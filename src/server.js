@@ -8,6 +8,7 @@ const ejs = require('ejs');   // Módulo para o template engine
 // Importa suas rotas de API
 const userRoutes = require('./routes/userRoutes.js');
 const productRoutes = require('./routes/productRoutes.js');
+const productController = require('./controllers/productController.js');
 
 const app = express();
 
@@ -56,6 +57,10 @@ app.get('/prodRegister', (req, res) => {
     res.render('prodRegister');
 });
 
+app.get('/order-success', (req, res) => {
+    res.render('order-success');
+});
+
 // Exemplo na sua rota do Express
 app.get('/payment', (req, res) => {
     const mockUser = {
@@ -82,9 +87,10 @@ app.get('/payment', (req, res) => {
     res.render('payment', { user: mockUser, cart: mockCart });
 });
 
-app.get('/viewProduct', (req, res) => {
-    res.render('viewProduct');
-});
+app.get('/viewProduct/:id', productController.getProductPage);
+// app.get('/viewProduct', (req, res) => {
+//     res.render('viewProduct');
+// });
 
 
 // --- ROTAS DA API ---

@@ -18,26 +18,61 @@
         <h1>Carrinho de Compras</h1>
     </div>
 
-    <main class="container">
-        <div class="product-card">
-            <img src="https://media.istockphoto.com/id/1399610550/pt/foto/rock-electric-guitar-in-rich-golden-color.jpg?s=612x612&w=0&k=20&c=8uvzDRIXHBJ0FRNf5547nqp8o9F8A9e1qyAeqPecWfQ=" alt="Nome do Produto" class="product-image">
-            <div class="product-info">
-                <h2 class="product-title">Nome do produto</h2>
-                <p class="product-description">
-                    Esta é uma breve descrição do produto. 
-                </p>
-                <p class="product-price">R$ 79,90</p>
-                <div class="quantity-selector">
-                    <label for="quantity" class="quant">Quantidade:</label>
-                    <input type="number" id="quantity" name="quantity" value="1" min="1" max="10">
+    <main class="container-carrinho">
+    
+        <div class="lista-produtos">
+            <h2>Seu Carrinho</h2>
+            
+            <div class="item-carrinho">
+                <img src="imagem_produto1.jpg" alt="Produto 1" class="item-imagem">
+                <div class="item-info">
+                    <h3 class="item-titulo">Nome do Produto 1</h3>
+                    <p class="item-preco">R$ 79,90</p>
+                    <div class="item-quantidade">
+                        <label>Qtd:</label>
+                        <input type="number" value="1" min="1">
+                    </div>
                 </div>
-                <button id="addToCartBtn" class="add-to-cart-btn"><a href="./">Finalizar pedido</a></button>
-                <p id="feedbackMessage" class="feedback-message"></p>
+                <button class="item-remover">×</button>
+            </div>
+    
+            <div class="item-carrinho">
+                </div>
+    
+            <a href="/" class="continuar-comprando-link">← Continuar Comprando</a>
+        </div>
+    
+        <div class="resumo-pedido">
+            <h2>Resumo do Pedido</h2>
+            
+            <div class="linha-subtotal">
+                <span>Subtotal</span>
+                <span>R$ 159,80</span>
+            </div>
+    
+            <div class="calculo-frete">
+                <label for="cep">Calcular frete:</label>
+                <div class="input-grupo">
+                    <input type="text" id="cep" placeholder="Digite seu CEP">
+                    <button>OK</button>
+                </div>
+            </div>
+    
+            <div class="linha-total">
+                <span>Total</span>
+                <span class="preco-total">R$ 159,80</span>
+            </div>
+    
+            <a href="/payment" target="_blank"><button class="btn-finalizar">Finalizar Compra</button></a>
+    
+            <div class="selos-confianca">
+                <img src="caminho/para/selo-ssl.png" alt="Compra Segura">
+                <span>Ambiente 100% seguro</span>
             </div>
         </div>
     </main>
 
-    <script src="script.js"></script>
-    <script src="cart.js"></script>
+    
+    <script src="js/cart.js"></script>
 </body>
 </html>

@@ -118,3 +118,33 @@ body {
     max-width: 80px;
     border: 2px solid var(--border-color);
 }
+
+/*
+==================================
+ESTILOS PÁGINA DE SUCESSO
+==================================
+*/
+
+.success-card {
+    text-align: center;
+    padding: 2rem; /* Mais espaço interno para o card de sucesso */
+}
+
+.success-icon {
+    font-size: 5rem;
+    color: #28a745; /* Cor verde para sucesso */
+    line-height: 1;
+}
+
+.order-details-summary {
+    text-align: left; /* Alinha o texto dos detalhes à esquerda */
+    margin-top: 2rem;
+    border-top: 3px solid var(--border-color); /* Separador visual */
+    padding-top: 1.5rem;
+}
+
+.order-details-summary h5 {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--darkBlue);
+}

@@ -44,7 +44,7 @@
   /* Imagem do Produto dentro do Card */
   .productsCards img {
     width: 100%;
-    max-height: 100%;    /* Altura máxima para a imagem, ajuste conforme sua preferência */
+    height: 100%;    /* Altura máxima para a imagem, ajuste conforme sua preferência */
     object-fit: contain;  /* 'contain' mostra a imagem inteira, 'cover' preenche o espaço */
   }
   

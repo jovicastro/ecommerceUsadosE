@@ -1,42 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
-    font-family: "Cal Sans", sans-serif;
+    font-family: "Poppins", sans-serif; /* Usei Poppins como base, é mais versátil que Cal Sans para textos longos */
     margin: 0;
     padding: 0;
-  }
-
-:root {
-    --darkBlue: #023047;
-    --mediumBlue: #219ebc;
-    --lightBlue:#8ecae6;
-    --yellow: #ffb703;
-    --iconday: #ebc25a;
-    --Input: #dad2d2;
-  }
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: #f4f4f4; /* Fundo claro para a página */
-    color: #333;
+    box-sizing: border-box; /* Boa prática para o layout não quebrar com padding e bordas */
 }
 
-/* Cores aproximadas da imagem:
-   Teal (barra superior): #35A9C0
-   Azul Escuro (banner): #19465D
-   Amarelo (texto banner, ícones): #FFCC00
-   Branco: #FFFFFF
-*/
+:root {
+    --darkBlue: #19465D;
+    --mediumBlue: #35A9C0;
+    --yellow: #FFCC00;
+    --white: #FFFFFF;
+    --lightGray: #f4f4f4;
+    --textColor: #333;
+}
 
-/* Cabeçalho inspirado na imagem */
+body {
+    background-color: var(--lightGray);
+    color: var(--textColor);
+}
+
+/* ================================== */
+/* ESTILOS GERAIS (Navbar e Banner)   */
+/* ================================== */
+
 .site-header {
-    background-color: #35A9C0; /* Teal da imagem */
+    background-color: var(--mediumBlue);
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: white;
+    color: var(--white);
 }
 
 .logo-container {
@@ -45,164 +40,243 @@ body {
 }
 
 .main-nav .nav-link {
-    color: white;
+    color: var(--white);
     text-decoration: none;
     margin-left: 20px;
-    font-size: 1.2em; /* Para ícones de coração/carrinho */
+    font-size: 1.2em;
 }
 
 .main-nav .login-link {
-    font-size: 1em; /* Tamanho normal para o texto "Login" */
+    font-size: 1em;
 }
 
 .main-nav .nav-link:hover {
-    color: #FFCC00; /* Amarelo para hover, como nos ícones da imagem */
+    color: var(--yellow);
 }
 
-/* Banner principal inspirado na imagem */
 .main-banner {
-    background-color: #19465D; /* Azul escuro da imagem */
-    color: #FFCC00;           /* Texto amarelo da imagem */
+    background-color: var(--darkBlue);
     text-align: center;
     padding: 30px 20px;
-    margin-bottom: 30px; /* Espaçamento antes do conteúdo principal */
+    margin-bottom: 30px;
 }
 
 .main-banner h1 {
     margin: 0;
     font-size: 2.5em;
-    color: white
+    color: var(--white);
+    font-family: "Cal Sans", sans-serif; /* Mantendo Cal Sans para títulos */
 }
 
-.container {
-    max-width: 900px; /* Largura máxima para o conteúdo principal */
-    margin: 0 auto;   /* Centralizar o container */
+
+/* ================================== */
+/* LAYOUT PRINCIPAL DO CARRINHO       */
+/* ================================== */
+
+.container-carrinho {
+    display: flex;
+    flex-wrap: wrap; /* Permite que o layout se ajuste em telas menores */
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px; /* Espaço entre a lista de produtos e o resumo */
     padding: 20px;
 }
 
-.product-card {
-    background-color: #FFFFFF; /* Fundo branco para o card do produto */
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: row; /* Imagem ao lado das informações em telas maiores */
-    overflow: hidden;
-    gap: 25px; /* Espaço entre a imagem e as informações */
+/* Coluna da esquerda com a lista de produtos */
+.lista-produtos {
+    flex: 2; /* Ocupa 2 partes do espaço */
+    min-width: 300px;
+}
+
+/* Coluna da direita com o resumo do pedido */
+.resumo-pedido {
+    flex: 1; /* Ocupa 1 parte do espaço */
+    background-color: var(--white);
     padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    height: fit-content; /* A altura se ajusta ao conteúdo */
 }
 
-.product-image {
-    max-width: 300px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 6px;
-    border: 1px solid #eee; /* Borda sutil para a imagem */
-}
-
-.product-info {
-    flex: 1; /* Permite que esta div ocupe o espaço restante */
-    display: flex;
-    flex-direction: column;
-}
-
-.product-title {
-    font-size: 1.8em;
-    color: #19465D; /* Azul escuro, como o banner */
+.lista-produtos h2,
+.resumo-pedido h2 {
+    font-family: "Cal Sans", sans-serif;
     margin-top: 0;
-    margin-bottom: 10px;
-}
-
-.product-description {
-    font-size: 0.95em;
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 15px;
-    flex-grow: 1; /* Faz a descrição ocupar espaço, empurrando preço/botão para baixo */
-}
-
-.product-price {
-    font-size: 1.6em;
-    font-weight: bold;
-    color: #35A9C0; /* Teal, como a barra superior */
     margin-bottom: 20px;
+    color: var(--darkBlue);
+    font-size: 1.5em;
 }
 
-.quantity-selector {
-    margin-bottom: 20px;
+
+/* ================================== */
+/* ITENS INDIVIDUAIS DO CARRINHO      */
+/* ================================== */
+
+.item-carrinho {
     display: flex;
     align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
 }
 
-.quantity-selector label {
-    margin-right: 10px;
-    font-size: 1em;
-    color: #333;
+.item-carrinho:last-child {
+    border-bottom: none; /* Remove a borda do último item */
 }
 
-.quantity-selector input[type="number"] {
-    width: 60px;
-    padding: 10px;
+.item-imagem {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.item-info {
+    flex-grow: 1; /* Ocupa o espaço restante */
+}
+
+.item-titulo {
+    font-size: 1.1em;
+    margin: 0 0 5px 0;
+    color: var(--textColor);
+    font-weight: 600;
+}
+
+.item-preco {
+    font-weight: bold;
+    color: var(--darkBlue);
+}
+
+.item-quantidade {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.item-quantidade input[type="number"] {
+    width: 50px;
+    text-align: center;
+    padding: 5px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    text-align: center;
-    font-size: 1em;
 }
 
-.add-to-cart-btn {
-    background-color: #FFCC00; /* Amarelo, como o texto do banner e ícones */
-    color: #19465D;           /* Texto em azul escuro para contraste */
+.item-remover {
+    background: none;
     border: none;
-    padding: 12px 25px;
+    font-size: 1.5em;
+    color: #aaa;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.2s ease;
+}
+.item-remover:hover {
+    color: #e74c3c; /* Vermelho no hover */
+}
+
+
+/* ================================== */
+/* RESUMO DO PEDIDO E AÇÕES           */
+/* ================================== */
+
+.linha-subtotal,
+.linha-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
     font-size: 1.1em;
+}
+
+.linha-total {
     font-weight: bold;
+    font-size: 1.3em;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    color: var(--darkBlue);
+}
+
+.calculo-frete {
+    margin: 20px 0;
+}
+.calculo-frete label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+.input-grupo {
+    display: flex;
+}
+.input-grupo input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px; /* Arredonda só os cantos da esquerda */
+    border-right: none;
+}
+.input-grupo button {
+    padding: 0 15px;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0; /* Arredonda só os cantos da direita */
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-finalizar {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
     text-transform: uppercase;
+    background-color: var(--yellow);
+    color: var(--darkBlue);
+    border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    align-self: flex-start; /* Alinha o botão à esquerda no container flex */
-}
-
-.add-to-cart-btn:hover {
-    background-color: #e6b800; /* Amarelo um pouco mais escuro para hover */
-    transform: translateY(-2px); /* Leve elevação no hover */
-}
-
-.add-to-cart-btn:active {
-    transform: translateY(0); /* Remove elevação ao clicar */
-}
-
-.feedback-message {
-    margin-top: 15px;
-    font-size: 0.9em;
-    color: green; /* Cor padrão para sucesso */
     font-weight: bold;
-    min-height: 1.2em; /* Reserva espaço para a mensagem não "pular" o layout */
+    transition: background-color 0.2s ease;
+}
+.btn-finalizar:hover {
+    background-color: #e6b800; /* Amarelo mais escuro */
 }
 
-/* Ajustes Responsivos */
+.continuar-comprando-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--mediumBlue);
+    text-decoration: none;
+    font-weight: 500;
+}
+.continuar-comprando-link:hover {
+    text-decoration: underline;
+}
+
+.selos-confianca {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    color: #666;
+    font-size: 0.9em;
+}
+.selos-confianca img {
+    width: 24px;
+}
+
+
+/* ================================== */
+/* AJUSTES RESPONSIVOS                */
+/* ================================== */
+
 @media (max-width: 768px) {
-    .product-card {
-        flex-direction: column; /* Empilha imagem e informações */
-        align-items: center;   /* Centraliza itens quando empilhados */
+    .container-carrinho {
+        flex-direction: column; /* Empilha a lista e o resumo */
     }
 
-    .product-image {
-        max-width: 80%; /* Imagem ocupa mais da largura do card */
-        margin-bottom: 20px;
-    }
-
-    .product-info {
-        align-items: center; /* Centraliza texto e botão */
-        text-align: center;
-    }
-    
-    .add-to-cart-btn {
-        width: 100%; /* Botão de largura total em telas menores */
-        padding: 15px;
-    }
-
-    .quantity-selector {
-        justify-content: center; /* Centraliza o seletor de quantidade */
+    .resumo-pedido {
+        margin-top: 20px;
     }
 }
 
@@ -218,62 +292,10 @@ body {
         margin-top: 5px;
     }
     .main-nav .nav-link {
-        margin-left: 10px;
-        margin-right: 10px;
+        margin: 0 10px;
     }
 
     .main-banner h1 {
         font-size: 1.8em;
     }
-    .product-title {
-        font-size: 1.5em;
-    }
-    .product-price {
-        font-size: 1.3em;
-    }
-    .add-to-cart-btn {
-        font-size: 1em;
-    }
 }
-
-/* 🌙 Dark mode */
-
-[data-bs-theme="dark"] body {
-    background-color: #0d0d0d;
-    color: #f0f0f0;
-  }
-  
-  [data-bs-theme="dark"] .product-card {
-    background-color: #1a1a1a;
-    border: 1px solid #333;
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
-  }
-  
-  [data-bs-theme="dark"] .product-image {
-    border: 1px solid #444;
-  }
-  
-  [data-bs-theme="dark"] .product-title {
-    color: #ffffff;
-  }
-  
-  [data-bs-theme="dark"] .product-description,
-  [data-bs-theme="dark"] .quantity-selector label {
-    color: #cccccc;
-  }
-  
-  [data-bs-theme="dark"] .quantity-selector input[type="number"] {
-    background-color: #2a2a2a;
-    color: #fff;
-    border: 1px solid #555;
-  }
-  
-  [data-bs-theme="dark"] .add-to-cart-btn {
-    background-color: #f9c600;
-    color: #0d0d0d;
-  }
-  
-  [data-bs-theme="dark"] .add-to-cart-btn:hover {
-    background-color: #e0b200;
-  }
-  

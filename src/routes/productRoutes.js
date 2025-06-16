@@ -11,6 +11,7 @@ const router = express.Router();
 // 3. Importa o controlador de produto que criamos anteriormente
 // Este objeto contém as funções que lidarão com a lógica para cada rota (ex: createProduct).
 const productController = require('../controllers/productController.js');
+router.get('/viewProduct/:id', productController.getProductPage);//pegar 
 
 // 4. Define as rotas específicas para produtos
 
