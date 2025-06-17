@@ -1,0 +1,69 @@
+/* Estilos para o footer.css */
+
+.site-footer {
+    background-color: #2c3e50; /* Um azul escuro, combine com sua paleta */
+    color: #ecf0f1; /* Um branco suave */
+    padding: 40px 0;
+    margin-top: 50px; /* Adiciona um espaço acima do footer */
+    font-size: 15px;
+    line-height: 24px;
+    width: 100%;
+}
+
+.footer-container {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-section {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+/* Em telas maiores, as seções ficam lado a lado */
+@media (min-width: 768px) {
+    .footer-section {
+        width: 30%; /* Três colunas */
+        margin-bottom: 0;
+    }
+}
+
+.footer-section h4 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #3498db; /* Um detalhe azul */
+    padding-bottom: 10px;
+}
+
+.footer-section p {
+    color: #bdc3c7; /* Cinza claro para o texto */
+}
+
+.footer-section ul {
+    padding: 0;
+    list-style: none;
+}
+
+.footer-section ul li a {
+    color: #bdc3c7;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #3498db; /* Cor de destaque ao passar o mouse */
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #34495e; /* Linha separadora */
+    padding-top: 20px;
+    margin-top: 20px;
+}
+

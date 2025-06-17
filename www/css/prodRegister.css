@@ -15,19 +15,28 @@
     --main-background: #ffffff; /* Fundo principal para formulários e contêineres */
     --text-color-on-main-bg: var(--darkBlue);
   }
-  
+
   body#prodRegis {
-    font-family: var(--main-font);
-    background-color: var(--ligthBlue); /* Fundo geral da página */
-    color: var(--darkBlue);
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-    margin: 0;
   }
+  
+  body#prodRegis {
+    font-family: var(--main-font); /* Defina fontes e cor de fundo aqui se necessário */
+    background-color: var(--ligthBlue);
+    color: var(--darkBlue);
+    margin: 0;
+    
+    /* Regras para o 'Sticky Footer' */
+    display: flex;
+    flex-direction: column; /* Essencial: empilha os filhos (main, footer) verticalmente */
+    min-height: 100vh;
+
+}
+
+/* 2. O contêiner do formulário ('main') agora centraliza o conteúdo */
+
   
   /* Contêiner principal que envolve o formulário e a mensagem */
   body#prodRegis > div {
@@ -183,4 +192,18 @@
   /* Remove o botão de limpar (x) no WebKit, se desejado */
   input[type="date"].inputProd::-webkit-clear-button {
       display: none;
+  }
+
+  .neo-brand .neo-logo-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--neo-text-color);
+    padding: 5px;
+    transition: var(--neo-transition);
+  }
+  .neo-brand .neo-logo-link:hover {
+    background-color: var(--neo-accent-color);
+    color: var(--neo-accent-text-color);
   }

@@ -37,6 +37,10 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+app.get('/favoritos', (req, res) => {
+    res.render('favoritos');
+});
+
 app.get('/login', (req, res) => {
     res.render('login');
 });

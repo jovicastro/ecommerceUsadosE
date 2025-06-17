@@ -1,55 +1,41 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <script src="js/theme.js"></script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar ao Carrinho - Desapego ENIAC</title>
-    <link rel="stylesheet" href="./css/cart.css">
-    <link rel="stylesheet" href="../www/css/navbar.css">
-
+    <title>Carrinho de Compras - Desapego</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/cart.css">
 </head>
 <body>
-
+    
     <%- include('partials/navbar') %>
 
-    <div class="main-banner">
+    <header class="main-banner">
         <h1>Carrinho de Compras</h1>
-    </div>
+    </header>
 
     <main class="container-carrinho">
-    
+        
         <div class="lista-produtos">
-            <h2>Seu Carrinho</h2>
-            
-            <div class="item-carrinho">
-                <img src="imagem_produto1.jpg" alt="Produto 1" class="item-imagem">
-                <div class="item-info">
-                    <h3 class="item-titulo">Nome do Produto 1</h3>
-                    <p class="item-preco">R$ 79,90</p>
-                    <div class="item-quantidade">
-                        <label>Qtd:</label>
-                        <input type="number" value="1" min="1">
-                    </div>
+            <div class="lista-produtos-itens">
                 </div>
-                <button class="item-remover">×</button>
-            </div>
-    
-            <div class="item-carrinho">
-                </div>
-    
-            <a href="/" class="continuar-comprando-link">← Continuar Comprando</a>
         </div>
-    
-        <div class="resumo-pedido">
+        
+        <aside class="resumo-pedido">
             <h2>Resumo do Pedido</h2>
             
-            <div class="linha-subtotal">
+            <div class="linha-resumo">
                 <span>Subtotal</span>
-                <span>R$ 159,80</span>
+                <span id="subtotal-valor">R$ 0,00</span>
             </div>
-    
+
             <div class="calculo-frete">
                 <label for="cep">Calcular frete:</label>
                 <div class="input-grupo">
@@ -57,22 +43,22 @@
                     <button>OK</button>
                 </div>
             </div>
-    
+            
             <div class="linha-total">
                 <span>Total</span>
-                <span class="preco-total">R$ 159,80</span>
+                <span id="total-valor">R$ 0,00</span>
             </div>
-    
-            <a href="/payment" target="_blank"><button class="btn-finalizar">Finalizar Compra</button></a>
-    
+            
+            <a href="/payment" class="link-botao-finalizar"><button class="btn-finalizar">Finalizar Compra</button></a>
+            
             <div class="selos-confianca">
-                <img src="caminho/para/selo-ssl.png" alt="Compra Segura">
+                <i class="fa-solid fa-shield-halved"></i>
                 <span>Ambiente 100% seguro</span>
             </div>
-        </div>
-    </main>
+        </aside>
 
+    </main>
     
-    <script src="js/cart.js"></script>
+    <script src="/js/cart.js"></script>
 </body>
 </html>

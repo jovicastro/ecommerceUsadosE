@@ -30,6 +30,7 @@
     --text-color: #054161;
     --primary: #0033ff;         /* Roxo vibrante para acentos e hovers */
     --secondary: #ffdc00;       /* Verde menta para elementos secundários */
+    --secondary_box: #0033ff;
     --accent: #054161;          /* Amarelo-limão para destaque */
     --border-color: #000000;
 }
@@ -41,7 +42,7 @@
 }
 
 body {
-    background-color: var(--background) !important; /* << ADICIONE APENAS O !important AQUI */
+    background-color: var(--secondary) !important; /* << ADICIONE APENAS O !important AQUI */
     font-family: 'Inter', sans-serif;
     color: var(--text-light);
 }
@@ -100,12 +101,12 @@ a {
 
 .category-item:hover {
     transform: translate(-3px, -3px);
-    box-shadow: 9px 9px 0px var(--secondary); /* Sombra colorida no hover */
+    box-shadow: 9px 9px 0px var(--secondary_box); /* Sombra colorida no hover */
 }
 
 .category-item img {
     width: 60px;
-    height: 60px;
+    height: 90px;
     object-fit: contain;
     margin-bottom: 10px;
 }

@@ -3,7 +3,7 @@
 /* --- VARIÁVEIS GLOBAIS E FONTE --- */
 :root {
   --neo-font: 'VT323', monospace;
-  --neo-bg-color: #ffdc00;
+  --neo-bg-color: white;
   --neo-text-color: #000000;
   --neo-accent-color: #0059FF; /* Azul elétrico vibrante */
   --neo-accent-text-color: #FFFFFF;

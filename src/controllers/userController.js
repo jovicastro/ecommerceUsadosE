@@ -27,6 +27,16 @@ const userController = {
             next(error);
         }
     }
-};
+
+    loginUser: async (req, res, next) => {
+        try {
+
+        } catch (error) {
+
+        }
+    }
+
+}
+
 
 module.exports = userController;

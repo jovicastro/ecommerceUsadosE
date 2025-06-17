@@ -1,0 +1,153 @@
+/* Estilo Neobrutalista para a Página de Favoritos */
+
+:root {
+  --neo-font: 'VT323', monospace;
+  --neo-bg-color: #FFFFFF;
+  --neo-text-color: #000000;
+  --neo-accent-color: #0059FF; /* Azul elétrico */
+  --neo-warning-color: #FFDE03; /* Amarelo */
+  --neo-border-width: 3px;
+  --neo-shadow-offset: 5px;
+  --neo-shadow: var(--neo-shadow-offset) var(--neo-shadow-offset) 0px var(--neo-text-color);
+  --neo-transition: all 0.1s ease-out;
+}
+
+body {
+    background-color: #f0f0f0;
+}
+
+.favorites-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.page-header {
+    background: var(--neo-bg-color);
+    border: var(--neo-border-width) solid var(--neo-text-color);
+    box-shadow: var(--neo-shadow);
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    font-family: var(--neo-font);
+    font-size: 3rem;
+    margin: 0;
+    color: var(--neo-text-color);
+}
+
+.favorites-grid {
+    display: grid;
+    /* Cria colunas responsivas: no mínimo 280px de largura */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2.5rem;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--neo-bg-color);
+    border: var(--neo-border-width) solid var(--neo-text-color);
+    box-shadow: var(--neo-shadow);
+    transition: var(--neo-transition);
+}
+
+.product-card:hover {
+    transform: translate(var(--neo-shadow-offset), var(--neo-shadow-offset));
+    box-shadow: none;
+}
+
+.card-image-wrapper {
+    width: 100%;
+    height: 200px;
+    border-bottom: var(--neo-border-width) solid var(--neo-text-color);
+}
+
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-content {
+    padding: 1rem;
+    font-family: var(--neo-font);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Faz o conteúdo ocupar o espaço restante */
+}
+
+.product-name {
+    font-size: 1.8rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--neo-text-color);
+}
+
+.product-price {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: bold;
+    color: var(--neo-text-color);
+}
+
+.card-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto; /* Empurra os botões para o final do card */
+    padding-top: 1rem;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--neo-font);
+    font-size: 1.2rem;
+    text-decoration: none;
+    border: var(--neo-border-width) solid var(--neo-text-color);
+    box-shadow: var(--neo-shadow);
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: var(--neo-transition);
+}
+
+.btn:hover, .btn:active {
+    transform: translate(var(--neo-shadow-offset), var(--neo-shadow-offset));
+    box-shadow: none;
+}
+
+.btn-view {
+    flex-grow: 1;
+    background: var(--neo-accent-color);
+    color: var(--neo-bg-color);
+}
+
+.btn-remove {
+    background: var(--neo-warning-color);
+    color: var(--neo-text-color);
+    width: 50px; /* Largura fixa para o botão de ícone */
+}
+
+.btn-remove i {
+    font-size: 1.4rem;
+}
+
+/* Estilo para a mensagem de "lista vazia" */
+.empty-state {
+    text-align: center;
+    background: var(--neo-bg-color);
+    border: var(--neo-border-width) solid var(--neo-text-color);
+    padding: 3rem;
+    font-family: var(--neo-font);
+}
+.empty-state i {
+    font-size: 4rem;
+    color: var(--neo-accent-color);
+    margin-bottom: 1rem;
+}
+.empty-state h2 {
+    font-size: 2.5rem;
+    margin: 0;
+}
