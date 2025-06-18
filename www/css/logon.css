@@ -1,22 +1,42 @@
 /* Importando variáveis de cor do seu style.css */
-@import url('style.css'); 
+
+
+/* ================================================================
+   PASSO 1: Estrutura "Sticky Footer" adicionada ao HTML e BODY
+   ================================================================ */
+html {
+    height: 100%;
+}
 
 body {
     background-color: var(--background-light);
     font-family: 'Poppins', sans-serif;
     color: var(--text-color-dark);
+    
+    /* REGRAS ADICIONADAS PARA O LAYOUT */
+    display: flex;
+    flex-direction: column; /* Organiza os filhos (main, footer) em coluna */
+    min-height: 100%;     /* Garante que o body ocupe no mínimo a altura da tela */
 }
 
+/* ================================================================
+   PASSO 2: Ajuste no contêiner principal para "crescer"
+   ================================================================ */
 .main-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 60px 20px;
-    min-height: calc(100vh - 80px); /* Subtrai a altura do header */
+    padding: 2rem 1rem; /* Padding ajustado para um melhor espaçamento */
+    flex-grow: 1;       /* REGRA ADICIONADA: Faz o <main> crescer e empurrar o rodapé */
 }
 
+/* ================================================================
+   PASSO 3: Remoção da margem excessiva no cartão
+   ================================================================ */
 .logon-card {
-    margin-top: 600px;
+    /* margin-top: 600px; */ /* <-- LINHA PROBLEMÁTICA REMOVIDA! */
+    margin: 2rem 0; /* Adicionada uma margem segura para garantir espaçamento */
+    
     background-color: #ffffff;
     padding: 2.5rem;
     border: 3px solid #000; /* Borda sólida - Neobrutalismo */
@@ -51,11 +71,11 @@ body {
 
 .input-group input {
     width: 100%;
-    padding: 12px 15px;
+    padding: 12px 4px;
     border: 2px solid var(--text-color-dark);
     border-radius: 5px;
     font-size: 1rem;
-    background-color: var(--background-light);
+    background-color: lightgray;
     transition: all 0.2s ease;
 }
 
@@ -71,7 +91,7 @@ body {
     border: 2px solid #000;
     border-radius: 5px;
     background-color: var(--primary-color);
-    color: white;
+    color: #000000; /* Texto alterado para preto */
     font-size: 1.1rem;
     font-weight: 700;
     cursor: pointer;

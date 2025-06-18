@@ -4,11 +4,13 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path'); // Módulo para trabalhar com caminhos de arquivos
 const ejs = require('ejs');   // Módulo para o template engine
+const cookieParser = require('cookie-parser');
 
 // Importa suas rotas de API
 const userRoutes = require('./routes/userRoutes.js');
 const productRoutes = require('./routes/productRoutes.js');
 const productController = require('./controllers/productController.js');
+const authMiddleware = require('./middlewares/authMiddleware.js');
 
 const app = express();
 
@@ -16,6 +18,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // --- CONFIGURAÇÃO DO FRONTEND ---
 
@@ -57,7 +60,7 @@ app.get('/cart', (req, res) => {
     res.render('cart');
 });
 
-app.get('/prodRegister', (req, res) => {
+app.get('/prodRegister', authMiddleware, (req, res) => {
     res.render('prodRegister');
 });
 

@@ -1,0 +1,132 @@
+/* css/category.css (Antigo neobrutalism.css, agora com foco em menos interferência no grid) */
+
+/* Cores Base (ajuste conforme sua paleta) */
+:root {
+    --neob-bg: #f5f5f5; /* Quase branco */
+    --neob-text: #1a1a1a; /* Preto quase puro */
+    --neob-primary: #ff007f; /* Magenta vibrante */
+    --neob-secondary: #00ffff; /* Ciano vibrante */
+    --neob-border: #1a1a1a; /* Borda escura */
+    --neob-shadow-offset: 8px; /* Offset da sombra */
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace; /* Tipografia monoespaçada */
+    background-color: var(--neob-bg);
+    color: var(--neob-text);
+}
+
+/* --- Estilo da Navbar --- */
+/* Estas regras devem estar em navbar.css, mas se estão aqui, mantenha-as. */
+/* O importante é que a navbar tenha seu próprio estilo neobrutalista */
+.navbar {
+    background-color: var(--neob-primary) !important; 
+    border-bottom: 3px solid var(--neob-border);
+    box-shadow: var(--neob-shadow-offset) var(--neob-shadow-offset) 0px var(--neob-border);
+    padding: 1rem 0; 
+    position: relative; /* Ou sticky/fixed dependendo do seu design */
+    z-index: 1020; 
+    margin-bottom: var(--neob-shadow-offset); /* Espaço entre navbar e o conteúdo principal */
+}
+
+.navbar a, .navbar-brand { /* ... (mantido como antes) ... */ }
+.navbar a:hover { /* ... (mantido como antes) ... */ }
+.navbar .btn { /* ... (mantido como antes) ... */ }
+.navbar .btn:hover { /* ... (mantido como antes) ... */ }
+
+
+/* --- ESTILOS APLICADOS DIRETAMENTE AOS CONTEÚDOS DAS COLUNAS --- */
+/* NÃO MEXER NAS CLASSES .container, .row, .col-* diretamente aqui para layout. */
+/* Deixe o Bootstrap lidar com isso. */
+
+/* Estilo para a sidebar de Filtros */
+#filters-sidebar {
+    background-color: var(--neob-secondary); /* Cor vibrante para o filtro */
+    border: 2px solid var(--neob-border);
+    box-shadow: var(--neob-shadow-offset) var(--neob-shadow-offset) 0px var(--neob-border);
+    padding: 1.5rem; /* Padding interno para o conteúdo dos filtros */
+    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura */
+    /* Removido margin-right daqui para deixar o gutter do Bootstrap gerenciar o espaçamento */
+    /* A margem bottom para mobile (mb-4) já está no EJS */
+}
+
+#filters-sidebar h3 { /* ... (mantido como antes) ... */ }
+.filter-group { /* ... (mantido como antes) ... */ }
+.filter-group h4 { /* ... (mantido como antes) ... */ }
+#filters-sidebar label { /* ... (mantido como antes) ... */ }
+#filters-sidebar input[type="checkbox"], #filters-sidebar input[type="radio"] { /* ... (mantido como antes) ... */ }
+#filters-sidebar input[type="checkbox"]:checked, #filters-sidebar input[type="radio"]:checked { /* ... (mantido como antes) ... */ }
+#filters-sidebar input[type="radio"]:checked { /* ... (mantido como antes) ... */ }
+
+
+/* Estilo para a Seção de Conteúdo Principal (Produtos) */
+/* Aplique os estilos neobrutalistas DIRETAMENTE ao conteúdo que vai dentro da coluna. */
+/* A <section class="col-lg-9 col-md-8"> é uma coluna do Bootstrap. */
+/* Vamos estilizar o que está DENTRO dela, ou a própria section, mas sem quebrar o grid. */
+/* Podemos adicionar uma div wrapper dentro da section para aplicar o estilo neobrutalista,
+   se a própria section.col-lg-9 estiver resistindo aos estilos de borda/sombra.
+   Por enquanto, vou tentar na própria section: */
+
+section.col-lg-9, section.col-md-8 {
+    background-color: var(--neob-bg); /* Fundo da coluna de produtos */
+    border: 2px solid var(--neob-border);
+    box-shadow: var(--neob-shadow-offset) var(--neob-shadow-offset) 0px var(--neob-border);
+    padding: 1.5rem; /* Padding interno para o conteúdo dos produtos */
+    box-sizing: border-box;
+    /* Adiciona margem à esquerda para o espaçamento entre as colunas, combinando com o filtro */
+    margin-left: var(--neob-shadow-offset); 
+}
+
+/* Estilo para o Banner (dentro da coluna de produtos) */
+.banner-container { 
+    width: 100%;
+    height: 180px; 
+    background-color: var(--neob-primary); 
+    border: 2px solid var(--neob-border); 
+    box-shadow: var(--neob-shadow-offset) var(--neob-shadow-offset) 0px var(--neob-border);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    color: white;
+    text-shadow: 2px 2px 0px var(--neob-border);
+    text-align: center;
+    padding: 1rem; 
+    box-sizing: border-box;
+}
+
+/* Product Grid */
+.product-grid { /* ... (mantido como antes) ... */ }
+
+/* Product Card (productsCards) */
+.productsCards { /* ... (mantido como antes) ... */ }
+/* ... (todas as sub-regras de productsCards mantidas como antes) ... */
+
+/* Footer */
+footer { /* ... (mantido como antes) ... */ }
+
+/* Utilities / Overrides */
+.card, .form-control, .btn {
+    border-radius: 0 !important; 
+}
+.productsCards {
+    box-shadow: var(--neob-shadow-offset) var(--neob-shadow-offset) 0px var(--neob-border) !important;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 991.98px) { /* Para telas menores que lg (tablets e celulares) */
+    /* Quando as colunas empilham, remova as margens laterais adicionadas */
+    #filters-sidebar,
+    section.col-lg-9, section.col-md-8 {
+        margin-right: 0;
+        margin-left: 0;
+    }
+    /* O mb-4 no aside já deve criar o espaçamento entre o filtro e o conteúdo de produtos */
+}
+
+@media (max-width: 767.98px) { /* Para telas menores que md (celulares) */
+    .product-grid { /* ... (mantido como antes) ... */ }
+    .productsCards { /* ... (mantido como antes) ... */ }
+    .banner-container { /* ... (mantido como antes) ... */ }
+}

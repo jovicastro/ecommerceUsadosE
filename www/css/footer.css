@@ -3,7 +3,7 @@
 .site-footer {
     background-color: #2c3e50; /* Um azul escuro, combine com sua paleta */
     color: #ecf0f1; /* Um branco suave */
-    padding: 40px 0;
+    padding: 40 40 40 40px;
     margin-top: 50px; /* Adiciona um espaço acima do footer */
     font-size: 15px;
     line-height: 24px;
@@ -17,6 +17,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 .footer-section {
@@ -63,7 +65,7 @@
 .footer-bottom {
     text-align: center;
     border-top: 1px solid #34495e; /* Linha separadora */
-    padding-top: 20px;
-    margin-top: 20px;
+    padding-top: 0px;
+    margin-top: 0px;
 }
 

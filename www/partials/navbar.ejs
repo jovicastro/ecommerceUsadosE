@@ -25,19 +25,24 @@
 
         <ul class="neo-menu">
             <li><a href="/category"><span>C</span>ategorias</a></li>
-            <li><a href="/promocoes"><span>P</span>romoções</a></li>
             <li><a href="/prodRegister"><span>V</span>ender</a></li>
-        </ul>
-
-        <div class="neo-actions">
             <div class="neo-search-wrapper">
                 <i class="fa-solid fa-magnifying-glass search-icon"></i>
                 <input type="text" class="neo-search-input" placeholder="Buscar...">
             </div>
+        </ul>
 
-            <a href="/login" class="neo-action-button" title="Minha Conta">
-                <i class="fa-solid fa-user"></i>
-            </a>
+        <div class="neo-actions">
+            <div id="user-action-area">
+                <a href="/login" class="neo-action-button" title="Minha Conta">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+            </div>
+
+            
+            
+
+            
 
             <a href="/favoritos" class="neo-action-button" title="Favoritos">
                 <i class="fa-solid fa-heart"></i>
@@ -51,4 +56,5 @@
     </nav>
 
     </body>
+    <script src="/js/authCheck.js"></script>
 </html>

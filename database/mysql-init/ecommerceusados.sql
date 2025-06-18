@@ -1,32 +1,52 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Tempo de geração: 06/06/2025 às 16:47
--- Versão do servidor: 10.4.28-MariaDB
--- Versão do PHP: 8.2.4
-
+-- Garante que o script pare em caso de erro e comece do zero
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Banco de dados: `ecommerceusados`
---
+-- 1. Cria o banco de dados se ele não existir e o seleciona para uso
+CREATE DATABASE IF NOT EXISTS `ecommerceusados` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `ecommerceusados`;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `products`
+-- Apaga a tabela antiga se ela existir, para evitar conflitos
 --
+DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `products`;
 
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `users` (CORRIGIDA)
+--
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `fullname` varchar(50) NOT NULL,
+  `password` varchar(60) NOT NULL, -- CORREÇÃO: Aumentado para 60 caracteres para o hash do bcrypt
+  `email` varchar(50) NOT NULL,
+  `telephoneN` varchar(20) DEFAULT NULL,
+  `cep` varchar(10) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `addressN` varchar(10) DEFAULT NULL,
+  `isAdmin` tinyint(1) NOT NULL DEFAULT 0, -- Assumindo que 0 = não admin, 1 = admin
+  `date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Adicionando um usuário de exemplo (a senha 'senha123' precisa ser criptografada na aplicação)
+-- NOTA: Este INSERT é apenas um exemplo. O registro real deve ser feito pela sua API para criptografar a senha.
+--
+INSERT INTO `users` (`id`, `fullname`, `password`, `email`, `isAdmin`) VALUES
+(13, 'eniac', '$2a$10$3fG.q6G8f.P9g.Z3p8lX5uY2R1Q.Z4lX8n.Y2n.Z3p8lX5uY2R1Q', 'eniac@eniac', 1);
+
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `products` (CORRIGIDA)
+--
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
@@ -36,17 +56,16 @@ CREATE TABLE `products` (
   `date` date NOT NULL,
   `status` varchar(50) NOT NULL,
   `category` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Despejando dados para a tabela `products`
 --
-
 INSERT INTO `products` (`id`, `name`, `description`, `price`, `img`, `date`, `status`, `category`) VALUES
 (2, 'notebook samsung', 'i3 14100F', 3200, 'https://samsungbrshop.vtexassets.com/arquivos/ids/244153-600-auto?v=638755106410700000&width=600&height=auto&aspect=true', '2025-05-25', 'novo', 'comutador'),
 (3, 'S21', 'Celular', 1200, 'https://fujiokadistribuidor.vteximg.com.br/arquivos/ids/232306', '2025-05-08', 'uso', 'comutador'),
 (4, 'Livro', 'We teste', 17.5, 'https://m.media-amazon.com/images/I/51hLO3-QV1L._SY445_SX342_.jpg', '2025-06-06', 'new', 'Computador'),
-(5, 'Projetor Epson PowerLite U32 +', 'rojetor Epson PowerLite U32  ? Resolução WUXGA (1920x1200) - Qualidade Full HD com nitidez impressio', 2800, 'https://img.olx.com.br/thumbs120x120/15/157531658814433.webp', '2025-06-06', 'used', 'Projetor');
+(5, 'Projetor Epson PowerLite U32 +', 'rojetor Epson PowerLite U32 ? Resolução WUXGA (1920x1200) - Qualidade Full HD com nitidez impressio', 2800, 'https://img.olx.com.br/thumbs120x120/15/157531658814433.webp', '2025-06-06', 'used', 'Projetor'),
 (6, 'Smartphone Samsung Galaxy S24', 'Smartphone com IA, Câmera Tripla de 50MP, 256GB de armazenamento e 8GB de RAM.', 4100.00, 'https://img.olx.com.br/images/69/693576534953421.webp', '2025-06-13', 'new', 'Celular'),
 (7, 'Notebook Dell Inspiron 15', 'Notebook com processador Intel Core i7, 16GB RAM, 512GB SSD e tela de 15.6 polegadas Full HD.', 4899.90, 'https://img.olx.com.br/images/76/769519539992428.webp', '2025-06-13', 'new', 'Computador'),
 (8, 'Monitor Gamer LG UltraGear 27', 'Monitor de 27 polegadas, resolução QHD, 144Hz, 1ms, compatível com G-Sync.', 1850.00, 'https://img.olx.com.br/images/20/209559653328436.webp', '2025-06-14', 'new', 'Monitor'),
@@ -61,24 +80,20 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `img`, `date`, `st
 --
 -- Índices para tabelas despejadas
 --
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
---
--- Índices de tabela `products`
---
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT para tabelas despejadas
 --
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14; -- CORREÇÃO: Começa depois do último ID inserido
 
---
--- AUTO_INCREMENT de tabela `products`
---
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16; -- CORREÇÃO: Começa depois do último ID inserido
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+COMMIT;
