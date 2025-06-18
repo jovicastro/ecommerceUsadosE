@@ -1,133 +1,205 @@
+/* Neobrutalism Variables */
+:root {
+    --neo-primary-color: #ffdc00; /* Amarelo vibrante */
+    --neo-secondary-color: #054161; /* Azul escuro */
+    --neo-text-color: #000000; /* Preto para texto */
+    --neo-surface-color: #FFFFFF; /* Fundo de elementos (branco) */
+    --neo-border-width: 3px;
+    --neo-shadow-offset: 6px; /* Offset da sombra */
+    --neo-shadow: var(--neo-shadow-offset) var(--neo-shadow-offset) 0px var(--neo-text-color);
+    --neo-transition: all 0.1s ease-out;
+    --neo-font: 'VT323', monospace;
+}
+
 /* Reset básico e centralização */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html, body {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: var(--neo-font); /* Usando a fonte neobrutalista */
+    color: var(--neo-text-color);
 }
 
 /* Container geral */
 body {
-  display: flex;
-  flex-direction: column;
-  background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--neo-primary-color); /* Fundo amarelo vibrante */
 }
 
-/* Navbar simples */
+/* Navbar simples - Mantendo um estilo base neobrutalista, mas você já tem uma navbar.css */
+/* Certifique-se que o seu navbar.css esteja configurado com cores neobrutalistas também */
+/* Exemplo de como seria para esta nav */
 nav {
-  background-color: #1996b5;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
+    background-color: var(--neo-secondary-color); /* Azul escuro */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    border-bottom: var(--neo-border-width) solid var(--neo-text-color); /* Borda inferior */
 }
 
 /* Logo */
 nav .logo img {
-  width: 60px;
+    width: 60px;
+    /* Adicionar borda ou sombra se desejar */
 }
 
 /* Voltar */
 #voltar {
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  text-decoration: none;
+    color: var(--neo-primary-color); /* Texto amarelo */
+    font-weight: bold;
+    font-size: 1.5rem; /* Aumentar tamanho */
+    text-decoration: none;
+    text-shadow: 2px 2px 0px var(--neo-text-color); /* Sombra para o texto */
+    transition: var(--neo-transition);
 }
+#voltar:hover {
+    transform: translate(2px, 2px); /* Efeito de click */
+    text-shadow: none;
+}
+
 
 /* Área central */
 main {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem; /* Adicionar padding para telas menores */
 }
 
 /* Bloco de login */
 .login {
-  background-color: #f7f7f7;
-  padding: 162px 60px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  width: 100%;
-  max-width: 500px;      /* LARGURA MAIOR */
-  min-height: 400px;     /* ALTURA MAIOR */
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  text-align: center;
+    background-color: var(--neo-surface-color); /* Fundo branco */
+    padding: 3rem; /* Reduzir padding para algo mais comum */
+    border-radius: 0; /* Remover border-radius para estilo neobrutalista */
+    border: var(--neo-border-width) solid var(--neo-text-color); /* Borda preta grossa */
+    box-shadow: var(--neo-shadow); /* Sombra marcante */
+    width: 100%;
+    max-width: 450px; /* Ajustar largura máxima */
+    /* min-height: 400px; Removido, o padding e conteúdo definirão a altura */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Ajustar espaçamento */
+    text-align: center;
 }
 
 
 /* Título */
 .login h1 {
-  font-size: 32px;
-  font-weight: 700;
+    font-size: 3rem; /* Aumentar tamanho da fonte */
+    font-weight: 700;
+    margin-bottom: 1rem; /* Espaçamento após o título */
+    text-shadow: 4px 4px 0px var(--neo-primary-color); /* Sombra amarela */
 }
 
 /* Inputs */
 .login input {
-  padding: 10px 15px;
-  font-size: 16px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  width: 100%;
-  outline: none;
+    padding: 1rem; /* Aumentar padding dos inputs */
+    font-size: 1.3rem; /* Aumentar fonte dos inputs */
+    border-radius: 0; /* Remover border-radius */
+    border: var(--neo-border-width) solid var(--neo-text-color); /* Borda grossa */
+    width: 100%;
+    outline: none;
+    background-color: var(--neo-surface-color); /* Fundo branco */
+    color: var(--neo-text-color);
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.5); /* Pequena sombra interna para profundidade */
 }
 
 .login input:focus {
-  border-color: #2c5cad;
-  box-shadow: 0 0 0 2px rgba(44, 92, 173, 0.2);
+    border-color: var(--neo-secondary-color); /* Borda azul ao focar */
+    box-shadow: var(--neo-shadow-offset) var(--neo-shadow-offset) 0px var(--neo-secondary-color); /* Sombra azul ao focar */
 }
 
-/* Senha com ícone */
+/* Senha com ícone - Se você tiver um ícone aqui, precisaria de um CSS para ele */
 .senha-container {
-  position: relative;
-  width: 100%;
+    position: relative;
+    width: 100%;
 }
 
 .senha-container input {
-  padding-right: 45px;
+    padding-right: 3rem; /* Espaço para o ícone, se houver */
 }
 
+/* Se você tiver um ícone de toggle para senha, adicione estilo neobrutalista a ele */
 #toggleSenha {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #555;
-  font-size: 18px;
-  cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--neo-secondary-color); /* Cor do ícone */
+    font-size: 1.5rem; /* Tamanho do ícone */
+    cursor: pointer;
+    background-color: transparent; /* Certifique-se que o fundo é transparente */
+    border: none;
 }
+#toggleSenha:hover {
+    color: var(--neo-text-color);
+}
+
 
 /* Botão */
 .login button {
-  background-color: #333;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
+    background-color: var(--neo-secondary-color); /* Azul escuro */
+    color: var(--neo-primary-color); /* Texto amarelo */
+    border: var(--neo-border-width) solid var(--neo-text-color); /* Borda preta */
+    border-radius: 0; /* Remover border-radius */
+    padding: 1rem 1.5rem; /* Aumentar padding */
+    font-size: 1.8rem; /* Aumentar fonte */
+    cursor: pointer;
+    text-transform: uppercase; /* Texto em maiúsculas */
+    font-weight: bold;
+    box-shadow: var(--neo-shadow); /* Sombra marcante */
+    transition: var(--neo-transition);
+    margin-top: 20px;
 }
 
 .login button:hover {
-  background-color: #2c5cad;
+    background-color: var(--neo-text-color); /* Fundo preto no hover */
+    color: var(--neo-primary-color); /* Texto amarelo no hover */
+    transform: translate(var(--neo-shadow-offset), var(--neo-shadow-offset)); /* Efeito de click */
+    box-shadow: none; /* Remover sombra no hover para o efeito de click */
 }
 
 /* Link de cadastro */
 #cadastro {
-  font-size: 18 px;
-  color: #2c5cad;
-  text-decoration: none;
+    font-size: 1.3rem; /* Aumentar tamanho da fonte */
+    color: var(--neo-secondary-color); /* Cor azul */
+    text-decoration: underline; /* Manter sublinhado */
+    font-weight: bold;
+    margin-top: 1rem; /* Espaçamento superior */
+    transition: var(--neo-transition);
 }
 
 #cadastro:hover {
-  text-decoration: underline;
+    color: var(--neo-text-color); /* Mudar para preto no hover */
+    text-decoration: none; /* Remover sublinhado no hover, ou manter */
+}
+
+/* Responsividade básica para telas menores */
+@media (max-width: 600px) {
+    .login {
+        padding: 2rem 1.5rem;
+        margin: 1rem; /* Margem para não colar nas bordas */
+    }
+
+    .login h1 {
+        font-size: 2.5rem;
+    }
+
+    .login input, .login button {
+        font-size: 1.1rem;
+        padding: 0.8rem;
+    }
+
+    #cadastro {
+        font-size: 1rem;
+    }
 }

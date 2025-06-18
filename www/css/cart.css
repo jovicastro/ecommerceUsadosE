@@ -1,6 +1,7 @@
 /* Estilo Neobrutalista para a Página de Carrinho */
 
 :root {
+  --border-color: #000000;
   --neo-font: 'VT323', monospace;
   --neo-bg-color: #f0f0f0;
   --neo-surface-color: #FFFFFF;
@@ -19,22 +20,23 @@
 }
 
 body {
-    background-color: var(--neo-bg-color);
+    background-color: #ffdc00;
     color: var(--neo-text-color);
     font-family: var(--neo-font);
 }
 
 .main-banner {
-    background-color: var(--neo-surface-color);
+    background-color: #054161;
     text-align: center;
     padding: 2rem;
     border-bottom: var(--neo-border-width) solid var(--neo-text-color);
 }
 
 .main-banner h1 {
-    font-size: 3rem;
-    color: var(--neo-text-color);
+    font-size: 4rem;
+    color: #ffd000;
     margin: 0;
+    text-shadow: 6px 6px 0px var(--border-color);
 }
 
 .container-carrinho {
