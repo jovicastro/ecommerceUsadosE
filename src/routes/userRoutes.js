@@ -9,6 +9,8 @@ const User = require('../models/User.js');
 router.post('/register', userController.registerUser);
 // rota para login
 router.post('/login', userController.loginUser)
+//logout
+router.get('/logout', userController.logoutUser);
 
 
 router.get('/me', authMiddleware, async (req, res) => {

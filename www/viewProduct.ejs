@@ -1,6 +1,7 @@
 <!-- viewProduct -->
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,137 +10,158 @@
   <link rel="stylesheet" href="/css/viewProduct.css">
   <link rel="stylesheet" href="/css/footer.css">
   <link rel="stylesheet" href="/bootstrap-5.3.6-dist/css/bootstrap.min.css">
-  <title><%= product.name %></title>
+  <title>
+    <%= product.name %>
+  </title>
 </head>
+
 <body>
   <!-- Nav bar -->
   <%- include('partials/navbar') %>
-  <!-- Fim Navbar -->
+    <!-- Fim Navbar -->
 
 
-  <section class="tela_compra">
-  <div class="container">
-    <!-- Galeria de imagens -->
-    <div class="carrossel">
-      <div class="imagem-principal">
-        <img id="imagem-destaque" src="<%= product.img %>" alt="Imagem Principal">
+    <section class="tela_compra">
+      <div class="container">
+        <!-- Galeria de imagens -->
+        <div class="carrossel">
+          <div class="imagem-principal">
+            <img id="imagem-destaque" src="<%= product.img %>" alt="Imagem Principal">
+          </div>
+          <div class="miniaturas">
+            <img src="<%= product.img %>" alt="Miniatura 1" class="selecionada" onclick="trocarImagem(this)">
+            <img
+              src="data:image/jpeg;base64,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"
+              alt="Miniatura 2" onclick="trocarImagem(this)">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrRptRBjs6EWMMjiiTHID3NkEeVITy8n7LxQ&s"
+              alt="Miniatura 2" onclick="trocarImagem(this)">
+
+
+          </div>
+        </div>
+
+
+        <!-- Detalhes do produto -->
+        <div class="detalhes_produto">
+          <h1>
+            <%= product.name %>
+          </h1>
+          <div class="preco">R$<%= product.price %>
+          </div>
+          <div class="info">
+            <p><strong>Cor:</strong> Cinza</p>
+            <ul>
+              <li>
+                <%= product.status%>
+              </li>
+              <li>
+                <%= product.description%>
+              </li>
+              <li>Compatível com redes 5G</li>
+              <li>64GB armazenamento</li>
+              <li>Sistema Google Chrome OS</li>
+            </ul>
+          </div>
+        </div>
+
+
+        <!-- Seção de compra -->
+        <div class="secao_produto">
+          <div class="caixa_de_compra">
+            <h3>Chegará grátis até sábado</h3>
+            <p>Comprando dentro das próximas 15h 16min</p>
+            <button>Comprar agora</button>
+            <button id="addToCartBtn" data-product-id="<%= product.id %>" class="btn_adicionar_carrinho">Adicionar ao
+              carrinho
+            </button>
+            <div class="loja">
+              Loja oficial: Colégio Eniac <br>
+              <br>
+              <a href="#">Devolução grátis</a>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="miniaturas">
-        <img src="<%= product.img %>" alt="Miniatura 1" class="selecionada" onclick="trocarImagem(this)">
-        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8PEA8PDQ8QDQ8NDQ8NDhAQDRAODQ0OFREWFhUSFRUYHSghGBolGxUTITEiJiktLi4uFx8zODMtNygtLisBCgoKDg0NFQ8PFSsZFRkwLTgrNzcrLS43KysrKzcuLTcyMi8rNzItLy8rNzcrODgsLjc3NzgrKzc0NysrKzc3K//AABEIAOEA4QMBIgACEQEDEQH/xAAbAAEAAQUBAAAAAAAAAAAAAAAABwECAwQGBf/EAD4QAQACAQECCQgHBwUAAAAAAAABAgMRBAYFEhMhMUFykbEHMlFhcXSBoSI0QlKzwcIUIyQzQ2KyY4KDkuH/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/xAAaEQEBAQADAQAAAAAAAAAAAAAAARECITES/9oADAMBAAIRAxEAPwCcQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeXw7t1sNI4nNa0W0nm5tI9cet4OLh/aY6bVv2qR+Wj096+jH7MnhVy6LI6DHvPePPxVns2mvjq28e8+GfOpkr8K2jxcnMrZkXHc4uHNmt/Vivai1fnMNvFtOO/mXpfs3ifBHM2YrWVMSiIwpwhmp5mXJX2ZLadzPj3o2yn9WLxHVelZ+cRE/MMSQODw78Z4/mYcd+za2Ofnq3sO/mGf5mHLTszW8fkI64eXwRw9s+1zauC0zakca1bVmtojXTX1vUAAAAAAAAAAAAAAAAAAB4G9nRj9mTwq5WXU72dGP2ZfCrlZlGp41sezzSlK0mKzWJm+kc1rTOq7HNo148xPRppHeyWlitKcePzMXu+q2sxWsWsxWsopezXvK+8sF7AsvZimy61mK1hHVeTmf4u/u1/8AOiSUa+Tf63k91v8AiUSUqUAEAAAAAAAAAAAAAAAAc/vZ0Y/Zl8KuTtLq97ujH2cvhVyF5RqKWljtJazHawqlrMV5LWY7WBbaWC9l95YLyC20scyraWOZEdb5NPreT3W34lEmIz8mX1vL7rb8SiTFZoAAAAAAAAAAAAAAAAADnd8OjH2cvhVxt5dhvj5uPs5fCrist9ImfREz6EahazFaXn24TnqrX7PXPXGs9yz9uvOmkVnnjXSJ6NZjWO4G9aWO8rMGSbUibdMxz82nX6FLyKtvLDaV1rMV5EW2lZKsyoDr/Jl9ay+62/EokxGnky+tZfdrfiUSWrNAAAAAAAAAAAAAAAAAAc1vn5uPs5fCHEXl22+vm4+xl8IcLeUai2dOqIhZaS0sVpFLWYrSrazFawi20rLSrMrJBRWFF1Qdf5M4/icvu0/iUSUjfyaR/E5fdp/EqkhWQAAAAAAAAAAAAAAAAAHMb7z9HH2Mv6XB3s7rfrzMfYy/pR/eyNRS1mO1lLWY7WBW0sVpVtZZMgpMqCgKrqrYXwDsPJp9Zze7/rqkhHPk0+sZvd/11SMrNAAAAAAAefwrwtTZuJF62tbJFprFeL9nTXWZmPTAPQHLZt7L/Y2bX25q+ERLQz717X1Y6Y/+O8z3zIuO4Eb5t49st05pr6q1pXwjVq223Pk87Llyeqb3tHchiTsmalfOtWvttENXLwxs1enPj+FuNPyRrktFNZvNaadPHvWnjLTy8M7NTpzVtPPpXHF8lrTHVHFidVMSXm3m2avRN79mkx/lo1Mm9dfsYbT2rxXwiUZZ96cVY/lZotOnFjJScevxiLafFp7RvheNeLijHzxpN541Jjr5+NE+jqBKGTejNPm0x19vGtP5NW/D+02/qadmlY/JF1t59rtHTWnommOb074j82nm4X2jJH0s159MRlraP+sTMx3GGpL4T2vJkpflL2vNaW04068XX1fBzVrNTdPJNse1zM8b6GP7/wDd96I8Ga0osLWWWlSZWzIEytkUABUVWF8NjYuDs+fTkcOTL660ma9/Q9zg/cnbcltMla7PXrte9bT8K1mdfkI3fJp9Yze7/rqkZ4W7W7VNh49oyTlyZIis2msViKxz6RH/AL1PdVkAAAAAAau3cHYs+nK043F1is6zW1ddNdJj2R3NoBzubdPHOvJ5slfRFopesd0RPzeTwnuZtWTDlxYtrpjvkpalclceTFbHM9Fo0tM6/F3ACMuCN0OFdmreu05q8IRPF5OYv9KumuuvKTGuvMu2/gfNaNM+y55iI00pymmno/cWSWAhjad39j6LYv2eZ555ore09Gs8tW0tbJuzjtpOLPNNI05sOK+vxjSU3zGvTztPPwTs2Tz9nw2n0zipM9+guoT2ndfJPmZMVvTyk5+f4a2hoZd2dpppyVK25+etM9MePuniym7LuvsdujHak/2ZstY7uNp8mnl3NxTz0z5q+iLclev+MT8wQtl4DzV+lfDl489PJbPl2jT/AHWtNWr+w5400w5emdI4l8WWPbyUad8plz7n54mOTz4bx18bHfHMfGJtq8+N0+Ecd8l+U5al9OLirmrFMUx93WlZ5/XMmo4/dvZMmPDtU5aTSb1rpExTXSON11tMz09ei2Xt7Lu9wpjjap2jDkvXJpGP97XPaI5+aK1tMxHQbHujt2bowzij72W0Y/l53yRXg2Wu42TyeZZn9/npWv8Ap1ta0x8dNPm6XYd0Ngw6fuIy2j7WWZya/Cfo/INRPs2y5Ms6Ysd8s+ilLXn5Pe2Hcjbsuk2pXBE9eW8a6dmus9+iVceOtY4tKxWI6IrEViPhC9TXD7D5O8UaTtGe9/7cdYx1751nwdDsO7OxYNJx7PSbR9q+uW2vttrp8HrgikRpzRzKgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/9k=" alt="Miniatura 2" onclick="trocarImagem(this)">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrRptRBjs6EWMMjiiTHID3NkEeVITy8n7LxQ&s" alt="Miniatura 2" onclick="trocarImagem(this)">
 
 
-      </div>
-    </div>
-    
-    
-    <!-- Detalhes do produto -->
-    <div class="detalhes_produto">
-      <h1><%= product.name %></h1>
-      <div class="preco">R$<%= product.price %></div>
-      <div class="info">
-        <p><strong>Cor:</strong> Cinza</p>
+      <div class="caracteristicas_produto">
+        <br>
+        <h1>Caracteristicas do produto:</h1>
         <ul>
-          <li><%= product.status%></li>
-          <li><%= product.description%></li>
-          <li>Compatível com redes 5G</li>
-          <li>64GB armazenamento</li>
-          <li>Sistema Google Chrome OS</li>
+          <li>Processador: Celeron N4020</li>
+          <li>Sistema operacional: Google Chrome OS</li>
+          <li>Tamanho da tela: 11.6" LED HD</li>
+          <li>Cor: Prata</li>
         </ul>
+        <br>
       </div>
-    </div>
+    </section>
 
 
-    <!-- Seção de compra -->
-    <div class="secao_produto">
-      <div class="caixa_de_compra">
-        <h3>Chegará grátis até sábado</h3>
-        <p>Comprando dentro das próximas 15h 16min</p>
-        <button>Comprar agora</button>
-        <button class="btn_adicionar_carrinho">Adicionar ao carrinho</button>
-        <div class="loja">
-          Loja oficial: Colégio Eniac <br>
-          <br>
-          <a href="#">Devolução grátis</a>
+    <!-- AVALIAÇÕES -->
+    <section class="avaliacoes">
+      <h1>Avaliações:</h1>
+      <br>
+      <div class="reviews-container">
+        <div class="review">
+          <div class="review-header">
+            <span class="reviewer-name">Fernando</span>
+            <span class="review-date">Avaliado em 18/09/2025</span>
+          </div>
+          <div class="review-content">
+            <p>Está sendo um boa experiência</p>
+            <p>Ainda estou me acostumando com a altura, já esbarrei duas vezes e derrubei, mas pelo material de boa
+              qualidade não ficou nenhum sinal das quedas. A sensibilidade é ótima, e funciona super bem no Windows e
+              Mac. Gostei também da rolagem que é bem suave. Ainda não configurei os botões com o APP pois está me
+              ajudando muito com a configuração atual. Estou muito satisfeito com a compra no momento mas ainda me
+              acostumando com a nova posição da...</p>
+            <a href="#" class="read-more">Leia mais</a>
+          </div>
+          <div class="util">1</div>
+        </div>
+
+        <div class="review">
+          <div class="review-header">
+            <span class="reviewer-name">Italo</span>
+            <span class="review-date">Avaliado em 11/04/2025</span>
+          </div>
+          <div class="review-content">
+            <p>muito bom!</p>
+          </div>
+          <div class="util">1</div>
+        </div>
+
+        <div class="review">
+          <div class="review-header">
+            <span class="reviewer-name">Wellington</span>
+            <span class="review-date">Avaliado em 12/09/2025</span>
+          </div>
+          <div class="review-content">
+            <p>ótimo produto</p>
+            <p>Qualidade Positivo 👍</p>
+          </div>
+          <div class="util">5</div>
+        </div>
+
+        <div class="review">
+          <div class="review-header">
+            <span class="reviewer-name">Patrick</span>
+            <span class="review-date">Avaliado em 10/03/2025</span>
+          </div>
+          <div class="review-content">
+            <p>Muito bom</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, aliquid vero
+              facere iure et magnam nobis modi dicta eligendi porro debitis suscipit tenetur
+              sit rerum eaque voluptate labore repellat voluptates.</p>
+          </div>
+          <div class="util">10</div>
         </div>
       </div>
-    </div>
-  </div>
-
-
-  <div class="caracteristicas_produto">
-    <br>
-    <h1>Caracteristicas do produto:</h1>
-    <ul>
-      <li>Processador: Celeron N4020</li>
-      <li>Sistema operacional: Google Chrome OS</li>
-      <li>Tamanho da tela: 11.6" LED HD</li>
-      <li>Cor: Prata</li>
-    </ul>
-    <br>
-  </div>
-</section>
-
-
-<!-- AVALIAÇÕES -->
-<section class="avaliacoes">
-  <h1>Avaliações:</h1>
-  <br>
-<div class="reviews-container">
-  <div class="review">
-      <div class="review-header">
-          <span class="reviewer-name">Fernando</span>
-          <span class="review-date">Avaliado em 18/09/2025</span>
-      </div>
-      <div class="review-content">
-        <p>Está sendo um boa experiência</p>
-          <p>Ainda estou me acostumando com a altura, já esbarrei duas vezes e derrubei, mas pelo material de boa qualidade não ficou nenhum sinal das quedas. A sensibilidade é ótima, e funciona super bem no Windows e Mac. Gostei também da rolagem que é bem suave. Ainda não configurei os botões com o APP pois está me ajudando muito com a configuração atual. Estou muito satisfeito com a compra no momento mas ainda me acostumando com a nova posição da...</p>
-          <a href="#" class="read-more">Leia mais</a>
-      </div>
-      <div class="util">1</div>
-  </div>
- 
-  <div class="review">
-      <div class="review-header">
-          <span class="reviewer-name">Italo</span>
-          <span class="review-date">Avaliado em 11/04/2025</span>
-      </div>
-      <div class="review-content">
-          <p>muito bom!</p>
-      </div>
-      <div class="util">1</div>
-  </div>
- 
-  <div class="review">
-      <div class="review-header">
-          <span class="reviewer-name">Wellington</span>
-          <span class="review-date">Avaliado em 12/09/2025</span>
-        </div>
-        <div class="review-content">
-          <p>ótimo produto</p>
-          <p>Qualidade Positivo 👍</p>
-      </div>
-      <div class="util">5</div>
-  </div>
- 
-  <div class="review">
-      <div class="review-header">
-          <span class="reviewer-name">Patrick</span>
-          <span class="review-date">Avaliado em 10/03/2025</span>
-      </div>
-      <div class="review-content">
-          <p>Muito bom</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, aliquid vero
-            facere iure et magnam nobis modi dicta eligendi porro debitis suscipit tenetur
-            sit rerum eaque voluptate labore repellat voluptates.</p>
-      </div>
-      <div class="util">10</div>
-  </div>
-</div>
-</section>
-<%- include('partials/footer') %>
-<!-- FIM AVALIAÇÕES -->
-<script src="/js/tela_produto_carrocel.js"></script>
+    </section>
+    <%- include('partials/footer') %>
+      <!-- FIM AVALIAÇÕES -->
+      <script src="/js/tela_produto_carrocel.js"></script>
+      <script src="/js/viewProduct.js"></script>
 </body>
+
 </html>

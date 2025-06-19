@@ -1,7 +1,7 @@
 // Função que roda automaticamente assim que a página carrega
 (async function checkAuthState() {
     console.log("Verificando com o servidor quem está logado...");
-    
+
     // Seleciona o alvo na navbar. Garanta que este ID existe no seu HTML da navbar!
     const userActionElement = document.getElementById('user-action-area'); // Usando o ID da sua nova navbar
 
@@ -25,23 +25,37 @@
                             <span class="greeting-line">Olá, ${user.fullname.split(' ')[0]}</span>
                             <br/>
                             <span class="account-line">Conta & Configurações</span>
-                        </a>
+                                           </a>
                         <a href="#" id="logoutButton" class="neo-logout-button" title="Sair">
                             <i class="fa-solid fa-right-from-bracket"></i>
                         </a>
                     </div>
                 `;
-                
+
                 // Adiciona a funcionalidade de logout ao novo botão
                 const logoutButton = document.getElementById('logoutButton');
-                if(logoutButton) {
-                    logoutButton.addEventListener('click', (e) => {
+                if (logoutButton) {
+                    logoutButton.addEventListener('click', async(e) => {
                         e.preventDefault();
-                        // Para o logout com cookies, o ideal é chamar uma rota no backend que limpe o cookie.
-                        // Mas por enquanto, vamos apenas remover no localStorage (se existir) e redirecionar.
-                        // A melhoria do logout no backend pode ser um próximo passo.
-                        localStorage.removeItem('token'); // Limpa qualquer vestígio
-                        window.location.href = '/login'; // Redireciona para o login
+                        try {
+                            // --- AJUSTE AQUI ---
+                            // Faz a chamada para a nossa nova rota de logout no backend
+                            const response = await fetch('/api/users/logout', { method: 'GET' });
+
+                            if (response.ok) {
+                                // Se o backend confirmou o logout...
+                                alert('Você foi desconectado com segurança.');
+                                // ...redirecionamos o usuário para a página de login.
+                                window.location.href = '/login';
+                            } else {
+                                // Se algo der errado no backend, ainda tentamos forçar o logout no frontend
+                                alert('Não foi possível fazer logout no servidor, desconectando localmente.');
+                                window.location.href = '/login';
+                            }
+                        } catch (error) {
+                            console.error('Erro de rede ao tentar fazer logout:', error);
+                            alert('Erro de conexão ao tentar fazer logout.');
+                        }
                     });
                 }
             }

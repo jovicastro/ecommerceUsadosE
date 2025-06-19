@@ -11,6 +11,7 @@ const userRoutes = require('./routes/userRoutes.js');
 const productRoutes = require('./routes/productRoutes.js');
 const productController = require('./controllers/productController.js');
 const authMiddleware = require('./middlewares/authMiddleware.js');
+const cartRoutes = require('./routes/cartRoutes.js');
 
 const app = express();
 
@@ -104,6 +105,7 @@ app.get('/viewProduct/:id', productController.getProductPage);
 // Estas rotas lidam com dados (JSON) e não mudam.
 app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/cart', cartRoutes);
 
 
 // --- MIDDLEWARE DE ERROS ---
